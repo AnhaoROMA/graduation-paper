@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{研究背景及意义}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{高光谱图像及其成像原理}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{高光谱图像的特征}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{高光谱图像的应用领域}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{对高光谱图像进行降噪的意义}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{高光谱图像降噪的研究路线}{}% 6
+\BOOKMARK [1][-]{section.3}{相关工作}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{核范数（Nuclear Norm）}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Sp-范数（Schatten p-norm）}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{截断式核范数（Truncated Nuclear Norm）}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{权重式核范数（Weighted Nuclear Norm）}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.5}{-范数（-Norm）}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{实验部分}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{实验数据}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.2}{实验设计}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{实验结果分析}{}% 16
+\BOOKMARK [1][-]{section.6}{总结与展望}{}% 17
+\BOOKMARK [1][-]{section.6}{Reference}{}% 18

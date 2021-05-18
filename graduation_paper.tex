@@ -1,0 +1,126 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{ctex}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{abstract}
+\usepackage{type1cm}
+\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=blue,CJKbookmarks=True]{hyperref}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\renewcommand{\contentsname}{\centering{\heiti\zihao{3}{目 \qquad 录}}}
+\renewcommand\refname{\centerline{参考文献}}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\renewcommand\abstractname{{\large{摘要}}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\begin{document}
+\section{研究背景及意义}
+\subsection{高光谱图像及其成像原理}
+\par 高光谱图像（Hyper-Spectral Image, HSI），又称“高光谱分辨率遥感图像”（Hyper-Spectral Resolution Remote Sensing Image）。遥感（Remote Sensing），是在不接触目标的情况下，利用特定装置来获得地物的光谱特征信息、并对其进行提取与分析，以便能够投入到实际应用中去的一种技术\cite{whatishsi}。高光谱遥感（Hyperspectral  Remote Sensing）技术利用成像光谱仪，记录地物在太阳照射下所产生的辐射信号，在可见光以及多数红外波段等电磁波谱范围内，以非常狭窄的间隔进行成像（如图\ref{img-pricipleofphotograph}所示），进而形成不同地物的光谱特征曲线。更具体地，高光谱遥感概念的定义基础是成像光谱学，成像光谱仪作为一种遥感仪器，则可以将成像传感器的空间表示与光谱仪的分析能力结合起来，为每个像素所含有的地物提供其在上百个窄波段上的反射信息，进而得到一条完整的光谱特征曲线\cite{howtogenanhsi}。
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{img-principleofphotograph.png}
+\caption{高光谱图像的成像原理}
+{\scriptsize{
+（图片来源：https://d3i71xaburhd42.cloudfront.net/26ffa240d824f1503f3afafdc14e4a1711449138/2-Figure1-1.png）}}
+\label{img-pricipleofphotograph}
+\end{figure}
+\subsection{高光谱图像的特征}
+\par 高光谱图像将地物的空间分布信息与光谱特征信息结合在一起，即：在二维空间分布信息的基础上添加了一维光谱特征信息。因此，高光谱图像可以看成是一个立方体形式的数据：每个波段都是一幅二维的平面图像，而每个像素点都是一条光谱特征曲线。由于不同物质在相同波段内的辐射强度不同，不同物质在高光谱图像中会表现出不同的光谱特征曲线\cite{howtogenanhsi}，如图\ref{img-pricipleofphotograph}所示。通过对地物的连续成像，高光谱图像具有多而窄的波段，因此包含了丰富的光谱特征信息。
+\subsection{高光谱图像的应用领域}
+\par 通过纳米级的光谱分辨率，高光谱遥感技术利用成像光谱仪在几十乃至几百个窄波段同时对地物成像，因而高光谱图像含有非常丰富的空间光谱信息。这使得高光谱图像在环境、军事等诸多领域都有着十分广泛的应用\cite{usageofhsi-1}\cite{usageofhsi-2}\cite{usageofhsi-3}，具体可见表\ref{usageofhsi}。
+\begin{table}[H]
+	\centering
+	\caption{高光谱图像的应用领域}
+	\label{usageofhsi}
+	\begin{tabular}{ c c }
+		\toprule
+		应用领域&具体方向\\
+		\toprule
+		农业&环境监测、虫灾预报、作物估产等\\
+		\hline
+		环境&污染的监测、受灾程度的评估、自然灾害的预防等\\
+        \hline
+		地学&矿床的勘探、地形与地貌的测定、地图绘制等\\
+        \hline
+		军事&伪装物的识别、目标检测与跟踪、侦察与探测等\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+\subsection{对高光谱图像进行降噪的意义}
+\par 然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响，比如高光谱图像的分类\cite{further-use-1}、 解混\cite{further-use-2}，以及目标检测\cite{further-use-3} 等。因此，对高光谱图像进行降噪是预处理阶段必不可少的。
+\section{高光谱图像降噪的研究路线}\label{research-route}
+\par 假设矩阵$X$含有噪声，一种常用的、基于秩最小化的降噪方法是：
+\begin{equation}
+\centering
+\min\limits_{L}\quad rank(L)
+\label{equ1}
+\end{equation}
+\par 由于矩阵的秩最小化方法是一个NP-hard问题，大量的降噪方法使用了它的凸放缩来代替它：
+\begin{equation}
+\centering
+\min\limits_{L}\quad \left\|L\right\|_*
+\label{equ2}
+\end{equation}
+\par 基于这一方法的研究的主要拓展分成了两个方向。第一个方向是，增加解决这一问题（及其变体）的效率。例如，SVT和IALM。第二个方向是，增加通过用非凸方法替代核范数的矩阵低秩近似的准确率。例如，Nie、Mohan和Fazel提出了一个Sp-MC方法，这个方法使用了Schatten p-范数（而不是核范数）去近似最初的RM问题。除此之外，考虑到并不是所有的奇异值都应该被惩罚，Zhang等人提出了截断的核范数方法（Truncated Nuclear Norm Regularization, TNNR），这一方法仅仅惩罚了较小的$n-r$个奇异值，$r$是事先被确定的参数。为了避免完全不顾及较大奇异值的现象，Gu等人提出了一个加权重的核范数（Weighted Nuclear Norm, WNN）方法，并用它解决了一些计算机视觉问题，包括基于矩阵补全的图像修复。注意，WNN是从加权重的$l_1$-范数（用于压缩感知）派生而来。除此之外，一种联合封顶-范数最小化模型被提出来了，这一方法增加了算法的鲁棒性。关于几种非凸的放缩函数的更多细节可以在“Generalized nonconvex nonsmooth low-rank minimization”这篇文章里找到，就在那篇文章中，反复地变权重方法（Iteratively Reweighted Nuclear Norm, IRNN）被提出来解决满足一些特定限制的非凸低秩问题。然而，事实上，由于是通过同时线性化损失函数与正则化项来最小化一个替代函数，IRNN收敛得很慢。
+\par 对人造数据与自然数据所做的大量的实验证明了非凸放缩的好处（相比于核范数而言）。但是，事实上，所有之前提到的算法都有以下两点不足。
+\begin{itemize}
+\item 需要事先确定一些额外的参数。
+\item 计算时间较长。
+\end{itemize}
+\par 针对这两个问题，有研究者提出了$log$-范数与$\gamma$-范数。
+\par 这些方法传达了两条关键信息：1）越大的奇异值通常代表着越重要的信息，因此较大的奇异值不应该被过分地惩罚；2）较小的奇异值通常代表着需要被移除的噪声信息，因此需要被惩罚至0\footnote{若成功做到，我们将可以得到一个满足低秩条件的矩阵，实现秩最小化。}。然而，事实上，最终获得的矩阵通常是近似低秩的，而不是严格低秩的，而秩最小的那个矩阵也并非是我们想要得到的。因此，为了正则化，我们应当选择一个介于$rank(X)$与$\left\|X\right\|_*$ 之间的放缩函数。借助这样的非凸放缩函数，降噪的问题被等价为：
+\begin{equation}
+\centering
+\min\limits_{L}\quad \sum\limits_{i=1}^{n}f(\sigma_i(L))
+\label{equ4}
+\end{equation}
+\section{相关工作}\label{related-work}
+\par 本章将具体分析第\ref{research-route}章中提到的几种核范数的替代函数。
+\subsection{核范数（Nuclear Norm）}
+\subsection{Sp-范数（Schatten p-norm）}
+\subsection{截断式核范数（Truncated Nuclear Norm）}
+\subsection{权重式核范数（Weighted Nuclear Norm）}
+\subsection{$\gamma$-范数（$\gamma$-Norm）}
+
+\section{实验部分}\label{experiment}
+\begin{itemize}
+\item 本文的全部代码：{\url{https://github.com/AnhaoROMA/Graduation_Design.git}}
+\item 实验环境：MATLAB R2018b
+\end{itemize}
+\subsection{实验数据}
+
+\subsection{实验设计}
+
+\section{实验结果分析}\label{analysis}
+
+\section{总结与展望}
+
+\newpage
+\begin{thebibliography}{99}
+\addcontentsline{toc}{section}{Reference}
+%\bibitem{...}...
+\bibitem{whatishsi}童庆禧,张兵,郑兰芬. 高光谱遥感——原理、技术与应用[M].北京:高等教育出版社,2006.
+\bibitem{howtogenanhsi}张显. 基于子空间低秩表示的高光谱图像去噪方法研究[D].南京邮电大学,2020.
+\bibitem{usageofhsi-1}浦瑞良,宫鹏. 高光谱遥感及其应用[M].北京:高等教育出版社,2000.
+\bibitem{usageofhsi-2}S.A.Lewis et al., “Using hyperspectral imagery to estimate forest floor consumption from wildfire in boreal forests of Alaska, USA,” Int.J.Wildland Fire,vol.20,no.2,pp.255–271,Jan.2011.
+\bibitem{usageofhsi-3}K.C.Tiwari,M.K.Arora,and D.Singh, “An assessment of independent component analysis for detection of military targets from hyperspectral images,” Int.J.Appl.Earth Observ.Geoinf.,vol.13,no.5,pp. 730–740,Oct.2011.
+\bibitem{further-use-1}Bo C J, Lu H C, Wang D. Weighted Generalized Nearest Neighbor for Hyperspectral Image Classification[J].IEEE Access,2017,5:1496-1509.
+\bibitem{further-use-2}Yang W, Hou K, Liu B, et al. Two-stage Clustering Technique Based on the Neighboring Union Histogram for Hyperspectral Remote Sensing Images[J].IEEE Access,2017,5:5640-5647.
+\bibitem{further-use-3}Zhang L L, Zhao C H. A spectral-spatial  method based on low-rank and sparse matrix decomposition for hyperspectral anomaly detection[J].International Journal of Remote Sensing,2017,38(14):4047-4068.
+
+\end{thebibliography}
+
+\end{document}
