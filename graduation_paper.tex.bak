@@ -15,6 +15,7 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{abstract}
+\usepackage{subfigure}
 \usepackage{type1cm}
 \usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=blue,CJKbookmarks=True]{hyperref}
 \geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
@@ -62,66 +63,53 @@
 \subsection{对高光谱图像进行降噪的意义}
 \par 然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响，比如高光谱图像的分类\cite{further-use-1}、 解混\cite{further-use-2}，以及目标检测\cite{further-use-3} 等。因此，对高光谱图像进行降噪是预处理阶段必不可少的。
 \section{高光谱图像降噪的研究路线}\label{research-route}
-\par 假设矩阵$X$含有缺失的元素，一种常用的、基于秩最小化的矩阵补全的方法是：
+\par 假设一幅一维图像$Y$受到噪声的污染，即：
 \begin{equation}
 \centering
-\min\limits_{L}\quad rank(L)\quad s.t.\quad L_{ij}=X_{ij},\quad (i,j)\in\Omega
-\label{equ1}
+Y = X + N
+\label{ori-equation}
 \end{equation}
-\par 其中，$\Omega$是记录着已知元素的集合。正如矩阵的秩最小化方法是一个NP-hard问题，大量的（矩阵补全）方法使用了它的凸放缩来代替它：
+式中，
+\par$X$代表未受到污染的、干净的图像；
+\par$N$代表噪声；
+\par$Y$代表成像设备获取到的图像，即受到污染的图像。
+\par 如图\ref{svd-example}所示，由于自然图像通常被认为是低秩结构\cite{TNN-1}，基于低秩（Low Rank, LR）假设的图像降噪方法可以被形式化为：
 \begin{equation}
 \centering
-\min\limits_{L}\quad \left\|L\right\|_*\quad s.t.\quad L_{ij}=X_{ij},\quad (i,j)\in\Omega
-\label{equ2}
+arg\min\limits_{X} \quad rank(X)
+\label{Rank-equation}
 \end{equation}
-\par 基于这一方法的研究的主要拓展分成了两个方向。第一个方向是，增加解决这一问题（及其变体）的效率。例如，SVT和IALM。第二个方向是，增加通过用非凸方法替代核范数的矩阵低秩近似的准确率。例如，Nie、Mohan和Fazel提出了一个Sp-MC方法，这个方法使用了Schatten p-范数（而不是核范数）去近似最初的RM问题。除此之外，考虑到并不是所有的奇异值都应该被惩罚，Zhang等人提出了截断的核范数方法（Truncated Nuclear Norm Regularization, TNNR），这一方法仅仅惩罚了较小的$n-r$个奇异值，$r$是事先被确定的参数。为了避免完全不顾及较大奇异值的现象，Gu等人提出了一个加权重的核范数（Weighted Nuclear Norm, WNN）方法，并用它解决了一些计算机视觉问题，包括基于矩阵补全的图像修复。注意，WNN是从加权重的$l_1$-范数（用于压缩感知）派生而来。除此之外，一种联合封顶-范数最小化模型被提出来了，这一方法增加了算法的鲁棒性。关于几种非凸的放缩函数的更多细节可以在“Generalized nonconvex nonsmooth low-rank minimization”这篇文章里找到，就在那篇文章中，反复地变权重方法（Iteratively Reweighted Nuclear Norm, IRNN）被提出来解决满足一些特定限制的非凸低秩问题。然而，事实上，由于是通过同时线性化损失函数与正则化项来最小化一个替代函数，IRNN收敛得很慢。最近，一个通用的奇异值阀值（Generalized Singular Value Thresholding, GSVT）算法被提出了，它提供了以下这个问题的紧规范解决方法：
+\par 
+\begin{figure}[h]
+    \centering
+    
+    \subfigure[自然图像]{
+        \includegraphics[scale=0.5]{example-figure.png}
+    }  
+    \subfigure[(a)图的奇异值分布图]{
+        \includegraphics[scale=0.4]{example-figure-svd.png}
+    }
+    
+    \caption{自然图像的低秩特性}
+    \label{svd-example}
+\end{figure}
+\par 式\ref{Rank-equation}是基于秩最小化（Rank Minimization, RM）的降噪方法，然而，这是一个NP-hard问题\cite{TNN-1}。况且，秩函数（$rank()$）是不连续的\cite{TNN-1}。因此，通常使用秩函数的凸近似，即核范数，作为秩函数的替代\cite{TNN-1}。因此，式\ref{Rank-equation}可以被改写为：
 \begin{equation}
 \centering
-\min\limits_{L}\quad F(L) \equiv \left\|L-X\right\|_F^2 + \lambda \times \sum\limits_{i=1}^{k}f(\sigma_i(L))
-\label{equ3}
+arg\min\limits_{X} \quad \left\|X\right\|_*
+\label{NN-equation}
 \end{equation}
-\par 其中，$f(x)$是一个满足一些特定条件的凹函数。除此之外，Perekh和Selesnick尝试着去构造一个有着非凸的惩罚函数的、严格意义上的凸函数，但是它们并没有关注矩阵补全问题。Larsson和Olsson提出了一个针对
-\begin{math}
-g(rank(X))+ \left\|X-X_0\right\|_F^2
-\end{math}
-的凸的放缩（而非$rank(X)$）。
-\par 对人造数据与自然数据所做的大量的实验证明了非凸放缩的好处（相比于核范数而言）。但是，事实上，所有之前提到的算法都有以下两点不足。
-\begin{itemize}
-\item 需要事先确定一些额外的参数。
-\item 计算时间较长。
-\end{itemize}
-\par 针对这两个问题，我们提出了一个新颖的矩阵补全模型，并构造了这个模型对应的有效求解方法。接下来，我们就将介绍这个模型。
-\par 过去的非凸函数传达了两条关键信息：1）越大的奇异值通常代表着越重要的信息，因此较大的奇异值不应该被过分地惩罚；2）较小的奇异值通常代表着需要被移除的噪声信息，因此需要被惩罚至0\footnote{若成功做到，我们将可以得到一个满足低秩条件的矩阵，实现秩最小化。}。然而，事实上，最终获得的矩阵通常是近似低秩的，而不是严格低秩的，而秩最小的那个矩阵也并非是我们想要得到的。因此，为了正则化，我们应当选择一个介于$rank(X)$与$\left\|X\right\|_*$之间的放缩函数。借助这样的非凸放缩函数，矩阵补全的问题被等价为：
-\begin{equation}
-\centering
-\min\limits_{L}\quad \sum\limits_{i=1}^{n}f(\sigma_i(L))\quad s.t. \quad W \odot L=X
-\label{equ4}
-\end{equation}
-\par 其中，$f(x)=log(x+1)$，矩阵$W$满足
-\begin{math}
-W_{ij}=
-\left\{
-\begin{aligned}
-1 &,& (i,j)\in\Omega\\
-0 &,& otherwise\\
-\end{aligned}
-\right.
-\end{math}
-，并且$\odot$代表着哈达玛积运算。注意，一个叫做截断的柯西损失（Truncated Cauchy Loss, TCL）的类似的损失函数已经被提出来了。但是，TCL包含了两个额外的参数。观察图\ref{fig_2}，可知$f(x)$是介于秩最小化（$l_0$-范数）与核范数最小化（$l_1$-范数）之间的，因此可以同时减少对较大奇异值的惩罚、增大对较小奇异值的惩罚。让\footnote{事实上，我们通常令$h(L)=L^TL+\varepsilon I$，以此确保$h(L)$是确定为正值的矩阵，$\varepsilon$是很小的正值。}$h(L)=L^TL$，问题\ref{equ4} 可以被重写为：
-\begin{equation}
-\centering
-\min\limits_{L}\quad \sum\limits_{i=1}^{n}g(\lambda_i(h(L)))
-\quad s.t. \quad W \odot L=X
-\label{equ5}
-\end{equation}
-\par 其中，$g(x)=log(x^{\frac{1}{2}}+1)$。显然，$g(x)$也是一个凹函数。注意，$h(L)$是一个确定是正值的矩阵，且通常是近似低秩的（而非严格低秩的）。针对公式\ref{equ5}的最优化方法在下一章中会被展示。
+式中，
+\par $\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$
+\par 尽管式\ref{NN-equation}所示的核范数最小化（Nuclear Norm Minimization, NNM）方法已经在很多领域被成功地应用了，它还是存在缺点的。主要在于它平等地对待了所有的奇异值，即所有的奇异值都被缩小了\cite{Review}。但是，作为先验知识，所有的奇异值都具有实际的物理含义。
+
 \section{相关工作}\label{related-work}
 \par 本章将具体分析第\ref{research-route}章中提到的几种核范数的替代函数。
 \subsection{核范数（Nuclear Norm）}
-\subsection{Sp-范数（Schatten p-norm）}
 \subsection{截断式核范数（Truncated Nuclear Norm）}
 \subsection{权重式核范数（Weighted Nuclear Norm）}
-\subsection{$\gamma$-范数（$\gamma$-Norm）}
+\subsection{Sp-范数（Schatten p-norm）}
+\subsection{$log$-范数（$log$-Norm）}
 
 \section{实验部分}\label{experiment}
 \begin{itemize}
@@ -148,7 +136,9 @@ W_{ij}=
 \bibitem{further-use-1}Bo C J, Lu H C, Wang D. Weighted Generalized Nearest Neighbor for Hyperspectral Image Classification[J].IEEE Access,2017,5:1496-1509.
 \bibitem{further-use-2}Yang W, Hou K, Liu B, et al. Two-stage Clustering Technique Based on the Neighboring Union Histogram for Hyperspectral Remote Sensing Images[J].IEEE Access,2017,5:5640-5647.
 \bibitem{further-use-3}Zhang L L, Zhao C H. A spectral-spatial  method based on low-rank and sparse matrix decomposition for hyperspectral anomaly detection[J].International Journal of Remote Sensing,2017,38(14):4047-4068.
-
+\bibitem{TNN-1}D.Zhang, Y.Hu, J.Ye, X.Li, and X.He. Matrix completion by truncated nuclear norm regularization. In CVPR, 2012.
+\bibitem{Review}Zhanxuan Hu, Feiping Nie, Rong Wang, Xuelong Li, Low Rank Regularization: A review, Neural Networks, Volume 136, 2021.
+\bibitem{WNN-1}Shuhang Gu, Lei Zhang, Wangmeng Zuo, Xiangchu Feng, Weighted Nuclear Norm Minimization with Application to Image Denoising. In CVPR, 2014.
 \end{thebibliography}
 
 \end{document}

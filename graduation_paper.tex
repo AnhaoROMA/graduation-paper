@@ -15,6 +15,7 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{abstract}
+\usepackage{subfigure}
 \usepackage{type1cm}
 \usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=blue,CJKbookmarks=True]{hyperref}
 \geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
@@ -62,38 +63,111 @@
 \subsection{对高光谱图像进行降噪的意义}
 \par 然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响，比如高光谱图像的分类\cite{further-use-1}、 解混\cite{further-use-2}，以及目标检测\cite{further-use-3} 等。因此，对高光谱图像进行降噪是预处理阶段必不可少的。
 \section{高光谱图像降噪的研究路线}\label{research-route}
-\par 假设矩阵$X$含有噪声，一种常用的、基于秩最小化的降噪方法是：
+\par 假设一幅一维图像$Y$受到噪声的污染，即：
 \begin{equation}
 \centering
-\min\limits_{L}\quad rank(L)
-\label{equ1}
+Y = X + N
+\label{ori-equation}
 \end{equation}
-\par 由于矩阵的秩最小化方法是一个NP-hard问题，大量的降噪方法使用了它的凸放缩来代替它：
+式中，
+\par$X$代表未受到污染的、干净的图像；
+\par$N$代表噪声；
+\par$Y$代表成像设备获取到的图像，即受到污染的图像。
+\par 那么，图像降噪的工作就是将$Y$复原为$X$。
+\par 如图\ref{svd-example}所示，由于自然图像通常被认为是低秩结构\cite{TNN-1}，基于低秩（Low Rank, LR）假设的图像降噪方法可以被形式化为：
 \begin{equation}
 \centering
-\min\limits_{L}\quad \left\|L\right\|_*
-\label{equ2}
+arg\min\limits_{X} \quad rank(X)
+\label{Rank-equation}
 \end{equation}
-\par 基于这一方法的研究的主要拓展分成了两个方向。第一个方向是，增加解决这一问题（及其变体）的效率。例如，SVT和IALM。第二个方向是，增加通过用非凸方法替代核范数的矩阵低秩近似的准确率。例如，Nie、Mohan和Fazel提出了一个Sp-MC方法，这个方法使用了Schatten p-范数（而不是核范数）去近似最初的RM问题。除此之外，考虑到并不是所有的奇异值都应该被惩罚，Zhang等人提出了截断的核范数方法（Truncated Nuclear Norm Regularization, TNNR），这一方法仅仅惩罚了较小的$n-r$个奇异值，$r$是事先被确定的参数。为了避免完全不顾及较大奇异值的现象，Gu等人提出了一个加权重的核范数（Weighted Nuclear Norm, WNN）方法，并用它解决了一些计算机视觉问题，包括基于矩阵补全的图像修复。注意，WNN是从加权重的$l_1$-范数（用于压缩感知）派生而来。除此之外，一种联合封顶-范数最小化模型被提出来了，这一方法增加了算法的鲁棒性。关于几种非凸的放缩函数的更多细节可以在“Generalized nonconvex nonsmooth low-rank minimization”这篇文章里找到，就在那篇文章中，反复地变权重方法（Iteratively Reweighted Nuclear Norm, IRNN）被提出来解决满足一些特定限制的非凸低秩问题。然而，事实上，由于是通过同时线性化损失函数与正则化项来最小化一个替代函数，IRNN收敛得很慢。
-\par 对人造数据与自然数据所做的大量的实验证明了非凸放缩的好处（相比于核范数而言）。但是，事实上，所有之前提到的算法都有以下两点不足。
-\begin{itemize}
-\item 需要事先确定一些额外的参数。
-\item 计算时间较长。
-\end{itemize}
-\par 针对这两个问题，有研究者提出了$log$-范数与$\gamma$-范数。
-\par 这些方法传达了两条关键信息：1）越大的奇异值通常代表着越重要的信息，因此较大的奇异值不应该被过分地惩罚；2）较小的奇异值通常代表着需要被移除的噪声信息，因此需要被惩罚至0\footnote{若成功做到，我们将可以得到一个满足低秩条件的矩阵，实现秩最小化。}。然而，事实上，最终获得的矩阵通常是近似低秩的，而不是严格低秩的，而秩最小的那个矩阵也并非是我们想要得到的。因此，为了正则化，我们应当选择一个介于$rank(X)$与$\left\|X\right\|_*$ 之间的放缩函数。借助这样的非凸放缩函数，降噪的问题被等价为：
+\par 
+\begin{figure}[h]
+    \centering
+    
+    \subfigure[自然图像]{
+        \includegraphics[scale=0.5]{example-figure.png}
+    }  
+    \subfigure[(a)图的奇异值分布图]{
+        \includegraphics[scale=0.4]{example-figure-svd.png}
+    }
+    
+    \caption{自然图像的低秩特性}
+    \label{svd-example}
+\end{figure}
+\par 式\ref{Rank-equation}是基于秩最小化（Rank Minimization, RM）的降噪方法，然而，这是一个NP-hard问题\cite{TNN-1}。况且，秩函数（$rank()$）是不连续的\cite{TNN-1}。所以，通常使用秩函数的凸近似，即核范数，作为秩函数的替代\cite{TNN-1}。因此，式\ref{Rank-equation}可以被改写为：
 \begin{equation}
 \centering
-\min\limits_{L}\quad \sum\limits_{i=1}^{n}f(\sigma_i(L))
-\label{equ4}
+arg\min\limits_{X} \quad \left\|X\right\|_*
+\label{NN-equation}
 \end{equation}
+式中，
+\par $\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$
+\par 尽管式\ref{NN-equation}所示的核范数最小化（Nuclear Norm Minimization, NNM）方法已经在很多领域被成功地应用了，它还是存在缺点的。主要在于它平等地对待了所有的奇异值，即所有的奇异值都被同等程度地缩小了\cite{Review}。但是，作为先验知识，所有的奇异值都具有实际的物理含义。以降噪问题为例，有效信息通常体现在较大的奇异值中，而噪声往往隐藏在较小的奇异值中。因此，不同大小的奇异值不应该被同等地对待\cite{WNN-1}。不同于式\ref{NN-equation}的凸放缩，近些年，有研究者提出了一些非凸的放缩。
+\par 考虑到如前文所述的核范数的缺点，Zhang、Hu等研究者认为，可以考虑仅仅缩小较小的奇异值\cite{TNN-1}。因此，他们提出了截断式核范数（Truncated Nuclear Norm, TNN）。截断式核范数仅仅处理较小的$n-r$个奇异值。所以，式\ref{Rank-equation}被改写为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|X\right\|_{tr,*}
+\label{TNN-equation}
+\end{equation}
+式中，
+\par $\left\|X\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i(X)$
+\par Gu等学者认为，截断式核范数因为只能做二值化选择而显得不够灵活\cite{WNN-1}。为了增加灵活性，Gu等人提出了权重式核范数（Weighted Nuclear Norm, WNN）。权重式核范数为每一个奇异值赋予了一个权重，即：
+\begin{displaymath}
+\centering
+\left\|X\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i(X)
+\end{displaymath}
+\par 因此，式\ref{Rank-equation}可被改写为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|X\right\|_{w,*}
+\label{WNN-equation}
+\end{equation}
+\par 在做了大量的实验后，研究人员发现这些非凸的方法比核范数表现更好。但是，Nie等学者认为，不论是截断式核范数，还是权重式核范数，又或者是阀值式核范数（Capped Nuclear Norm, CNN）\cite{CNN-1}\cite{CNN-2}，都有一些不足\cite{log-norm}。 一者，它们都含有需要被事先确定的额外参数，例如截断式核范数中的$r$、 权重式核范数中的$w_i$、阀值式核范数中的$\theta$。再者，由于是非凸的放缩，求解对应的模型需要使用迭代的方法，但这些迭代的方法收敛得很慢。针对这两点不足，Nie等人提出了$log$-范数。当秩函数被放缩为$log$-范数后，式\ref{Rank-equation}就被改写为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|X\right\|_{log,*}
+\label{log-equation}
+\end{equation}
+式中，
+\par $\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$
+\par 此外还有很多种放缩方式，这里不再一一赘述，可参考表\ref{relaxation}\cite{Review}。
+\begin{table}[H]
+\centering
+\caption{秩函数的不同放缩（部分）}
+\label{relaxation}
+
+\begin{tabular}{c c}
+\toprule
+名称&表达式\\
+\toprule
+核范数&$\sum\limits_{i=1}^{n}\sigma_i$\\
+\hline
+截断式核范数&$\sum\limits_{i=r+1}^{n}\sigma_i$\\
+\hline
+权重式核范数&$\sum\limits_{i=1}^{n}w_i\sigma_i$\\
+\hline
+阀值式核范数&$\sum\limits_{i=r+1}^{n}min(\sigma_i, \theta)$\\
+\hline
+$log$-范数&$\sum\limits_{i=1}^{n}log(\sigma_i+1)$\\
+\hline
+格曼&$\sum\limits_{i=1}^{n}\cfrac{\sigma_i}{\sigma_i + \gamma}$\\
+\hline
+拉普拉斯&$\sum\limits_{i=1}^{n}\left(1-exp(-\cfrac{\sigma_i}{\gamma})\right)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\par 由表\ref{relaxation}，可发现这些凸放缩都可以被写成如下的形式：
+\begin{displaymath}
+\centering
+rank(X) \approx f(\sigma_i(X))
+\end{displaymath}
 \section{相关工作}\label{related-work}
 \par 本章将具体分析第\ref{research-route}章中提到的几种核范数的替代函数。
 \subsection{核范数（Nuclear Norm）}
-\subsection{Sp-范数（Schatten p-norm）}
 \subsection{截断式核范数（Truncated Nuclear Norm）}
 \subsection{权重式核范数（Weighted Nuclear Norm）}
-\subsection{$\gamma$-范数（$\gamma$-Norm）}
+% \subsection{Sp-范数（Schatten p-norm）}
+\subsection{$log$-范数（$log$-Norm）}
 
 \section{实验部分}\label{experiment}
 \begin{itemize}
@@ -120,6 +194,12 @@
 \bibitem{further-use-1}Bo C J, Lu H C, Wang D. Weighted Generalized Nearest Neighbor for Hyperspectral Image Classification[J].IEEE Access,2017,5:1496-1509.
 \bibitem{further-use-2}Yang W, Hou K, Liu B, et al. Two-stage Clustering Technique Based on the Neighboring Union Histogram for Hyperspectral Remote Sensing Images[J].IEEE Access,2017,5:5640-5647.
 \bibitem{further-use-3}Zhang L L, Zhao C H. A spectral-spatial  method based on low-rank and sparse matrix decomposition for hyperspectral anomaly detection[J].International Journal of Remote Sensing,2017,38(14):4047-4068.
+\bibitem{TNN-1}D.Zhang, Y.Hu, J.Ye, X.Li, and X.He. Matrix completion by truncated nuclear norm regularization. In CVPR, 2012.
+\bibitem{Review}Zhanxuan Hu, Feiping Nie, Rong Wang, Xuelong Li, Low Rank Regularization: A review, Neural Networks, Volume 136, 2021.
+\bibitem{WNN-1}Shuhang Gu, Lei Zhang, Wangmeng Zuo, Xiangchu Feng, Weighted Nuclear Norm Minimization with Application to Image Denoising. In CVPR, 2014.
+\bibitem{CNN-1}Q. Sun, S. Xiang, J. Ye, Robust principal component analysis via capped norms, in: Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, ACM, 2013, pp. 311-319.
+\bibitem{CNN-2}F. Nie, Z. Huo, H. Huang, Joint capped norms minimization for robust matrix recovery, in: Proceedings of International Joint Conference on Artificial Intelligence, 2017, pp. 2557-2563.
+\bibitem{log-norm}Matrix Completion Based on Non-Convex Low-Rank Approximation
 
 \end{thebibliography}
 

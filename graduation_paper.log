@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.2.11)  18 MAY 2021 18:30
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.2.11)  20 MAY 2021 03:10
 entering extended mode
 **E:/LATEX文件/graduation-paper/graduation_paper.tex
 (E:/LATEX文件/graduation-paper/graduation_paper.tex
@@ -525,6 +525,26 @@ Package: abstract 2009/06/08 v1.2a configurable abstracts
 \absparindent=\skip67
 \absparsep=\skip68
 )
+(D:\Latex\CTEX\MiKTeX\tex\latex\subfigure\subfigure.sty
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip69
+\subfigcapskip=\skip70
+\subfigcaptopadj=\dimen189
+\subfigbottomskip=\skip71
+\subfigcapmargin=\dimen190
+\subfiglabelskip=\skip72
+\c@subfigure=\count196
+\c@lofdepth=\count197
+\c@subtable=\count198
+\c@lotdepth=\count199
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(D:\Latex\CTEX\MiKTeX\tex\latex\subfigure\subfigure.cfg)
+\subfig@top=\skip73
+\subfig@bottom=\skip74
+)
 (D:\Latex\CTEX\MiKTeX\tex\latex\type1cm\type1cm.sty
 Package: type1cm 2002/09/05 v0.04 BlueSky/Y&Y Type1 CM font definitions (DPC, p
 atched RF)
@@ -574,14 +594,15 @@ Package: hycolor 2011/01/30 v1.7 Color options of hyperref/bookmark (HO)
 (D:\Latex\CTEX\MiKTeX\tex\latex\oberdiek\kvoptions.sty
 Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
 )
-\@linkdim=\dimen189
-\Hy@linkcounter=\count196
-\Hy@pagecounter=\count197
+\@linkdim=\dimen191
+\Hy@linkcounter=\count200
+\Hy@pagecounter=\count201
 
 (D:\Latex\CTEX\MiKTeX\tex\latex\hyperref\pd1enc.def
 File: pd1enc.def 2012/02/06 v6.82o Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count198
+Normal \count register pool exhausted, switching to extended pool.
+\Hy@SavedSpaceFactor=\count277
 
 (D:\Latex\CTEX\MiKTeX\tex\latex\00miktex\hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -595,11 +616,11 @@ Package hyperref Info: Plain pages OFF on input line 4061.
 Package hyperref Info: Backreferencing OFF on input line 4066.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4284.
-\c@Hy@tempcnt=\count199
+\c@Hy@tempcnt=\count278
 LaTeX Info: Redefining \url on input line 4637.
-\Fld@menulength=\count200
-\Field@Width=\dimen190
-\Fld@charsize=\dimen191
+\Fld@menulength=\count279
+\Field@Width=\dimen192
+\Fld@charsize=\dimen193
 Package hyperref Info: Hyper figures OFF on input line 5757.
 Package hyperref Info: Link nesting OFF on input line 5762.
 Package hyperref Info: Hyper index ON on input line 5765.
@@ -609,128 +630,128 @@ Package hyperref Info: Link coloring with OCG OFF on input line 5782.
 Package hyperref Info: PDF/A mode OFF on input line 5787.
 LaTeX Info: Redefining \ref on input line 5827.
 LaTeX Info: Redefining \pageref on input line 5831.
-\Hy@abspage=\count201
-Normal \count register pool exhausted, switching to extended pool.
-\c@Item=\count277
-\c@Hfootnote=\count278
+\Hy@abspage=\count280
+\c@Item=\count281
+\c@Hfootnote=\count282
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (D:\Latex\CTEX\MiKTeX\tex\latex\hyperref\hpdftex.def
 File: hpdftex.def 2012/02/06 v6.82o Hyperref driver for pdfTeX
-\Fld@listcount=\count279
-\c@bookmark@seq@number=\count280
+\Fld@listcount=\count283
+\c@bookmark@seq@number=\count284
 
 (D:\Latex\CTEX\MiKTeX\tex\latex\oberdiek\rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip69
+\Hy@SectionHShift=\skip75
 )
 (E:\LATEX文件\graduation-paper\graduation_paper.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
+Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 (D:\Latex\CTEX\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count281
-\scratchdimen=\dimen192
+\scratchcounter=\count285
+\scratchdimen=\dimen194
 \scratchbox=\box44
-\nofMPsegments=\count282
-\nofMParguments=\count283
+\nofMPsegments=\count286
+\nofMParguments=\count287
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count284
-\MPscratchDim=\dimen193
-\MPnumerator=\count285
-\makeMPintoPDFobject=\count286
+\MPscratchCnt=\count288
+\MPscratchDim=\dimen195
+\MPnumerator=\count289
+\makeMPintoPDFobject=\count290
 \everyMPtoPDFconversion=\toks27
 )
-\c@lstlisting=\count287
+\c@lstlisting=\count291
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -767,18 +788,18 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box45
-Package hyperref Info: Link coloring ON on input line 28.
+Package hyperref Info: Link coloring ON on input line 29.
 (D:\Latex\CTEX\MiKTeX\tex\latex\hyperref\nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
 (D:\Latex\CTEX\MiKTeX\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count288
+\c@section@level=\count292
 )
-LaTeX Info: Redefining \ref on input line 28.
-LaTeX Info: Redefining \pageref on input line 28.
-LaTeX Info: Redefining \nameref on input line 28.
+LaTeX Info: Redefining \ref on input line 29.
+LaTeX Info: Redefining \pageref on input line 29.
+LaTeX Info: Redefining \nameref on input line 29.
 
 (E:\LATEX文件\graduation-paper\graduation_paper.out)
 (E:\LATEX文件\graduation-paper\graduation_paper.out)
@@ -793,81 +814,92 @@ File: extended.enc 2008/12/29 4.8.2
 (D:\Latex\CTEX\MiKTeX\tex\latex\cjk\extended.chr
 File: extended.chr 2008/12/29 4.8.2
 )
-LaTeX Font Info:    Try loading font information for C19+rm on input line 29.
+LaTeX Font Info:    Try loading font information for C19+rm on input line 30.
 
 (D:\Latex\CTEX\MiKTeX\tex\latex\ctex\fd\c19rm.fd
 File: c19rm.fd 2007/05/06 v0.8a ctex font definition file
 )
 Package CJKpunct Info: punctuation spaces for family 'zhsong' do not exist. Use
- family 'def' instead. on input line 31.
+ family 'def' instead. on input line 32.
 
-<img-principleofphotograph.png, id=77, 869.2475pt x 668.4975pt>
+<img-principleofphotograph.png, id=73, 869.2475pt x 668.4975pt>
 File: img-principleofphotograph.png Graphic file (type png)
 
 <use img-principleofphotograph.png>
-Package pdftex.def Info: img-principleofphotograph.png used on input line 34.
+Package pdftex.def Info: img-principleofphotograph.png used on input line 35.
 (pdftex.def)             Requested size: 347.69284pt x 267.39426pt.
  [1
 
- <E:/LATEX文件/graduation-paper/img-principleofphotograph.png>] [2]
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
+ <E:/LATEX文件/graduation-paper/img-principleofphotograph.png>]
+<example-figure.png, id=143, 439.6425pt x 310.91156pt>
+File: example-figure.png Graphic file (type png)
+
+<use example-figure.png>
+Package pdftex.def Info: example-figure.png used on input line 89.
+(pdftex.def)             Requested size: 219.82071pt x 155.45538pt.
+
+<example-figure-svd.png, id=144, 526.96875pt x 395.22656pt>
+File: example-figure-svd.png Graphic file (type png)
+
+<use example-figure-svd.png>
+Package pdftex.def Info: example-figure-svd.png used on input line 92.
+(pdftex.def)             Requested size: 210.78375pt x 158.08781pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2] [3 <E:/LATEX文件/graduation-paper/example-figure.png (PNG copy)> <E:/LATE
+X文件/graduation-paper/example-figure-svd.png (PNG copy)>]
 Package CJKpunct Info: punctuation spaces for family 'zhhei' do not exist. Use 
-family 'def' instead. on input line 92.
+family 'def' instead. on input line 166.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 96.
+(hyperref)                removing `math shift' on input line 170.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gamma' on input line 96.
+(hyperref)                removing `math shift' on input line 170.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 96.
+(hyperref)                removing `math shift' on input line 170.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 96.
+(hyperref)                removing `math shift' on input line 170.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gamma' on input line 96.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 96.
-
-[3] [4]
-Underfull \hbox (badness 3000) in paragraph at lines 118--119
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 174.
+[4] [5]
+Underfull \hbox (badness 3000) in paragraph at lines 192--193
 []\OT1/cmr/m/n/12 S.A.Lewis et al.,  |\C19/rm/m/n/12/25 /|\OT1/cmr/m/n/12 Using
  hy-per-spec-tral im-agery to es-ti-mate for-est floor con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 \OT1/cmr/m/n/12 sump-tion from wild-fire in bo-re-al forest-s of Alas-ka, US-A,
 |\C19/rm/m/n/12/25 0| \OT1/cmr/m/n/12 Int.J.Wildland
  []
 
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 126.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 126.
+[6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 206.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 206.
  (E:\LATEX文件\graduation-paper\graduation_paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 126.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 126.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 206.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 206.
 Package rerunfilecheck Info: File `graduation_paper.out' has not changed.
-(rerunfilecheck)             Checksum: 35565C809B9DAA9CE5DC71DA5EE2E3D6;1133.
+(rerunfilecheck)             Checksum: EA6E781CCE8C311349944F247E8C4A51;1062.
  ) 
 Here is how much of TeX's memory you used:
- 17205 strings out of 495354
- 269972 string characters out of 3183523
- 361540 words of memory out of 3000000
- 20027 multiletter control sequences out of 15000+200000
- 38813 words of font info for 134 fonts, out of 3000000 for 9000
+ 17336 strings out of 495354
+ 271765 string characters out of 3183523
+ 358678 words of memory out of 3000000
+ 20138 multiletter control sequences out of 15000+200000
+ 35647 words of font info for 123 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,9n,43p,1193b,1001s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,13n,43p,876b,1023s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
 imhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS
 /Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:
@@ -893,14 +925,14 @@ WINDOWS/Fonts/simhei.ttf><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/c
 mbx12.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/L
 atex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Latex/CTEX/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr7.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Lat
-ex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Latex/CTEX/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmtt12.pfb>
-Output written on graduation_paper.pdf (5 pages, 1070624 bytes).
+blic/amsfonts/cm/cmr10.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmr12.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/La
+tex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Latex/CTEX/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmtt12.pfb>
+Output written on graduation_paper.pdf (6 pages, 1201425 bytes).
 PDF statistics:
- 410 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
- 150 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 447 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 152 words of extra memory for PDF output out of 10000 (max. 10000000)
 
