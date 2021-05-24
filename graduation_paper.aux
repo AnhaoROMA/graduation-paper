@@ -26,6 +26,7 @@
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{img-pricipleofphotograph}{{1}{1}{高光谱图像的成像原理\relax \relax }{figure.caption.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}高光谱图像的特征}{1}{subsection.1.2}}
+\newlabel{introduction-feature}{{1.2}{1}{高光谱图像的特征\relax }{subsection.1.2}{}}
 \citation{further-use-1}
 \citation{further-use-2}
 \citation{further-use-3}
@@ -41,7 +42,6 @@
 \newlabel{research-route}{{2}{2}{高光谱图像降噪的研究路线\relax }{section.2}{}}
 \newlabel{ori-equation}{{1}{2}{高光谱图像降噪的研究路线\relax }{equation.2.1}{}}
 \newlabel{Rank-equation}{{2}{2}{高光谱图像降噪的研究路线\relax }{equation.2.2}{}}
-\newlabel{NN-equation}{{3}{2}{高光谱图像降噪的研究路线\relax }{equation.2.3}{}}
 \citation{Review}
 \citation{WNN-1}
 \citation{TNN-1}
@@ -53,25 +53,52 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {自然图像}}}{3}{figure.caption.3}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {(a)图的奇异值分布图}}}{3}{figure.caption.3}}
 \newlabel{svd-example}{{2}{3}{自然图像的低秩特性\relax \relax }{figure.caption.3}{}}
+\newlabel{NN-equation}{{3}{3}{高光谱图像降噪的研究路线\relax }{equation.2.3}{}}
 \newlabel{TNN-equation}{{4}{3}{高光谱图像降噪的研究路线\relax }{equation.2.4}{}}
-\newlabel{WNN-equation}{{5}{3}{高光谱图像降噪的研究路线\relax }{equation.2.5}{}}
 \citation{Review}
+\newlabel{WNN-equation}{{5}{4}{高光谱图像降噪的研究路线\relax }{equation.2.5}{}}
 \newlabel{log-equation}{{6}{4}{高光谱图像降噪的研究路线\relax }{equation.2.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces 秩函数的不同放缩（部分）\relax }}{4}{table.caption.4}}
-\newlabel{relaxation}{{2}{4}{秩函数的不同放缩（部分）\relax \relax }{table.caption.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}相关工作}{4}{section.3}}
-\newlabel{related-work}{{3}{4}{相关工作\relax }{section.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 不同放缩的几何意义\relax }}{4}{figure.caption.4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {对秩函数的近似}}}{4}{figure.caption.4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {被处理的奇异值}}}{4}{figure.caption.4}}
+\newlabel{surrogate-to-rank}{{3}{4}{不同放缩的几何意义\relax \relax }{figure.caption.4}{}}
+\citation{log-norm}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces 秩函数的不同放缩（部分）\relax }}{5}{table.caption.5}}
+\newlabel{relaxation}{{2}{5}{秩函数的不同放缩（部分）\relax \relax }{table.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}相关工作}{5}{section.3}}
+\newlabel{related-work}{{3}{5}{相关工作\relax }{section.3}{}}
+\newlabel{F-rank}{{7}{5}{相关工作\relax }{equation.3.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}核范数（Nuclear Norm）}{5}{subsection.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}截断式核范数（Truncated Nuclear Norm）}{5}{subsection.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}权重式核范数（Weighted Nuclear Norm）}{5}{subsection.3.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}$log$-范数（$log$-Norm）}{5}{subsection.3.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}实验部分}{5}{section.4}}
-\newlabel{experiment}{{4}{5}{实验部分\relax }{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}实验数据}{5}{subsection.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}实验设计}{5}{subsection.4.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}实验结果分析}{5}{section.5}}
-\newlabel{analysis}{{5}{5}{实验结果分析\relax }{section.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}总结与展望}{5}{section.6}}
+\citation{merge-1}
+\citation{merge-2}
+\newlabel{F-nn}{{8}{6}{核范数（Nuclear Norm）\relax }{equation.3.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}截断式核范数（Truncated Nuclear Norm）}{6}{subsection.3.2}}
+\newlabel{F-tnn}{{9}{6}{截断式核范数（Truncated Nuclear Norm）\relax }{equation.3.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}权重式核范数（Weighted Nuclear Norm）}{6}{subsection.3.3}}
+\newlabel{F-wnn}{{10}{6}{权重式核范数（Weighted Nuclear Norm）\relax }{equation.3.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}$log$-核范数（$log$-Norm）}{6}{subsection.3.4}}
+\newlabel{F-lnn}{{11}{6}{$log$-核范数（$log$-Norm）\relax }{equation.3.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}实验部分}{6}{section.4}}
+\newlabel{experiment}{{4}{6}{实验部分\relax }{section.4}{}}
+\citation{Mixture}
+\citation{Mixture}
+\citation{meng}
+\citation{Tensor-1}
+\citation{Tensor-2}
+\citation{Tensor-3}
+\citation{Tensor-1}
+\citation{Tensor-2}
+\citation{Tensor-3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}实验数据}{7}{subsection.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}实验设计}{7}{subsection.4.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}实验结果分析}{7}{section.5}}
+\newlabel{analysis}{{5}{7}{实验结果分析\relax }{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}未来工作展望}{7}{section.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}不同方法的相互融合}{7}{subsection.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}混合噪声的降噪问题}{7}{subsection.6.2}}
+\newlabel{related-work}{{6.2}{7}{混合噪声的降噪问题\relax }{subsection.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}使用张量的降噪方法}{7}{subsection.6.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}总结}{7}{section.7}}
 \bibcite{whatishsi}{1}
 \bibcite{howtogenanhsi}{2}
 \bibcite{usageofhsi-1}{3}
@@ -86,5 +113,13 @@
 \bibcite{CNN-1}{12}
 \bibcite{CNN-2}{13}
 \bibcite{log-norm}{14}
-\@writefile{toc}{\contentsline {section}{Reference}{6}{section.6}}
+\bibcite{merge-1}{15}
+\bibcite{merge-2}{16}
+\@writefile{toc}{\contentsline {section}{Reference}{8}{section.7}}
+\bibcite{Mixture}{17}
+\bibcite{meng}{18}
+\bibcite{Tensor-1}{19}
+\bibcite{Tensor-2}{20}
+\bibcite{Tensor-3}{21}
+\bibcite{gamma}{22}
 \ttl@finishall

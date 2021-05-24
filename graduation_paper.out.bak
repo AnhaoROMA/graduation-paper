@@ -8,10 +8,14 @@
 \BOOKMARK [2][-]{subsection.3.1}{核范数（Nuclear Norm）}{section.3}% 8
 \BOOKMARK [2][-]{subsection.3.2}{截断式核范数（Truncated Nuclear Norm）}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.3}{权重式核范数（Weighted Nuclear Norm）}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.4}{log-范数（log-Norm）}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.4}{log-核范数（log-Norm）}{section.3}% 11
 \BOOKMARK [1][-]{section.4}{实验部分}{}% 12
 \BOOKMARK [2][-]{subsection.4.1}{实验数据}{section.4}% 13
 \BOOKMARK [2][-]{subsection.4.2}{实验设计}{section.4}% 14
 \BOOKMARK [1][-]{section.5}{实验结果分析}{}% 15
-\BOOKMARK [1][-]{section.6}{总结与展望}{}% 16
-\BOOKMARK [1][-]{section.6}{Reference}{}% 17
+\BOOKMARK [1][-]{section.6}{未来工作展望}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{不同方法的相互融合}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.2}{混合噪声的降噪问题}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.3}{使用张量的降噪方法}{section.6}% 19
+\BOOKMARK [1][-]{section.7}{总结}{}% 20
+\BOOKMARK [1][-]{section.7}{Reference}{}% 21

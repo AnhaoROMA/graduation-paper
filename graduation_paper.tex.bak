@@ -38,7 +38,7 @@
 （图片来源：https://d3i71xaburhd42.cloudfront.net/26ffa240d824f1503f3afafdc14e4a1711449138/2-Figure1-1.png）}}
 \label{img-pricipleofphotograph}
 \end{figure}
-\subsection{高光谱图像的特征}
+\subsection{高光谱图像的特征}\label{introduction-feature}
 \par 高光谱图像将地物的空间分布信息与光谱特征信息结合在一起，即：在二维空间分布信息的基础上添加了一维光谱特征信息。因此，高光谱图像可以看成是一个立方体形式的数据：每个波段都是一幅二维的平面图像，而每个像素点都是一条光谱特征曲线。由于不同物质在相同波段内的辐射强度不同，不同物质在高光谱图像中会表现出不同的光谱特征曲线\cite{howtogenanhsi}，如图\ref{img-pricipleofphotograph}所示。通过对地物的连续成像，高光谱图像具有多而窄的波段，因此包含了丰富的光谱特征信息。
 \subsection{高光谱图像的应用领域}
 \par 通过纳米级的光谱分辨率，高光谱遥感技术利用成像光谱仪在几十乃至几百个窄波段同时对地物成像，因而高光谱图像含有非常丰富的空间光谱信息。这使得高光谱图像在环境、军事等诸多领域都有着十分广泛的应用\cite{usageofhsi-1}\cite{usageofhsi-2}\cite{usageofhsi-3}，具体可见表\ref{usageofhsi}。
@@ -73,27 +73,28 @@ Y = X + N
 \par$X$代表未受到污染的、干净的图像；
 \par$N$代表噪声；
 \par$Y$代表成像设备获取到的图像，即受到污染的图像。
-\par 如图\ref{svd-example}所示，由于自然图像通常被认为是低秩结构\cite{TNN-1}，基于低秩（Low Rank, LR）假设的图像降噪方法可以被形式化为：
+\par 那么，图像降噪的工作就是将$Y$复原为$X$。
+\par 如图\ref{svd-example}所示，由于自然图像通常被认为是低秩结构\footnote{低秩结构意味着蕴含有组合性信息。}\cite{TNN-1}，基于低秩（Low Rank, LR）假设的图像降噪方法可以被形式化为：
 \begin{equation}
 \centering
 arg\min\limits_{X} \quad rank(X)
 \label{Rank-equation}
 \end{equation}
-\par 
+\par
 \begin{figure}[h]
     \centering
-    
+
     \subfigure[自然图像]{
-        \includegraphics[scale=0.5]{example-figure.png}
-    }  
+        \includegraphics[scale=0.6]{example-figure.png}
+    }
     \subfigure[(a)图的奇异值分布图]{
         \includegraphics[scale=0.4]{example-figure-svd.png}
     }
-    
+
     \caption{自然图像的低秩特性}
     \label{svd-example}
 \end{figure}
-\par 式\ref{Rank-equation}是基于秩最小化（Rank Minimization, RM）的降噪方法，然而，这是一个NP-hard问题\cite{TNN-1}。况且，秩函数（$rank()$）是不连续的\cite{TNN-1}。因此，通常使用秩函数的凸近似，即核范数，作为秩函数的替代\cite{TNN-1}。因此，式\ref{Rank-equation}可以被改写为：
+\par 式\ref{Rank-equation}是基于秩最小化（Rank Minimization, RM）的降噪方法，然而，这是一个NP-hard问题\cite{TNN-1}。况且，秩函数（$rank()$）是不连续的\cite{TNN-1}。所以，通常使用秩函数的凸近似，即核范数，作为秩函数的替代\cite{TNN-1}。因此，式\ref{Rank-equation}可以被改写为：
 \begin{equation}
 \centering
 arg\min\limits_{X} \quad \left\|X\right\|_*
@@ -101,15 +102,94 @@ arg\min\limits_{X} \quad \left\|X\right\|_*
 \end{equation}
 式中，
 \par $\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$
-\par 尽管式\ref{NN-equation}所示的核范数最小化（Nuclear Norm Minimization, NNM）方法已经在很多领域被成功地应用了，它还是存在缺点的。主要在于它平等地对待了所有的奇异值，即所有的奇异值都被缩小了\cite{Review}。但是，作为先验知识，所有的奇异值都具有实际的物理含义。
+\par 尽管式\ref{NN-equation}所示的核范数最小化（Nuclear Norm Minimization, NNM）方法已经在很多领域被成功地应用了，它还是存在缺点的。主要在于它平等地对待了所有的奇异值，即所有的奇异值都被同等程度地缩小了\cite{Review}。但是，作为先验知识，所有的奇异值都具有实际的物理含义。以降噪问题为例，有效信息通常体现在较大的奇异值中，而噪声往往隐藏在较小的奇异值中。因此，不同大小的奇异值不应该被同等地对待\cite{WNN-1}。不同于式\ref{NN-equation}的凸放缩，近些年，有研究者提出了一些非凸的放缩。
+\par 考虑到如前文所述的核范数的缺点，Zhang、Hu等研究者认为，可以考虑仅仅缩小较小的奇异值\cite{TNN-1}。因此，他们提出了截断式核范数（Truncated Nuclear Norm, TNN）。截断式核范数仅仅处理较小的$n-r$个奇异值。所以，式\ref{Rank-equation}被改写为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|X\right\|_{tr,*}
+\label{TNN-equation}
+\end{equation}
+式中，
+\par $\left\|X\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i(X)$
+\par Gu等学者认为，截断式核范数因为只能做二值化选择而显得不够灵活\cite{WNN-1}。为了增加灵活性，Gu等人提出了权重式核范数（Weighted Nuclear Norm, WNN）。权重式核范数为每一个奇异值赋予了一个权重，即：
+\begin{displaymath}
+\centering
+\left\|X\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i(X)
+\end{displaymath}
+\par 因此，式\ref{Rank-equation}可被改写为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|X\right\|_{w,*}
+\label{WNN-equation}
+\end{equation}
+\par 在做了大量的实验后，研究人员发现这些非凸的方法比核范数表现更好。但是，Nie等学者认为，不论是截断式核范数，还是权重式核范数，又或者是阀值式核范数（Capped Nuclear Norm, CNN）\cite{CNN-1}\cite{CNN-2}，都有一些不足\cite{log-norm}。 一者，它们都含有需要被事先确定的额外参数，例如截断式核范数中的$r$、 权重式核范数中的$w_i$、阀值式核范数中的$\theta$。再者，由于是非凸的放缩，求解对应的模型需要使用迭代的方法，但这些迭代的方法收敛得很慢。针对这两点不足，Nie等人提出了$log$-核范数。当秩函数被放缩为$log$-核范数后，式\ref{Rank-equation}就被改写为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|X\right\|_{log,*}
+\label{log-equation}
+\end{equation}
+式中，
+\par $\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$
+\par 综上所述，无论是（普通）核范数，还是截断式核范数、权重式核范数，又或者是$log$-核范数，它们都是对秩函数的替代（surrogate），或称放缩（relaxation）。它们的几何意义如图\ref{surrogate-to-rank}所示。
+\begin{figure}[h]
+    \centering
+
+    \subfigure[对秩函数的近似]{
+        \includegraphics[scale=0.4]{surrogate-to-rank-1.png}
+    }
+    \subfigure[被处理的奇异值]{
+        \includegraphics[scale=0.4]{surrogate-to-rank-2.png}
+    }
+
+    \caption{不同放缩的几何意义}
+    \label{surrogate-to-rank}
+\end{figure}
+\par 此外，还有很多种放缩方式，这里不再一一赘述，可参考表\ref{relaxation}\cite{Review}。
+\begin{table}[H]
+\centering
+\caption{秩函数的不同放缩（部分）}
+\label{relaxation}
+
+\begin{tabular}{c c}
+\toprule
+名称&表达式\\
+\toprule
+核范数&$\sum\limits_{i=1}^{n}\sigma_i$\\
+\hline
+截断式核范数&$\sum\limits_{i=r+1}^{n}\sigma_i$\\
+\hline
+权重式核范数&$\sum\limits_{i=1}^{n}w_i\sigma_i$\\
+\hline
+阀值式核范数&$\sum\limits_{i=r+1}^{n}min(\sigma_i, \theta)$\\
+\hline
+$log$-核范数&$\sum\limits_{i=1}^{n}log(\sigma_i+1)$\\
+\hline
+$\gamma$-核范数&$\sum\limits_{i=1}^{n}\cfrac{(1+\gamma)\sigma_i}{\gamma+\sigma_i}$\\
+\hline
+格曼&$\sum\limits_{i=1}^{n}\cfrac{\sigma_i}{\sigma_i + \gamma}$\\
+\hline
+拉普拉斯&$\sum\limits_{i=1}^{n}\left(1-exp(-\cfrac{\sigma_i}{\gamma})\right)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\par 由表\ref{relaxation}，可发现这些放缩都可以被抽象成如下的形式：
+\begin{displaymath}
+\centering
+rank(X) \approx f(\sigma_i(X))
+\end{displaymath}
 
 \section{相关工作}\label{related-work}
 \par 本章将具体分析第\ref{research-route}章中提到的几种核范数的替代函数。
+\par 
 \subsection{核范数（Nuclear Norm）}
+
+% \subsection{Sp-范数（Schatten p-norm）}
+
 \subsection{截断式核范数（Truncated Nuclear Norm）}
+
 \subsection{权重式核范数（Weighted Nuclear Norm）}
-\subsection{Sp-范数（Schatten p-norm）}
-\subsection{$log$-范数（$log$-Norm）}
+
+\subsection{$log$-核范数（$log$-Norm）}
 
 \section{实验部分}\label{experiment}
 \begin{itemize}
@@ -122,7 +202,13 @@ arg\min\limits_{X} \quad \left\|X\right\|_*
 
 \section{实验结果分析}\label{analysis}
 
-\section{总结与展望}
+\section{未来工作展望}
+\subsection{混合噪声的降噪问题}
+\par 在第\ref{related-work}章以及后面的实验部分，本文假设了噪声仅限于均值为零的高斯白噪声，这也是目前很多学者所作出的假设。然而，实际的高光谱图像往往被多种噪声污染，包括但不限于高斯噪声（Gaussian noise）、冲击噪声（impulse noise）、死线噪声（dead lines）、死点噪声（dead pixels）和条纹噪声（stripes）\cite{Mixture}。Zhang、He等学者参考“用$Frobenius$-范数评估高斯噪声的均值”和“用核范数评估矩阵的低秩性质”，提出用“$l_1$-范数评估稀疏噪声的稀疏性”，并由此构造了$GoDec$模型\cite{Mixture}。但就总体来说，对混合噪声的降噪研究并不算多。
+\subsection{使用张量的降噪方法}
+% 空间分布信息与光谱特征信息
+\par 本文所述的几种降噪方法，均是使用矩阵（Matrix）的，也就是在二维平面上降噪。这样做可以考虑到图像的空间分布特征。但是，正如第\ref{introduction-feature}节所述，高光谱图像可以看作是多层二维图像的叠加，每一层二维图像都是相同的场景在特定波段内的辐射。因此，除了每层层内的空间分布信息，各层层间还存在光谱特征信息。针对矩阵在考量光谱特征信息这方面的不足，近年来，Lu等研究者提出了使用张量（Tensor）的降噪方法\cite{Tensor-1}\cite{Tensor-2}\cite{Tensor-3}。这方面的研究路线与矩阵的类似，都是先考虑核范数的凸放缩\cite{Tensor-1}，再研究非凸放缩\cite{Tensor-2}\cite{Tensor-3}。
+\section{总结}
 
 \newpage
 \begin{thebibliography}{99}
@@ -139,6 +225,15 @@ arg\min\limits_{X} \quad \left\|X\right\|_*
 \bibitem{TNN-1}D.Zhang, Y.Hu, J.Ye, X.Li, and X.He. Matrix completion by truncated nuclear norm regularization. In CVPR, 2012.
 \bibitem{Review}Zhanxuan Hu, Feiping Nie, Rong Wang, Xuelong Li, Low Rank Regularization: A review, Neural Networks, Volume 136, 2021.
 \bibitem{WNN-1}Shuhang Gu, Lei Zhang, Wangmeng Zuo, Xiangchu Feng, Weighted Nuclear Norm Minimization with Application to Image Denoising. In CVPR, 2014.
+\bibitem{CNN-1}Q. Sun, S. Xiang, J. Ye, Robust principal component analysis via capped norms, in: Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, ACM, 2013, pp. 311-319.
+\bibitem{CNN-2}F. Nie, Z. Huo, H. Huang, Joint capped norms minimization for robust matrix recovery, in: Proceedings of International Joint Conference on Artificial Intelligence, 2017, pp. 2557-2563.
+\bibitem{log-norm}Matrix Completion Based on Non-Convex Low-Rank Approximation.
+
+\bibitem{Mixture}Hyperspectral Image Restoration Using Low-Rank Matrix Recovery.
+
+\bibitem{Tensor-1}C. Lu, J. Feng, Y. Chen, W. Liu, Z. Lin, and S. Yan, Tensor robust principal component analysis: Exact recovery of corrupted low-rank tensors via convex optimization, in IEEE Conference on CVPR, 2016, pp. 5249-5257.
+\bibitem{Tensor-2}Low-Rank Tensor Completion by Truncated Nuclear Norm Regularization.
+\bibitem{Tensor-3}Hyperspectral Image Recovery Using Non-Convex Low-Rank Tensor Approximation.
 \end{thebibliography}
 
 \end{document}
