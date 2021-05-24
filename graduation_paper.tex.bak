@@ -1,0 +1,370 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{ctex}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{abstract}
+\usepackage{subfigure}
+\usepackage{type1cm}
+\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=blue,CJKbookmarks=True]{hyperref}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\renewcommand{\contentsname}{\centering{\heiti\zihao{3}{目 \qquad 录}}}
+\renewcommand\refname{\centerline{参考文献}}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\renewcommand\abstractname{{\large{摘要}}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\begin{document}
+\section{研究背景及意义}
+\subsection{高光谱图像及其成像原理}
+\par 高光谱图像（Hyper-Spectral Image, HSI），又称“高光谱分辨率遥感图像”（Hyper-Spectral Resolution Remote Sensing Image）。遥感（Remote Sensing），是在不接触目标的情况下，利用特定装置来获得地物的光谱特征信息、并对其进行提取与分析，以便能够投入到实际应用中去的一种技术\cite{whatishsi}。高光谱遥感（Hyperspectral  Remote Sensing）技术利用成像光谱仪，记录地物在太阳照射下所产生的辐射信号，在可见光以及多数红外波段等电磁波谱范围内，以非常狭窄的间隔进行成像（如图\ref{img-pricipleofphotograph}所示），进而形成不同地物的光谱特征曲线。更具体地，高光谱遥感概念的定义基础是成像光谱学，成像光谱仪作为一种遥感仪器，则可以将成像传感器的空间表示与光谱仪的分析能力结合起来，为每个像素所含有的地物提供其在上百个窄波段上的反射信息，进而得到一条完整的光谱特征曲线\cite{howtogenanhsi}。
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{img-principleofphotograph.png}
+\caption{高光谱图像的成像原理}
+{\scriptsize{
+（图片来源：https://d3i71xaburhd42.cloudfront.net/26ffa240d824f1503f3afafdc14e4a1711449138/2-Figure1-1.png）}}
+\label{img-pricipleofphotograph}
+\end{figure}
+\subsection{高光谱图像的特征}\label{introduction-feature}
+\par 高光谱图像将地物的空间分布信息与光谱特征信息结合在一起，即：在二维空间分布信息的基础上添加了一维光谱特征信息。因此，高光谱图像可以看成是一个立方体形式的数据：每个波段都是一幅二维的平面图像，而每个像素点都是一条光谱特征曲线。由于不同物质在相同波段内的辐射强度不同，不同物质在高光谱图像中会表现出不同的光谱特征曲线\cite{howtogenanhsi}，如图\ref{img-pricipleofphotograph}所示。通过对地物的连续成像，高光谱图像具有多而窄的波段，因此包含了丰富的光谱特征信息。
+\subsection{高光谱图像的应用领域}
+\par 通过纳米级的光谱分辨率，高光谱遥感技术利用成像光谱仪在几十乃至几百个窄波段同时对地物成像，因而高光谱图像含有非常丰富的空间光谱信息。这使得高光谱图像在环境、军事等诸多领域都有着十分广泛的应用\cite{usageofhsi-1}\cite{usageofhsi-2}\cite{usageofhsi-3}，具体可见表\ref{usageofhsi}。
+\begin{table}[H]
+	\centering
+	\caption{高光谱图像的应用领域}
+	\label{usageofhsi}
+	\begin{tabular}{ c c }
+		\toprule
+		应用领域&具体方向\\
+		\toprule
+		农业&环境监测、虫灾预报、作物估产等\\
+		\hline
+		环境&污染的监测、受灾程度的评估、自然灾害的预防等\\
+        \hline
+		地学&矿床的勘探、地形与地貌的测定、地图绘制等\\
+        \hline
+		军事&伪装物的识别、目标检测与跟踪、侦察与探测等\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+\subsection{对高光谱图像进行降噪的意义}
+\par 然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响，比如高光谱图像的分类\cite{further-use-1}、 解混\cite{further-use-2}，以及目标检测\cite{further-use-3} 等。因此，对高光谱图像进行降噪是预处理阶段必不可少的。
+\section{高光谱图像降噪的研究路线}\label{research-route}
+\par 假设一幅一维图像$Y$受到噪声的污染，即：
+\begin{equation}
+\centering
+Y = X + N
+\label{ori-equation}
+\end{equation}
+式中，
+\par$X$代表未受到污染的、干净的图像；
+\par$N$代表噪声；
+\par$Y$代表成像设备获取到的图像，即受到污染的图像。
+\par 那么，图像降噪的工作就是将$Y$复原为$X$。
+\par 如图\ref{svd-example}所示，由于自然图像通常被认为是低秩结构\footnote{低秩结构意味着蕴含有组合性信息。}\cite{TNN-1}，基于低秩（Low Rank, LR）假设的图像降噪方法可以被形式化为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad rank(X)
+\label{Rank-equation}
+\end{equation}
+\par 但是，在对高光谱图像进行降噪时，既需要去除图像里的噪声，同时也需要尽可能地保留原来的信息\cite{log-norm}，故拥有最小秩的矩阵并非实际应用中需要的\cite{log-norm}。因此，实际上，需要求解的最优化问题并非是式\ref{Rank-equation}，而是：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot rank(X)
+\label{F-rank}
+\end{equation}
+式中，
+\par$X$代表未受到污染的、干净的图像；
+\par$N$代表噪声；
+\par$Y$代表成像设备获取到的图像，即受到污染的图像；
+\par$\left\|*\right\|_F$表示$Frobenius$范数；
+\par$\lambda$是正则化参数。
+\par
+\begin{figure}[h]
+    \centering
+
+    \subfigure[自然图像]{
+        \includegraphics[scale=0.6]{example-figure.png}
+    }
+    \subfigure[(a)图的奇异值分布图]{
+        \includegraphics[scale=0.4]{example-figure-svd.png}
+    }
+
+    \caption{自然图像的低秩特性}
+    \label{svd-example}
+\end{figure}
+\par 式\ref{Rank-equation}（或式\ref{F-rank}）是基于秩最小化（Rank Minimization, RM）的降噪方法，然而，这是一个NP-hard问题\cite{TNN-1}。况且，秩函数（$rank()$）是不连续的\cite{TNN-1}。所以，通常使用秩函数的凸近似，即核范数，作为秩函数的替代\cite{TNN-1}，即：
+\begin{equation}
+\centering
+rank(X) \approx \left\|X\right\|_*
+\label{NN-equation}
+\end{equation}
+式中，
+\par $\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$
+\par 尽管式\ref{NN-equation}所示的核范数最小化（Nuclear Norm Minimization, NNM）方法已经在很多领域被成功地应用了，它还是存在缺点的。主要在于它平等地对待了所有的奇异值，即所有的奇异值都被同等程度地缩小了\cite{Review}。但是，作为先验知识，所有的奇异值都具有实际的物理含义。以降噪问题为例，有效信息通常体现在较大的奇异值中，而噪声往往隐藏在较小的奇异值中。因此，不同大小的奇异值不应该被同等地对待\cite{WNN-1}。不同于式\ref{NN-equation}的凸放缩，近些年，有研究者提出了一些非凸的放缩。
+\par 考虑到如前文所述的核范数的缺点，Zhang、Hu等研究者认为，可以考虑仅仅缩小较小的奇异值\cite{TNN-1}。因此，他们提出了截断式核范数（Truncated Nuclear Norm, TNN）。截断式核范数仅仅处理较小的$n-r$个奇异值，也就是：
+\begin{equation}
+\centering
+rank(X) \approx \left\|X\right\|_{tr,*}
+\label{TNN-equation}
+\end{equation}
+式中，
+\par $\left\|X\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i(X)$
+\par Gu等学者认为，截断式核范数因为只能做二值化选择而显得不够灵活\cite{WNN-1}。为了增加灵活性，Gu等人提出了权重式核范数（Weighted Nuclear Norm, WNN）。权重式核范数为每一个奇异值赋予了一个权重，即：
+\begin{displaymath}
+\centering
+\left\|X\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i(X)
+\end{displaymath}
+\par 因此，秩函数被放缩为：
+\begin{equation}
+\centering
+rank(X) \approx \left\|X\right\|_{w,*}
+\label{WNN-equation}
+\end{equation}
+\par 在做了大量的实验后，研究人员发现这些非凸的方法比核范数表现更好。但是，Nie等学者认为，不论是截断式核范数，还是权重式核范数，又或者是阀值式核范数（Capped Nuclear Norm, CNN）\cite{CNN-1}\cite{CNN-2}，都有一些不足\cite{log-norm}。 一者，它们都含有需要被事先确定的额外参数，例如截断式核范数中的$r$、 权重式核范数中的$w_i$、阀值式核范数中的$\theta$。再者，由于是非凸的放缩，求解对应的模型需要使用迭代的方法，但这些迭代的方法收敛得很慢。针对这两点不足，Nie等人提出了$log$-核范数（Log Nuclear Norm, LNN）。当秩函数被放缩为$log$- 核范数后：
+\begin{equation}
+\centering
+rank(X) \approx \left\|X\right\|_{log,*}
+\label{log-equation}
+\end{equation}
+式中，
+\par $\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$
+\par 综上所述，无论是（普通）核范数，还是截断式核范数、权重式核范数，又或者是$log$-核范数，它们都是对秩函数的替代（surrogate），或称放缩（relaxation）。它们的几何意义如图\ref{surrogate-to-rank}所示。
+\begin{figure}[h]
+    \centering
+
+    \subfigure[对秩函数的近似]{
+        \includegraphics[scale=0.4]{surrogate-to-rank-1.png}
+    }
+    \subfigure[被处理的奇异值]{
+        \includegraphics[scale=0.4]{surrogate-to-rank-2.png}
+    }
+
+    \caption{不同放缩的几何意义}
+    \label{surrogate-to-rank}
+\end{figure}
+\par 此外，还有很多种放缩方式，这里不再一一赘述，可参考表\ref{relaxation}\cite{Review}。
+\begin{table}[H]
+\centering
+\caption{秩函数的不同放缩（部分）}
+\label{relaxation}
+
+\begin{tabular}{c c}
+\toprule
+名称&表达式\\
+\toprule
+核范数&$\sum\limits_{i=1}^{n}\sigma_i$\\
+\hline
+截断式核范数&$\sum\limits_{i=r+1}^{n}\sigma_i$\\
+\hline
+权重式核范数&$\sum\limits_{i=1}^{n}w_i\sigma_i$\\
+\hline
+阀值式核范数&$\sum\limits_{i=r+1}^{n}min(\sigma_i, \theta)$\\
+\hline
+$log$-核范数&$\sum\limits_{i=1}^{n}log(\sigma_i+1)$\\
+\hline
+$\gamma$-核范数&$\sum\limits_{i=1}^{n}\cfrac{(1+\gamma)\sigma_i}{\gamma+\sigma_i}$\\
+\hline
+格曼&$\sum\limits_{i=1}^{n}\cfrac{\sigma_i}{\sigma_i + \gamma}$\\
+\hline
+拉普拉斯&$\sum\limits_{i=1}^{n}\left(1-exp(-\cfrac{\sigma_i}{\gamma})\right)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\par 由表\ref{relaxation}，可发现这些放缩都可以被抽象成如下的形式：
+\begin{displaymath}
+\centering
+rank(X) \approx f(\sigma_i(X))
+\end{displaymath}
+
+\section{相关工作}\label{related-work}
+%\par 本章将具体分析第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用。
+%\par 在对高光谱图像进行降噪时，既需要去除图像里的噪声，同时也需要尽可能地保留原图信息\cite{log-norm}。因此，实际上，需要求解的最优化问题并非是式\ref{Rank-equation}，而是：
+%\begin{equation}
+%\centering
+%arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot rank(X)
+%\label{F-rank}
+%\end{equation}
+%式中，
+%\par$X$代表未受到污染的、干净的图像；
+%\par$N$代表噪声；
+%\par$Y$代表成像设备获取到的图像，即受到污染的图像；
+%\par$\left\|*\right\|_F$表示$Frobenius$范数；
+%\par$\lambda$是正则化参数。
+%\par 同理，式\ref{NN-equation}、\ref{TNN-equation}、\ref{WNN-equation}、\ref{log-equation} 也需要更新为形如式\ref{F-rank}的最优化方程。
+\par 在第\ref{research-route}章，本文给出了多种基于低秩假设的一维图像降噪方法。对高光谱图像的降噪可以采用“分治”的策略：高光谱图像的每一个通道都可以视为一张一维图像，对这些一维图像分别进行降噪处理，最后再将那些去噪后的一维图像按原本的顺序拼成一张高维图像，那么这张高维图像即是降噪后的高光谱图像。本章的剩余部分将具体分析第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些核范数的替代函数对一维图像进行降噪。
+\newline
+\subsection{使用核范数替代核范数的降噪方法}
+\par 由于式\ref{F-rank}是一个NP-hard问题，加之秩函数是不连续的。因此，通常使用秩函数的凸近似，即核范数，替代式\ref{F-rank}中秩函数的部分。所以，式\ref{F-rank}更新为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_*
+\label{F-nn}
+\end{equation}
+式中，
+\par$\left\|*\right\|_*$代表（标准）核范数，
+$
+\left\|*\right\|_* = \sum\limits_{i=1}^{n}\sigma_i
+$。
+\subsection{使用截断式核范数替代核范数的降噪方法}
+\par 若使用截断式核范数替代式\ref{F-rank}中秩函数的部分，则式\ref{F-rank}被更新为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_{tr,*}
+\label{F-tnn}
+\end{equation}
+式中，
+\par$\left\|*\right\|_{tr,*}$代表截断式核范数，
+$
+\left\|*\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i
+$，$r$是TNN中的参数。
+\subsection{使用权重式核范数替代核范数的降噪方法}
+\par 由于截断式核范数对所有奇异值做的是两极化选择，因此会显得不够灵活。而权重式核范数则是针对这一点所做的改进。如果使用权重式核范数替代式\ref{F-rank}中秩函数的部分，则式\ref{F-rank} 被更新为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_{w,*}
+\label{F-wnn}
+\end{equation}
+式中，
+\par$\left\|*\right\|_{w,*}$代表权重式核范数，
+$
+\left\|*\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i
+$，$W={w_1, w_2, w_3, \cdots, w_{n-1}, w_{n}}$是赋予不同奇异值的权重。并且可以证明，$W$是非降的。
+\subsection{使用$log$-核范数替代核范数的降噪方法}
+\par 考虑到无论是截断式核范数，还是权重式核范数，都包含额外的参数，而这些额外的参数需要在事先被确定。这就给很多实际应用带来了麻烦。$log$-核范数则不包含额外的参数。基于$log$-核范数，式\ref{F-rank}被更新为：
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_{log,*}
+\label{F-lnn}
+\end{equation}
+式中，
+\par$\left\|*\right\|_{log,*}$代表$log$-核范数，
+$
+\left\|*\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i+1)
+$。
+\newline
+\newline
+\par 综合式\ref{F-nn}、\ref{F-tnn}、\ref{F-wnn}、\ref{F-lnn}，实际应用中求解的最优化方程可抽象成：
+\begin{displaymath}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \sum\limits_{i=1}^{n}f(\sigma_i)
+\end{displaymath}
+\section{实验部分}\label{experiment}
+\begin{itemize}
+\item 本文的全部代码：{\url{https://github.com/AnhaoROMA/Graduation_Design.git}}
+\item 实验环境：MATLAB R2018b
+\end{itemize}
+\subsection{评价降噪效果的指标——峰值信噪比}
+\par 给定一个大小为$m \times n$的干净图像$I$和它的含噪图像$K$，它们的均方误差（Mean Square Error, MSE）为：
+\begin{displaymath}
+\centering
+MSE = \cfrac{1}{mn}\sum_{i=1}^{m}\sum_{j=1}^{n}\left[I_{i,j}-K_{i, j}\right]^2
+\end{displaymath}
+\par 那么它们的峰值信噪比（Peak Signal-to-Noise Ratio, PSNR）就是：
+\begin{displaymath}
+\centering
+PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
+\end{displaymath}
+式中，
+\par$MAX$指图像可能的最大像素值，对由$B$位二进制表示的图像来说，$MAX=2^B-1$。
+\par 不难发现，图像$M$和图像$N$之间的PSNR值愈大，$M$与$N$在直观上愈相近。因此，从含噪图像$K$恢复出的降噪图像$I'$，$I'$与干净图像$I$之间的PSNR值越大，说明降噪的效果越好。
+\par 事实上，除了峰值信噪比，结构相似性（Structural SIMilarity, SSIM）也可以量化降噪效果。因本文篇幅有限，故在此不作讨论。
+\subsection{实验设计}
+\par 与一般的RGB图像只含有R、G、B三个通道不同，高光谱图像的通道数量众多。以Urban数据集\footnote{数据来源：\url{http://www.tec.army.mil/hypercube}}为例，Urban数据集内的图像规格为：$304 \times 304 \times 210$，即图像包含210个通道。因此，高光谱图像通常只能目视其中某一通道，而无法直接目视全部通道。基于这点限制，本文的实验分为两个部分。
+\subsubsection{人造数据}\label{synthetic}
+\par 一是对普通的一维图像进行降噪。这部分可根据需要，任意地给无噪声图像添加特定种类的噪声，被人为添加特定噪声后的实验用图像在其他研究人员的论文中被称作人造数据（Synthetic Data）。本文将通过计算降噪后的图像与无噪声的原图像之间的PSNR值来量化不同降噪方法的效果。
+\par 本部分的实验如下：
+\begin{itemize}
+\item 实验1
+\par 含方差为10的零均值高斯噪声的图像
+\item 实验2
+\par 含方差为30的零均值高斯噪声的图像
+\item 实验3
+\par 含方差为50的零均值高斯噪声的图像
+\item 实验4
+\par 含方差为70的零均值高斯噪声的图像
+
+\item 实验5
+\par 含5\%椒盐噪声的图像
+\item 实验6
+\par 含10\%椒盐噪声的图像
+\item 实验7
+\par 含20\%椒盐噪声的图像
+\item 实验8
+\par 含40\%椒盐噪声的图像
+
+\item 实验9
+\par 含10\%椒盐噪声与方差为10的零均值高斯噪声的图像
+\item 实验10
+\par 含20\%椒盐噪声与方差为30的零均值高斯噪声的图像
+\end{itemize}
+\subsubsection{真实视觉数据}\label{real}
+\par 二是对真实的、自然获取到的高光谱图像进行降噪。这部分的实验用图像均是在生产实践中获取的，在其他研究人员的论文中被称为真实视觉数据（Real Visual Data），由于无法获取它们的无噪声的原图像，加之无法同时显示所有通道，故仅能展示其中某些通道经过不同降噪方法后得到的去噪图像，用于目视效果的对比。
+\par 本部分的实验如下：
+\begin{itemize}
+
+\end{itemize}
+\subsection{实验数据}
+
+\section{实验结果分析}\label{analysis}
+\subsection{实验结果}
+
+\subsection{结果分析}
+
+\section{未来工作展望}
+\subsection{秩函数的不同放缩方法之间的相互融合}
+\par 本文所述的、对秩函数的不同近似方法是相对独立的，因而可以相互结合。例如，Nie等学者将阀值式核范数（Capped Nuclear Norm）与Schatten $p$-范数结合起来，提出了Capped $Sp$-范数\cite{merge-1}。再比如，Xie、Gu等研究人员将Schatten $p$-范数与权重式核范数结合成Weighted Schatten $p$-范数\cite{merge-2}。
+\subsection{混合噪声的降噪问题}
+\par 实际的高光谱图像往往被多种噪声污染，包括但不限于高斯噪声（Gaussian noise）、冲击噪声（impulse noise）、死线噪声（dead lines）、死点噪声（dead pixels）和条纹噪声（stripes）\cite{Mixture}。在第\label{related-work}章，本文将所有的噪声统一成了$N$，这也是绝大多数文章所做的。但也有例外。例如，Zhang、He等学者用$l_1$-范数评估稀疏噪声的稀疏性，以此将稀疏噪声与高斯噪声独立开来，并由此构造了$GoDec$模型\cite{Mixture}，Meng学者也对含混合噪声的低秩结构降噪问题有所涉猎\cite{meng}。但就总体来说，对混合噪声的降噪研究并不算多。
+\subsection{使用张量的降噪方法}
+% 空间分布信息与光谱特征信息
+\par 本文所述的几种降噪方法，均是使用矩阵（Matrix）的，也就是在二维平面上降噪。这样做可以考虑到图像的空间分布特征。但是，正如第\ref{introduction-feature}节所述，高光谱图像可以看作是多层二维图像的叠加，每一层二维图像都是相同的场景在特定波段内的辐射。因此，除了每层层内的空间分布信息，各层层间还存在光谱特征信息。针对矩阵在考量光谱特征信息这方面的不足，近年来，Lu 等研究者提出了使用张量（Tensor）的降噪方法\cite{Tensor-1}\cite{Tensor-2}\cite{Tensor-3}。这方面的研究路线与矩阵的类似，都是先考虑核范数的凸放缩\cite{Tensor-1}，再研究非凸放缩\cite{Tensor-2}\cite{Tensor-3}。
+\section{拓展应用}
+
+\section{总结}
+
+\newpage
+\begin{thebibliography}{99}
+\addcontentsline{toc}{section}{Reference}
+%\bibitem{...}...
+\bibitem{whatishsi}童庆禧,张兵,郑兰芬. 高光谱遥感——原理、技术与应用[M].北京:高等教育出版社,2006.
+\bibitem{howtogenanhsi}张显. 基于子空间低秩表示的高光谱图像去噪方法研究[D].南京邮电大学,2020.
+\bibitem{usageofhsi-1}浦瑞良,宫鹏. 高光谱遥感及其应用[M].北京:高等教育出版社,2000.
+\bibitem{usageofhsi-2}S.A.Lewis et al., “Using hyperspectral imagery to estimate forest floor consumption from wildfire in boreal forests of Alaska, USA,” Int.J.Wildland Fire,vol.20,no.2,pp.255–271,Jan.2011.
+\bibitem{usageofhsi-3}K.C.Tiwari,M.K.Arora,and D.Singh, “An assessment of independent component analysis for detection of military targets from hyperspectral images,” Int.J.Appl.Earth Observ.Geoinf.,vol.13,no.5,pp. 730–740,Oct.2011.
+\bibitem{further-use-1}Bo C J, Lu H C, Wang D. Weighted Generalized Nearest Neighbor for Hyperspectral Image Classification[J].IEEE Access,2017,5:1496-1509.
+\bibitem{further-use-2}Yang W, Hou K, Liu B, et al. Two-stage Clustering Technique Based on the Neighboring Union Histogram for Hyperspectral Remote Sensing Images[J].IEEE Access,2017,5:5640-5647.
+\bibitem{further-use-3}Zhang L L, Zhao C H. A spectral-spatial  method based on low-rank and sparse matrix decomposition for hyperspectral anomaly detection[J].International Journal of Remote Sensing,2017,38(14):4047-4068.
+\bibitem{log-norm}Matrix Completion Based on Non-Convex Low-Rank Approximation.
+\bibitem{TNN-1}D.Zhang, Y.Hu, J.Ye, X.Li, and X.He. Matrix completion by truncated nuclear norm regularization. In CVPR, 2012.
+\bibitem{Review}Zhanxuan Hu, Feiping Nie, Rong Wang, Xuelong Li, Low Rank Regularization: A review, Neural Networks, Volume 136, 2021.
+\bibitem{WNN-1}Shuhang Gu, Lei Zhang, Wangmeng Zuo, Xiangchu Feng, Weighted Nuclear Norm Minimization with Application to Image Denoising. In CVPR, 2014.
+\bibitem{CNN-1}Q. Sun, S. Xiang, J. Ye, Robust principal component analysis via capped norms, in: Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, ACM, 2013, pp. 311-319.
+\bibitem{CNN-2}F. Nie, Z. Huo, H. Huang, Joint capped norms minimization for robust matrix recovery, in: Proceedings of International Joint Conference on Artificial Intelligence, 2017, pp. 2557-2563.
+
+\bibitem{merge-1}Joint capped norms minimization for robust
+matrix recovery.
+\bibitem{merge-2}Weighted Schatten p-Norm Minimization for Image Denoising and Background Subtraction.
+\bibitem{Mixture}Hyperspectral Image Restoration Using Low-Rank Matrix Recovery.
+\bibitem{meng}Low-rank Matrix Factorization under General Mixture Noise Distributions.
+\bibitem{Tensor-1}C. Lu, J. Feng, Y. Chen, W. Liu, Z. Lin, and S. Yan, Tensor robust principal component analysis: Exact recovery of corrupted low-rank tensors via convex optimization, in IEEE Conference on CVPR, 2016, pp. 5249-5257.
+\bibitem{Tensor-2}Low-Rank Tensor Completion by Truncated Nuclear Norm Regularization.
+\bibitem{Tensor-3}Hyperspectral Image Recovery Using Non-Convex Low-Rank Tensor Approximation.
+
+\bibitem{gamma}基于伽马范数最小化的图像去噪算法.
+\end{thebibliography}
+
+\end{document}
