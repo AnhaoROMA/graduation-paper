@@ -27,6 +27,14 @@
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
 \begin{document}
+\begin{center}
+{\large{\bf{摘要}}}
+\end{center}
+\par 高光谱遥感技术利用成像光谱仪，在几十乃至几百个窄波段同时对地物成像，因而高光谱图像含有非常丰富的空间光谱信息。这使得高光谱图像在环境、军事等诸多领域都有着十分广泛的应用。然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响。因此，对高光谱图像进行降噪是预处理阶段必不可少的步骤。
+\par 对高光谱图像的降噪主要是利用了图像本身的低秩特性。由于基于秩最小化的降噪方法是一个NP-hard问题，最初，研究人员使用秩函数的凸近似，也就是核范数，去替代秩函数。尽管基于核范数最小化的降噪方法已经被应用于很多方面，它还是存在忽略奇异值的实际含义等方面的缺点的。近几年，一些对秩函数的非凸的放缩方式被提出，并被应用于图像降噪、矩阵补全等实际问题。对这方面的研究路线可被概括成：提出对秩函数的放缩方式、建立最优化模型、求解模型。
+\par 本文首先回顾了一些其他研究人员提出的、秩函数的非凸放缩方法，包括截断式核范数、权重式核范数等。在回顾了对高光谱图像降噪的研究路线之后，本文通过对人造数据与真实数据进行实验，对比了不同放缩方法的降噪效果。此外，本文还对高光谱图像降噪的未来研究方向，以及低秩特性在其他领域的应用进行了讨论。
+\\
+{\bf{关键字}}\quad 高光谱图像 \quad 非凸 \quad 低秩 \quad 核范数 \quad 降噪
 \section{研究背景及意义}
 \subsection{高光谱图像及其成像原理}
 \par 高光谱图像（Hyper-Spectral Image, HSI），又称“高光谱分辨率遥感图像”（Hyper-Spectral Resolution Remote Sensing Image）。遥感（Remote Sensing），是在不接触目标的情况下，利用特定装置来获得地物的光谱特征信息、并对其进行提取与分析，以便能够投入到实际应用中去的一种技术\cite{whatishsi}。高光谱遥感（Hyperspectral  Remote Sensing）技术利用成像光谱仪，记录地物在太阳照射下所产生的辐射信号，在可见光以及多数红外波段等电磁波谱范围内，以非常狭窄的间隔进行成像（如图\ref{img-pricipleofphotograph}所示），进而形成不同地物的光谱特征曲线。更具体地，高光谱遥感概念的定义基础是成像光谱学，成像光谱仪作为一种遥感仪器，则可以将成像传感器的空间表示与光谱仪的分析能力结合起来，为每个像素所含有的地物提供其在上百个窄波段上的反射信息，进而得到一条完整的光谱特征曲线\cite{howtogenanhsi}。
@@ -61,7 +69,7 @@
 	\end{tabular}
 \end{table}
 \subsection{对高光谱图像进行降噪的意义}
-\par 然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响，比如高光谱图像的分类\cite{further-use-1}、 解混\cite{further-use-2}，以及目标检测\cite{further-use-3} 等。因此，对高光谱图像进行降噪是预处理阶段必不可少的。
+\par 然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响，比如高光谱图像的分类\cite{further-use-1}、 解混\cite{further-use-2}，以及目标检测\cite{further-use-3} 等。因此，对高光谱图像进行降噪是预处理阶段必不可少的步骤。
 \section{高光谱图像降噪的研究路线}\label{research-route}
 \par 假设一幅一维图像$Y$受到噪声的污染，即：
 \begin{equation}
@@ -271,7 +279,7 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \sum\limits_{i=1
 \par 给定一个大小为$m \times n$的干净图像$I$和它的含噪图像$K$，它们的均方误差（Mean Square Error, MSE）为：
 \begin{displaymath}
 \centering
-MSE = \cfrac{1}{mn}\sum_{i=1}^{m}\sum_{j=1}^{n}\left[I_{i,j}-K_{i, j}\right]^2
+MSE = \cfrac{1}{mn}\sum_{i=1}^{m}\sum_{j=1}^{n}\left(I_{i,j}-K_{i, j}\right)^2
 \end{displaymath}
 \par 那么它们的峰值信噪比（Peak Signal-to-Noise Ratio, PSNR）就是：
 \begin{displaymath}
@@ -283,51 +291,133 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \par 不难发现，图像$M$和图像$N$之间的PSNR值愈大，$M$与$N$在直观上愈相近。因此，从含噪图像$K$恢复出的降噪图像$I'$，$I'$与干净图像$I$之间的PSNR值越大，说明降噪的效果越好。
 \par 事实上，除了峰值信噪比，结构相似性（Structural SIMilarity, SSIM）也可以量化降噪效果。因本文篇幅有限，故在此不作讨论。
 \subsection{实验设计}
-\par 与一般的RGB图像只含有R、G、B三个通道不同，高光谱图像的通道数量众多。以Urban数据集\footnote{数据来源：\url{http://www.tec.army.mil/hypercube}}为例，Urban数据集内的图像规格为：$304 \times 304 \times 210$，即图像包含210个通道。因此，高光谱图像通常只能目视其中某一通道，而无法直接目视全部通道。基于这点限制，本文的实验分为两个部分。
+\par 与一般的RGB图像只含有R、G、B三个通道不同，高光谱图像的通道数量众多。以Urban数据集\footnote{数据来源：\url{http://www.tec.army.mil/hypercube}}为例，Urban数据集内的图像规格为：$304 \times 304 \times 210$，即图像包含210个通道。因此，高光谱图像通常只能目视其中某一通道，而无法同时直接目视全部通道。基于这点限制，本文的实验分为两个部分。
 \subsubsection{人造数据部分}\label{synthetic}
 \par 一是对普通的一维图像进行降噪。这部分可根据需要，任意地给无噪声图像添加特定种类的噪声，被人为添加特定噪声后的实验用图像在其他研究人员的论文中被称作人造数据（Synthetic Data）。本文将通过计算降噪后的图像与无噪声的原图像之间的PSNR值来量化不同降噪方法的效果。
 \subsubsection{真实视觉数据部分}\label{real}
-\par 二是对真实的、自然获取到的高光谱图像进行降噪。这部分的实验用图像均是在生产实践中获取的，在其他研究人员的论文中被称为真实视觉数据（Real Visual Data），由于无法获取它们的无噪声的原图像，加之无法同时显示所有通道，故仅能展示其中某些通道经过不同降噪方法后得到的去噪图像，用于目视效果的对比。
+\par 二是对真实的、自然获取到的高光谱图像进行降噪。这部分的实验用图像均是在生产实践中获取的，在其他研究人员的论文中被称为真实视觉数据（Real Visual Data），由于无法获取它们的无噪声的原图像，加之无法同时显示所有通道，故仅能展示其中某些通道经过不同降噪方法后得到的去噪图像，用于目视效果的对比。由于高光谱图像通常不是8bit图，故在对原图进行降噪后，还需要进行像素值的映射，将高位图转为一般的8位图。
 \subsection{实验数据}
 \par \ref{synthetic}节的实验数据如下：
 \begin{itemize}
 \item 实验0
-\par 不含噪声的原图像
+\par 图\ref{syn-data-0}：不含噪声的原图像
 
 \item 实验1
-\par 含方差为10的零均值高斯噪声的图像
+\par 图\ref{syn-data-1}：含方差为0.1的零均值高斯噪声的图像
 
 \item 实验2
-\par 含方差为30的零均值高斯噪声的图像
+\par 图\ref{syn-data-2}：含方差为0.5的零均值高斯噪声的图像
 
 \item 实验3
-\par 含方差为50的零均值高斯噪声的图像
+\par 图\ref{syn-data-3}：含方差为1的零均值高斯噪声的图像
 
 \item 实验4
-\par 含方差为70的零均值高斯噪声的图像
+\par 图\ref{syn-data-4}：含方差为5的零均值高斯噪声的图像
 
 \item 实验5
-\par 含5\%椒盐噪声的图像
+\par 图\ref{syn-data-5}：含5\%椒盐噪声的图像
 \item 实验6
-\par 含10\%椒盐噪声的图像
+\par 图\ref{syn-data-6}：含10\%椒盐噪声的图像
 \item 实验7
-\par 含20\%椒盐噪声的图像
+\par 图\ref{syn-data-7}：含20\%椒盐噪声的图像
 \item 实验8
-\par 含40\%椒盐噪声的图像
+\par 图\ref{syn-data-8}：含40\%椒盐噪声的图像
 
 \item 实验9
-\par 含10\%椒盐噪声与方差为10的零均值高斯噪声的图像
+\par 图\ref{syn-data-9}：含10\%椒盐噪声与方差为0.1的零均值高斯噪声的图像
 \item 实验10
-\par 含10\%椒盐噪声与方差为30的零均值高斯噪声的图像
+\par 图\ref{syn-data-10}：含10\%椒盐噪声与方差为1的零均值高斯噪声的图像
 \item 实验11
-\par 含20\%椒盐噪声与方差为30的零均值高斯噪声的图像
+\par 图\ref{syn-data-11}：含20\%椒盐噪声与方差为1的零均值高斯噪声的图像
 \end{itemize}
+
+\begin{figure}[h]
+    \centering
+
+    \subfigure[无噪声的原图]{
+        \includegraphics[scale=0.25]{exp-0.jpg}
+        \label{syn-data-0}
+    }
+    \subfigure[含方差为0.1的零均值高斯噪声的图像]{
+        \includegraphics[scale=0.25]{exp-1.jpg}
+        \label{syn-data-1}
+    }
+    \subfigure[含方差为0.5的零均值高斯噪声的图像]{
+        \includegraphics[scale=0.25]{exp-2.jpg}
+        \label{syn-data-2}
+    }
+    \subfigure[含方差为1的零均值高斯噪声的图像]{
+        \includegraphics[scale=0.25]{exp-3.jpg}
+        \label{syn-data-3}
+    }
+    
+    \subfigure[含方差为5的零均值高斯噪声的图像]{
+        \includegraphics[scale=0.25]{exp-4.jpg}
+        \label{syn-data-4}
+    }
+    \subfigure[含5\%椒盐噪声的图像]{
+        \includegraphics[scale=0.25]{exp-5.jpg}
+        \label{syn-data-5}
+    }
+    \subfigure[含10\%椒盐噪声的图像]{
+        \includegraphics[scale=0.25]{exp-6.jpg}
+        \label{syn-data-6}
+    }
+    \subfigure[含20\%椒盐噪声的图像]{
+        \includegraphics[scale=0.25]{exp-7.jpg}
+        \label{syn-data-7}
+    }
+    
+    \subfigure[含40\%椒盐噪声的图像]{
+        \includegraphics[scale=0.25]{exp-8.jpg}
+        \label{syn-data-8}
+    }
+    \subfigure[含10\%椒盐噪声与方差为0.1的零均值高斯噪声的图像]{
+        \includegraphics[scale=0.25]{exp-9.jpg}
+        \label{syn-data-9}
+    }
+    \subfigure[含10\%椒盐噪声与方差为1的零均值高斯噪声的图像]{
+        \includegraphics[scale=0.25]{exp-10.jpg}
+        \label{syn-data-10}
+    }
+    \subfigure[含20\%椒盐噪声与方差为1的零均值高斯噪声的图像]{
+        \includegraphics[scale=0.25]{exp-11.jpg}
+        \label{syn-data-11}
+    }
+
+    \caption{人造数据}
+    \label{syn-data}
+\end{figure}
 
 \par \ref{real}节的实验数据如下：
 \begin{itemize}
 \item 实验12
-\par Urban数据集内的一幅图像
+\par 图\ref{real-data}：Urban数据集内的一幅图像
 \end{itemize}
+\begin{figure}[h]
+    \centering
+
+    \subfigure[高光谱图像的第4通道]{
+        \includegraphics[scale=0.6]{band-4.jpg}
+        \label{band-4}
+    }
+    \subfigure[高光谱图像的第31通道]{
+        \includegraphics[scale=0.6]{band-31.jpg}
+        \label{band-31}
+    }
+    
+    \subfigure[高光谱图像的第98通道]{
+        \includegraphics[scale=0.6]{band-98.jpg}
+        \label{band-98}
+    }
+    \subfigure[高光谱图像的第198通道]{
+        \includegraphics[scale=0.6]{band-198.jpg}
+        \label{band-198}
+    }
+    
+    \caption{真实视觉数据}
+    \label{real-data}
+\end{figure}
 \section{实验结果分析}\label{analysis}
 \subsection{实验结果}
 
@@ -342,8 +432,19 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 % 空间分布信息与光谱特征信息
 \par 本文所述的几种降噪方法，均是使用矩阵（Matrix）的，也就是在二维平面上降噪。这样做可以考虑到图像的空间分布特征。但是，正如第\ref{introduction-feature}节所述，高光谱图像可以看作是多层二维图像的叠加，每一层二维图像都是相同的场景在特定波段内的辐射。因此，除了每层层内的空间分布信息，各层层间还存在光谱特征信息。针对矩阵在考量光谱特征信息这方面的不足，近年来，Lu 等研究者提出了使用张量（Tensor）的降噪方法\cite{Tensor-1}\cite{Tensor-2}\cite{Tensor-3}。这方面的研究路线与矩阵的类似，都是先考虑核范数的凸放缩\cite{Tensor-1}，再研究非凸放缩\cite{Tensor-2}\cite{Tensor-3}。
 \section{拓展应用}
-
+\par 本文将图像视作一个低秩的数据结构，并讨论了对其的降噪问题。对低秩特性的利用还可以被用于\cite{Review}：
+\begin{itemize}
+\item 鲁棒的主成分分析法（Robust Principal Component Analysis）
+\item 矩阵补全（Matrix Completion）
+\item 多任务学习（Multi-Task Learning）
+\item 子空间聚类（Subspace Clustering）
+\item 视频背景提取（Video background subtraction）
+\item 推荐系统（Recommender System）
+\end{itemize}
 \section{总结}
+\par 高光谱遥感技术利用成像光谱仪，在几十乃至几百个窄波段同时对地物成像，因而高光谱图像含有非常丰富的空间光谱信息。这使得高光谱图像在环境、军事等诸多领域都有着十分广泛的应用。然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响。因此，对高光谱图像进行降噪是预处理阶段必不可少的步骤。
+\par 对高光谱图像的降噪主要是利用了图像本身的低秩特性。由于基于秩最小化的降噪方法是一个NP-hard问题，最初，研究人员使用秩函数的凸近似，也就是核范数，去替代秩函数。尽管基于核范数最小化的降噪方法已经被应用于很多方面，它还是存在忽略奇异值的实际含义等方面的缺点的。近几年，一些对秩函数的非凸的放缩方式被提出，并被应用于图像降噪、矩阵补全等实际问题。对这方面的研究路线可被概括成：提出对秩函数的放缩方式、建立最优化模型、求解模型。
+\par 本文首先回顾了一些其他研究人员提出的、秩函数的非凸放缩方法，包括截断式核范数、权重式核范数等。在回顾了对高光谱图像降噪的研究路线之后，本文通过对人造数据与真实数据进行实验，对比了不同放缩方法的降噪效果。此外，本文还对高光谱图像降噪的未来研究方向，以及低秩特性在其他领域的应用进行了讨论。
 
 \newpage
 \begin{thebibliography}{99}

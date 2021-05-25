@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.2.11)  25 MAY 2021 01:52
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.2.11)  25 MAY 2021 18:03
 entering extended mode
 **E:/LATEX文件/graduation-paper/graduation_paper.tex
 (E:/LATEX文件/graduation-paper/graduation_paper.tex
@@ -817,98 +817,216 @@ File: extended.enc 2008/12/29 4.8.2
 (D:\Latex\CTEX\MiKTeX\tex\latex\cjk\extended.chr
 File: extended.chr 2008/12/29 4.8.2
 )
-LaTeX Font Info:    Try loading font information for C19+rm on input line 30.
+LaTeX Font Info:    Try loading font information for C19+rm on input line 31.
 
 (D:\Latex\CTEX\MiKTeX\tex\latex\ctex\fd\c19rm.fd
 File: c19rm.fd 2007/05/06 v0.8a ctex font definition file
 )
 Package CJKpunct Info: punctuation spaces for family 'zhsong' do not exist. Use
- family 'def' instead. on input line 32.
+ family 'def' instead. on input line 33.
 
 <img-principleofphotograph.png, id=113, 869.2475pt x 668.4975pt>
 File: img-principleofphotograph.png Graphic file (type png)
 
 <use img-principleofphotograph.png>
-Package pdftex.def Info: img-principleofphotograph.png used on input line 35.
+Package pdftex.def Info: img-principleofphotograph.png used on input line 43.
 (pdftex.def)             Requested size: 347.69284pt x 267.39426pt.
- [1
 
- <E:/LATEX文件/graduation-paper/img-principleofphotograph.png>] [2]
-<example-figure.png, id=209, 345.54094pt x 243.91125pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1
+
+] [2 <E:/LATEX文件/graduation-paper/img-principleofphotograph.png>]
+<example-figure.png, id=198, 345.54094pt x 243.91125pt>
 File: example-figure.png Graphic file (type png)
 
 <use example-figure.png>
-Package pdftex.def Info: example-figure.png used on input line 101.
+Package pdftex.def Info: example-figure.png used on input line 109.
 (pdftex.def)             Requested size: 207.32616pt x 146.34787pt.
 
-<example-figure-svd.png, id=210, 526.96875pt x 395.22656pt>
+<example-figure-svd.png, id=199, 526.96875pt x 395.22656pt>
 File: example-figure-svd.png Graphic file (type png)
 
 <use example-figure-svd.png>
-Package pdftex.def Info: example-figure-svd.png used on input line 104.
+Package pdftex.def Info: example-figure-svd.png used on input line 112.
 (pdftex.def)             Requested size: 210.78375pt x 158.08781pt.
- [3 <E:/LATEX文件/graduation-paper/example-figure.png> <E:/LATEX文件/gradua
-tion-paper/example-figure-svd.png (PNG copy)>]
-<surrogate-to-rank-1.png, id=241, 526.96875pt x 395.22656pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3] [4 <E:/LATEX文件/graduation-paper/example-figure.png> <E:/LATEX文件/gra
+duation-paper/example-figure-svd.png (PNG copy)>]
+<surrogate-to-rank-1.png, id=250, 526.96875pt x 395.22656pt>
 File: surrogate-to-rank-1.png Graphic file (type png)
 
 <use surrogate-to-rank-1.png>
-Package pdftex.def Info: surrogate-to-rank-1.png used on input line 151.
+Package pdftex.def Info: surrogate-to-rank-1.png used on input line 159.
 (pdftex.def)             Requested size: 210.78375pt x 158.08781pt.
 
-<surrogate-to-rank-2.png, id=242, 526.96875pt x 395.22656pt>
+<surrogate-to-rank-2.png, id=251, 526.96875pt x 395.22656pt>
 File: surrogate-to-rank-2.png Graphic file (type png)
 
 <use surrogate-to-rank-2.png>
-Package pdftex.def Info: surrogate-to-rank-2.png used on input line 154.
+Package pdftex.def Info: surrogate-to-rank-2.png used on input line 162.
 (pdftex.def)             Requested size: 210.78375pt x 158.08781pt.
- [4 <E:/LATEX文件/graduation-paper/surrogate-to-rank-1.png (PNG copy)> <E:/LA
+ [5 <E:/LATEX文件/graduation-paper/surrogate-to-rank-1.png (PNG copy)> <E:/LA
 TEX文件/graduation-paper/surrogate-to-rank-2.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 208--210
-
- []
-
-[5]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 246.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 246.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 254--260
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 254--260
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 254.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 254.
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 262--268
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--268
 
  []
 
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 267.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 275.
 Package CJKpunct Info: punctuation spaces for family 'zhhei' do not exist. Use 
-family 'def' instead. on input line 270.
-[6] [7] [8] [9]
-Underfull \hbox (badness 3000) in paragraph at lines 355--356
+family 'def' instead. on input line 278.
+[7] [8] <exp-0.jpg, id=323, 401.5pt x 301.125pt>
+File: exp-0.jpg Graphic file (type jpg)
+ <use exp-0.jpg>
+Package pdftex.def Info: exp-0.jpg used on input line 340.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-1.jpg, id=324, 401.5pt x 301.125pt>
+File: exp-1.jpg Graphic file (type jpg)
+ <use exp-1.jpg>
+Package pdftex.def Info: exp-1.jpg used on input line 344.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-2.jpg, id=325, 401.5pt x 301.125pt>
+File: exp-2.jpg Graphic file (type jpg)
+ <use exp-2.jpg>
+Package pdftex.def Info: exp-2.jpg used on input line 348.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-3.jpg, id=326, 401.5pt x 301.125pt>
+File: exp-3.jpg Graphic file (type jpg)
+ <use exp-3.jpg>
+Package pdftex.def Info: exp-3.jpg used on input line 352.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-4.jpg, id=327, 401.5pt x 301.125pt>
+File: exp-4.jpg Graphic file (type jpg)
+ <use exp-4.jpg>
+Package pdftex.def Info: exp-4.jpg used on input line 357.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-5.jpg, id=328, 401.5pt x 301.125pt>
+File: exp-5.jpg Graphic file (type jpg)
+ <use exp-5.jpg>
+Package pdftex.def Info: exp-5.jpg used on input line 361.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-6.jpg, id=329, 401.5pt x 301.125pt>
+File: exp-6.jpg Graphic file (type jpg)
+ <use exp-6.jpg>
+Package pdftex.def Info: exp-6.jpg used on input line 365.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-7.jpg, id=330, 401.5pt x 301.125pt>
+File: exp-7.jpg Graphic file (type jpg)
+ <use exp-7.jpg>
+Package pdftex.def Info: exp-7.jpg used on input line 369.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-8.jpg, id=331, 401.5pt x 301.125pt>
+File: exp-8.jpg Graphic file (type jpg)
+ <use exp-8.jpg>
+Package pdftex.def Info: exp-8.jpg used on input line 374.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-9.jpg, id=332, 401.5pt x 301.125pt>
+File: exp-9.jpg Graphic file (type jpg)
+ <use exp-9.jpg>
+Package pdftex.def Info: exp-9.jpg used on input line 378.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-10.jpg, id=333, 401.5pt x 301.125pt>
+File: exp-10.jpg Graphic file (type jpg)
+ <use exp-10.jpg>
+Package pdftex.def Info: exp-10.jpg used on input line 382.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+<exp-11.jpg, id=334, 401.5pt x 301.125pt>
+File: exp-11.jpg Graphic file (type jpg)
+ <use exp-11.jpg>
+Package pdftex.def Info: exp-11.jpg used on input line 386.
+(pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<band-4.jpg, id=337, 308.15125pt x 308.15125pt>
+File: band-4.jpg Graphic file (type jpg)
+ <use band-4.jpg>
+Package pdftex.def Info: band-4.jpg used on input line 403.
+(pdftex.def)             Requested size: 184.89217pt x 184.89217pt.
+
+<band-31.jpg, id=338, 308.15125pt x 308.15125pt>
+File: band-31.jpg Graphic file (type jpg)
+ <use band-31.jpg>
+Package pdftex.def Info: band-31.jpg used on input line 407.
+(pdftex.def)             Requested size: 184.89217pt x 184.89217pt.
+
+<band-98.jpg, id=339, 308.15125pt x 308.15125pt>
+File: band-98.jpg Graphic file (type jpg)
+ <use band-98.jpg>
+Package pdftex.def Info: band-98.jpg used on input line 412.
+(pdftex.def)             Requested size: 184.89217pt x 184.89217pt.
+
+<band-198.jpg, id=340, 308.15125pt x 308.15125pt>
+File: band-198.jpg Graphic file (type jpg)
+ <use band-198.jpg>
+Package pdftex.def Info: band-198.jpg used on input line 416.
+(pdftex.def)             Requested size: 184.89217pt x 184.89217pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9] [10 <E:/LATEX文件/graduation-paper/exp-0.jpg> <E:/LATEX文件/graduation-
+paper/exp-1.jpg> <E:/LATEX文件/graduation-paper/exp-2.jpg> <E:/LATEX文件/gr
+aduation-paper/exp-3.jpg> <E:/LATEX文件/graduation-paper/exp-4.jpg> <E:/LATEX
+文件/graduation-paper/exp-5.jpg> <E:/LATEX文件/graduation-paper/exp-6.jpg> 
+<E:/LATEX文件/graduation-paper/exp-7.jpg> <E:/LATEX文件/graduation-paper/ex
+p-8.jpg> <E:/LATEX文件/graduation-paper/exp-9.jpg> <E:/LATEX文件/graduation
+-paper/exp-10.jpg> <E:/LATEX文件/graduation-paper/exp-11.jpg>] [11 <E:/LATEX�
+��件/graduation-paper/band-4.jpg> <E:/LATEX文件/graduation-paper/band-31.jpg
+> <E:/LATEX文件/graduation-paper/band-98.jpg> <E:/LATEX文件/graduation-pape
+r/band-198.jpg>] [12]
+Underfull \hbox (badness 3000) in paragraph at lines 456--457
 []\OT1/cmr/m/n/12 S.A.Lewis et al.,  |\C19/rm/m/n/12/25 /|\OT1/cmr/m/n/12 Using
  hy-per-spec-tral im-agery to es-ti-mate for-est floor con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
 \OT1/cmr/m/n/12 sump-tion from wild-fire in bo-re-al forest-s of Alas-ka, US-A,
 |\C19/rm/m/n/12/25 0| \OT1/cmr/m/n/12 Int.J.Wildland
  []
 
-[10] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 379.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 379.
+[13] [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 480.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 480.
  (E:\LATEX文件\graduation-paper\graduation_paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 379.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 379.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 480.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 480.
 Package rerunfilecheck Info: File `graduation_paper.out' has not changed.
 (rerunfilecheck)             Checksum: 34458017D54FEFA983BE0A4C991A3163;1743.
 
@@ -917,11 +1035,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17581 strings out of 495354
- 275942 string characters out of 3183523
- 358483 words of memory out of 3000000
- 20343 multiletter control sequences out of 15000+200000
- 43727 words of font info for 151 fonts, out of 3000000 for 9000
+ 17750 strings out of 495354
+ 278321 string characters out of 3183523
+ 372032 words of memory out of 3000000
+ 20474 multiletter control sequences out of 15000+200000
+ 45813 words of font info for 158 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  36i,13n,43p,876b,1116s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
@@ -930,11 +1048,11 @@ imsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS
 /WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei
 .ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Font
 s/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WIND
-OWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc>
-<C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/sim
-sun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/F
-onts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/W
-INDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.t
+OWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf>
+<C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/sim
+hei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/F
+onts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/W
+INDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.t
 tc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/
 simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOW
 S/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C
@@ -942,11 +1060,11 @@ S/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C
 n.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fon
 ts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WIN
 DOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc
-><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/si
-mhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/
-Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/
-WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.
-ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><D:/Latex/CTEX/Mi
+><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/si
+msun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/
+Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/
+WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.
+ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><D:/Latex/CTEX/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Latex/CTEX/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmex10.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmmi12.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb
@@ -957,9 +1075,9 @@ s/cm/cmr8.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Latex/CTEX/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Latex/CTEX/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmtt12.pfb>
-Output written on graduation_paper.pdf (11 pages, 1331353 bytes).
+Output written on graduation_paper.pdf (14 pages, 2244411 bytes).
 PDF statistics:
- 590 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 242 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 655 PDF objects out of 1000 (max. 8388607)
+ 103 named destinations out of 1000 (max. 500000)
+ 322 words of extra memory for PDF output out of 10000 (max. 10000000)
 
