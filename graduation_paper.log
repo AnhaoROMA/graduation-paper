@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.2.11)  26 MAY 2021 02:57
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.2.11)  27 MAY 2021 10:48
 entering extended mode
 **E:/LATEX文件/graduation-paper/graduation_paper.tex
 (E:/LATEX文件/graduation-paper/graduation_paper.tex
@@ -996,97 +996,100 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 287.
 Package CJKpunct Info: punctuation spaces for family 'zhhei' do not exist. Use 
 family 'def' instead. on input line 290.
- [8] [9] <exp-0.jpg, id=381, 401.5pt x 301.125pt>
+ [8] <exp-0.jpg, id=367, 401.5pt x 301.125pt>
 File: exp-0.jpg Graphic file (type jpg)
  <use exp-0.jpg>
 Package pdftex.def Info: exp-0.jpg used on input line 352.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-1.jpg, id=382, 401.5pt x 301.125pt>
+<exp-1.jpg, id=368, 401.5pt x 301.125pt>
 File: exp-1.jpg Graphic file (type jpg)
  <use exp-1.jpg>
 Package pdftex.def Info: exp-1.jpg used on input line 356.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-2.jpg, id=383, 401.5pt x 301.125pt>
+<exp-2.jpg, id=369, 401.5pt x 301.125pt>
 File: exp-2.jpg Graphic file (type jpg)
  <use exp-2.jpg>
 Package pdftex.def Info: exp-2.jpg used on input line 360.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-3.jpg, id=384, 401.5pt x 301.125pt>
+<exp-3.jpg, id=370, 401.5pt x 301.125pt>
 File: exp-3.jpg Graphic file (type jpg)
  <use exp-3.jpg>
 Package pdftex.def Info: exp-3.jpg used on input line 364.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-4.jpg, id=385, 401.5pt x 301.125pt>
+<exp-4.jpg, id=371, 401.5pt x 301.125pt>
 File: exp-4.jpg Graphic file (type jpg)
  <use exp-4.jpg>
 Package pdftex.def Info: exp-4.jpg used on input line 369.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-5.jpg, id=386, 401.5pt x 301.125pt>
+<exp-5.jpg, id=372, 401.5pt x 301.125pt>
 File: exp-5.jpg Graphic file (type jpg)
  <use exp-5.jpg>
 Package pdftex.def Info: exp-5.jpg used on input line 373.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-6.jpg, id=387, 401.5pt x 301.125pt>
+<exp-6.jpg, id=373, 401.5pt x 301.125pt>
 File: exp-6.jpg Graphic file (type jpg)
  <use exp-6.jpg>
 Package pdftex.def Info: exp-6.jpg used on input line 377.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-7.jpg, id=388, 401.5pt x 301.125pt>
+<exp-7.jpg, id=374, 401.5pt x 301.125pt>
 File: exp-7.jpg Graphic file (type jpg)
  <use exp-7.jpg>
 Package pdftex.def Info: exp-7.jpg used on input line 381.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-8.jpg, id=389, 401.5pt x 301.125pt>
+<exp-8.jpg, id=375, 401.5pt x 301.125pt>
 File: exp-8.jpg Graphic file (type jpg)
  <use exp-8.jpg>
 Package pdftex.def Info: exp-8.jpg used on input line 386.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-9.jpg, id=390, 401.5pt x 301.125pt>
+<exp-9.jpg, id=376, 401.5pt x 301.125pt>
 File: exp-9.jpg Graphic file (type jpg)
  <use exp-9.jpg>
 Package pdftex.def Info: exp-9.jpg used on input line 390.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-10.jpg, id=391, 401.5pt x 301.125pt>
+<exp-10.jpg, id=377, 401.5pt x 301.125pt>
 File: exp-10.jpg Graphic file (type jpg)
  <use exp-10.jpg>
 Package pdftex.def Info: exp-10.jpg used on input line 394.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<exp-11.jpg, id=392, 401.5pt x 301.125pt>
+<exp-11.jpg, id=378, 401.5pt x 301.125pt>
 File: exp-11.jpg Graphic file (type jpg)
  <use exp-11.jpg>
 Package pdftex.def Info: exp-11.jpg used on input line 398.
 (pdftex.def)             Requested size: 100.37474pt x 75.28105pt.
 
-<band-2.jpg, id=395, 308.15125pt x 308.15125pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9] <band-2.jpg, id=397, 308.15125pt x 308.15125pt>
 File: band-2.jpg Graphic file (type jpg)
  <use band-2.jpg>
 Package pdftex.def Info: band-2.jpg used on input line 415.
 (pdftex.def)             Requested size: 184.89217pt x 184.89217pt.
 
-<band-103.jpg, id=396, 308.15125pt x 308.15125pt>
+<band-103.jpg, id=398, 308.15125pt x 308.15125pt>
 File: band-103.jpg Graphic file (type jpg)
  <use band-103.jpg>
 Package pdftex.def Info: band-103.jpg used on input line 419.
 (pdftex.def)             Requested size: 184.89217pt x 184.89217pt.
 
-<band-187.jpg, id=397, 308.15125pt x 308.15125pt>
+<band-187.jpg, id=399, 308.15125pt x 308.15125pt>
 File: band-187.jpg Graphic file (type jpg)
  <use band-187.jpg>
 Package pdftex.def Info: band-187.jpg used on input line 424.
 (pdftex.def)             Requested size: 184.89217pt x 184.89217pt.
 
-<band-189.jpg, id=398, 308.15125pt x 308.15125pt>
+<band-189.jpg, id=400, 308.15125pt x 308.15125pt>
 File: band-189.jpg Graphic file (type jpg)
  <use band-189.jpg>
 Package pdftex.def Info: band-189.jpg used on input line 428.
@@ -1287,24 +1290,24 @@ raduation-paper/band-187-TNN.jpg> <E:/LATEX文件/graduation-paper/band-187-LNN
 .jpg> <E:/LATEX文件/graduation-paper/band-187-WNN.jpg> <E:/LATEX文件/gradua
 tion-paper/band-189-NN.jpg> <E:/LATEX文件/graduation-paper/band-189-TNN.jpg> 
 <E:/LATEX文件/graduation-paper/band-189-LNN.jpg> <E:/LATEX文件/graduation-p
-aper/band-189-WNN.jpg>] [15] [16] [17] [18]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 672.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 672.
+aper/band-189-WNN.jpg>] [15] [16] [17] [18] [19]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 688.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 688.
 
 (E:\LATEX文件\graduation-paper\graduation_paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 672.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 672.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 688.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 688.
 Package rerunfilecheck Info: File `graduation_paper.out' has not changed.
 (rerunfilecheck)             Checksum: F5BA243D2C37CE6502FFB3DFDDF60807;1918.
  ) 
 Here is how much of TeX's memory you used:
- 19052 strings out of 495354
- 294561 string characters out of 3183523
- 407126 words of memory out of 3000000
- 21646 multiletter control sequences out of 15000+200000
+ 19065 strings out of 495354
+ 294775 string characters out of 3183523
+ 407157 words of memory out of 3000000
+ 21657 multiletter control sequences out of 15000+200000
  50292 words of font info for 173 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,16n,43p,876b,1132s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,16n,43p,876b,1142s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
 imhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS
 /Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:
@@ -1339,9 +1342,9 @@ D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Latex/CTEX/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Latex/CTEX/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmtt10.pfb><D:/Latex/CTEX/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmtt12.pfb>
-Output written on graduation_paper.pdf (20 pages, 5494781 bytes).
+Output written on graduation_paper.pdf (21 pages, 5517682 bytes).
 PDF statistics:
- 823 PDF objects out of 1000 (max. 8388607)
- 143 named destinations out of 1000 (max. 500000)
+ 830 PDF objects out of 1000 (max. 8388607)
+ 145 named destinations out of 1000 (max. 500000)
  473 words of extra memory for PDF output out of 10000 (max. 10000000)
 
