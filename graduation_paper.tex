@@ -18,6 +18,7 @@
 \usepackage{abstract}
 \usepackage{subfigure}
 \usepackage{diagbox}
+\usepackage{pdfpages}
 \usepackage{type1cm}
 \usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=blue,CJKbookmarks=True]{hyperref}
 \geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
@@ -29,15 +30,24 @@
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
 \begin{document}
+\includepdf[pages={1,2}]{cover.pdf}
+
 \pagenumbering{Roman}
 \begin{center}
-{\large{\bf{摘要}}}
+{\Large{\bf{摘 \quad 要}}}
 \end{center}
 \par 高光谱遥感技术利用成像光谱仪，在几十乃至几百个窄波段同时对地物成像，因而高光谱图像含有非常丰富的空间光谱信息。这使得高光谱图像在环境、军事等诸多领域都有着十分广泛的应用。然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响。因此，对高光谱图像进行降噪是预处理阶段必不可少的步骤。
 \par 对高光谱图像的降噪主要是利用了图像本身的低秩特性。由于基于秩最小化的降噪方法是一个NP-hard问题，最初，研究人员使用秩函数的凸近似，也就是核范数，去替代秩函数。尽管基于核范数最小化的降噪方法已经被应用于很多方面，它还是存在忽略奇异值的实际含义等方面的缺点。近年来，研究人员提出了一些对秩函数的非凸的放缩方式，并将其应用在图像降噪、矩阵补全等实际问题上。对这方面的研究路线可被概括成：提出对秩函数的放缩方式、建立最优化模型、求解模型。
 \par 本文首先回顾了一些其他研究人员提出的、秩函数的非凸放缩方法，包括截断式核范数、权重式核范数等。在回顾了对高光谱图像降噪的研究路线之后，本文通过对人造数据与真实数据进行实验，对比了不同放缩方法的降噪效果。此外，本文还对高光谱图像降噪的未来研究方向，以及低秩特性在其他领域的应用进行了讨论。
 \\
 {\bf{关键字}}\quad 高光谱图像 \quad 非凸 \quad 低秩 \quad 核范数 \quad 降噪
+\newpage
+\begin{center}
+{\Large{\bf{Abstract}}}
+\end{center}
+\par Hyper-spectral remote sensing technology takes use of imaging spectrometers to image ground objects in tens to hundreds of bands. As a result, Hyper-spectral image contains abundant spatial spectral information, making it be wildly used in environment, military, agriculture, and so on. Nevertheless, as hyper-spectral image is taken in such a natural environment where electromagnetic interference exists in, hyper-spectral image humans can obtain contains several kinds of noise, including Gaussian noise, salt and pepper noise, deadlines, and so on. Not to mention that the imaging equipments are not as precise as they should be. Hyper-spectral images with noise can not only degrade the visual effect, but also do harm to their further use. Therefore, it is necessary to denoise these noised hyper-spectral images before their use.
+\par When it comes to denoising hyper-spectral image, the low-rank character of natural image is mainly used by researchers. However, the denoising method which is based on Rank Minimization is a NP-hard problem. In this case, researchers tried to use nuclear norm, the convex relaxation to rank function, as the surrogate to rank function. Although this method which is based on Nuclear Norm Minimization has been wildly applied in many fields, it has some shortcomings, such as ignoring the physical meaning of different singular values. Several kinds of non-convex relaxation to rank function have been proposed in these years, and have been applied to some fields like Matrix Completion. The ideas of these paper can be concluded as: propose a new relaxation first, construct the corresponding optimization model later, and solve the model at last.
+\par At the commence of this paper, several kinds of relaxation to rank function are reviewed. Later, this paper presents the experiment result on synthetic data and real visual data, in order to make comparison of denoising effect between different kinds of relaxation. In addition, this paper makes discussion of the future research direction, as well as the application of low-rank character in other fields.
 \newpage
 {{\tableofcontents}}
 \newpage
@@ -120,9 +130,9 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot rank(X)
 \label{F-rank}
 \end{equation}
 式中，
-\par$X$代表未受到污染的、干净的图像；
-\par$N$代表噪声；
-\par$Y$代表成像设备获取到的图像，即受到污染的图像；
+\par$X$代表未受到污染的、干净的图像，大小为$m \times n$；
+\par$N$代表噪声，大小为$m \times n$；
+\par$Y$代表成像设备获取到的图像，即受到污染的图像，大小为$m \times n$；
 \par$\left\|*\right\|_F$表示$Frobenius$范数；
 \par$\lambda$是正则化参数。
 \par 式\ref{Rank-equation}（或式\ref{F-rank}）是基于秩最小化（Rank Minimization, RM）的降噪方法，然而，这是一个NP-hard问题\cite{TNN-1}。况且，秩函数（$rank()$）是不连续的\cite{TNN-1}。所以，通常使用秩函数的凸近似，也就是核范数，作为式\ref{Rank-equation} 中秩函数的替代\cite{TNN-1}，即：
@@ -626,11 +636,41 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \par 本文将图像视作一个低秩的数据结构，并讨论了对其的降噪问题。对低秩特性的利用还可以被用于\cite{Review}：
 \begin{itemize}
 \item 鲁棒的主成分分析法（Robust Principal Component Analysis）
+\par 鲁棒的主成分分析法是从含噪声的观测数据中恢复一个低秩矩阵的最有效的办法之一。从数学角度出发，鲁棒的主成分分析法将含噪声的观测数据$M$视作是低秩矩阵$X$与代表噪声的矩阵$E$之和，并通过求解下式以分离出$X$与$E$。
+\begin{displaymath}
+\min\limits_{X,E}\quad \left\|E\right\|_1 + \lambda \cdot rank(X) \qquad s.t.\quad M=X+E
+\end{displaymath}
+式中，
+\par$X$是低秩矩阵，大小为$m \times n$；
+\par$E$是代表噪声的矩阵，大小为$m \times n$；
+\par$M$是含噪声的观测数据，大小为$m \times n$；
+\par$\left\|*\right\|_1$表示$l_1$-范数，这部分可以根据需要被其他的矩阵范数替换；
+\par$rank(*)$表示秩函数，这部分可以根据需要被秩函数的某一种放缩方式替代。
 \item 矩阵补全（Matrix Completion）
-\item 多任务学习（Multi-Task Learning）
-\item 子空间聚类（Subspace Clustering）
+\par 若一个矩阵$M$含有缺失的元素，那么矩阵补全的任务就是利用矩阵$M$中的已知元素去推测缺失的元素，以此达到补全矩阵的效果。常用的矩阵补全方法也是利用了原矩阵的低秩性，即事先假设了原矩阵是低秩或近似低秩的。矩阵补全的问题可以被形式化成：
+\begin{displaymath}
+\min\limits_{X}\quad \left\|X-M\right\|_1 + \lambda \cdot rank(X) \qquad s.t.\quad M_{i,j}=X_{i,j}, (i,j)\in\Omega
+\end{displaymath}
+式中，
+\par$X$代表不含缺失元素的原矩阵，大小为$m \times n$；
+\par$M$代表含有缺失元素的待补全的矩阵，大小为$m \times n$；
+\par$\Omega=\{(i,j)|1\leq i \leq m, 1\leq j \leq n\}$代表已知元素所在的位置；
+\par$\left\|*\right\|_1$表示$l_1$-范数，这部分可以根据需要被其他的矩阵范数替换；
+\par$rank(*)$表示秩函数，这部分可以根据需要被秩函数的某一种放缩方式替代。
+% \item 多任务学习（Multi-Task Learning）
+
+% \item 子空间聚类（Subspace Clustering）
+
 \item 视频背景提取（Video background subtraction）
+\par 视频背景提取是前文所述的鲁棒的主成分分析法的应用之一。若给定一段视频，则可以将这段视频的每一帧拼接起来，构成一个矩阵。那么，可以将视频的背景（如风景、环境等）视为主成分，将前景（如移动物体等）视为噪声。
 \item 推荐系统（Recommender System）
+\par 推荐系统是前文所述的矩阵补全的应用之一。如图\ref{recommender-system}所示，某些用户对某些电影打出评分，构成了评分表，但是评分表是不完整的。在使用矩阵补全方法将评分表中的缺失元素补全之后，若某用户对某电影的评分被系统预测是高分且该用户未曾观看过该电影，则系统可将该电影推送给该用户。
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{recommender-system.png}
+\caption{用户对电影的评分表}
+\label{recommender-system}
+\end{figure}
 \end{itemize}
 \newpage
 \section{总结}
@@ -651,7 +691,7 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \bibitem{usageofhsi-3}K.C. Tiwari, M.K. Arora, D. Singh.An assessment of independent component analysis for detection of military targets from hyperspectral images[J].International Journal of Applied Earth Observation and Geoinformation,2011,13(5):730-740.
 
 \bibitem{further-use-1}C. Bo, H. Lu and D. Wang, "Weighted Generalized Nearest Neighbor for Hyperspectral Image Classification," in IEEE Access, vol. 5, pp. 1496-1509, 2017.
-    
+
 \bibitem{further-use-2}W. Yang, K. Hou, B. Liu, F. Yu and L. Lin, "Two-Stage Clustering Technique Based on the Neighboring Union Histogram for Hyperspectral Remote Sensing Images," in IEEE Access, vol. 5, pp. 5640-5647, 2017.
 
 \bibitem{further-use-3}Lili Zhang, Chunhui Zhao.A spectral-spatial method based on low-rank and sparse matrix decomposition for hyperspectral anomaly detection[J].International Journal of Remote Sensing,2017,38(14):4047-4068.
@@ -682,7 +722,14 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \bibitem{Tensor-3}Liu, Hongyi, Hanyang Li, Zebin Wu and Z. Wei. “Hyperspectral Image Recovery Using Non-Convex Low-Rank Tensor Approximation.” Remote. Sens. 12 (2020): 2264.
 
 \bibitem{gamma}[1]王洪雁,王拓,潘勉,汪祖民.基于伽马范数最小化的图像去噪算法[J].通信学报,2020,41(10):222-230.
-\bibitem{others-1}李欢. 基于低秩稀疏理论的图像去噪算法研究[D].南京邮电大学,2018.
+\bibitem{others-1}李欢.基于低秩稀疏理论的图像去噪算法研究[D]. 南京:南京邮电大学,2018.
 \end{thebibliography}
 
+\newpage
+\begin{center}
+{\Large{\bf{致 \quad 谢}}}
+\end{center}
+\par 本论文是在贾育衡老师的悉心指导下完成的。在毕设初期，我对“高光谱图像的非凸低秩表示”这方面不甚了解，面对这方面浩如烟海的研究文献不知所措。贾老师在获悉这一情况后，帮助我概括出这类文章的写作思路。就好像醍醐灌顶一样，我逐渐理清了这方面的研究路线。接下来，我按照贾老师的建议，对收集到的论文进行了分类与总结。当我对如何撰写一篇逻辑严谨、行文流畅的论文感到困惑的时候，贾老师提纲挈领地指出文章的结构：综述、实验与分析，而这也是本论文的最终结构。除了对我在学业上的帮助，贾老师对我的不断鼓励给我提供了做好毕设的动力。在人生下一阶段的方向选择的问题上，贾老师也给出了一些建议与帮助。“夫蚊虻终日经营，不能越阶序，然附骥尾则涉千里，攀鸿鹄则翔四海。”可以想象，如果没有贾老师的帮助、仅仅依靠我自己的努力，我很难顺利地完成毕业设计。
+\par 在东南大学的四年时光，将是我人生篇章里充实的一页。在这四年里，在老师、同学和朋友的陪伴下，我有着很多难忘的经历。在大一、大二，作为班长，我协助学院管理班级；在大二的寒假，我与袁华和宋晨辉两位同学组队参加2019美国大学生数学建模竞赛；在伍家松老师的指导下，我与袁华和张逸帆两位同学合作完成了一个省创SRTP项目；在SAP实习期间，我与Nanjing Branch的同事们、SAP Labs 的Francesco Di Cerbo一起工作$\cdots\cdots$ 正是这些经历，让我比起四年前更加成熟。如果没有作为班长管理班级的经历，我不会如此深刻地感受到为集体奉献的意义、作为领导者的责任与担当。虽然我在高中就背诵过《荀子$\cdot$天论》中的“君子敬其在己者，不慕其在天者”，但我从来没有真正理解过这句话，那时候我偏执地认为付出就是为了“有形的收获”。但大学四年里大大小小、或成功或失利的竞赛经历，却让我逐渐认可了在付出之后，那“无形收获”的“无用之用”，我也慢慢地学会了去坦然接受尽完全力之后的任何结果。在SRTP 项目开展期间，我与队友们通力合作，并借机提高自己的团队合作能力。在SAP 实习期间，除了专业水平，我的表达能力也有了进一步的提高，而与Francesco的Sync Meeting则为我提供了宝贵的提高英文交流水平的机会。除此之外，实习期间的收入也帮助我树立了正确的金钱观与消费观。
+\par 最后，我真诚地感谢母校为我提供了一个良好的成长环境、学院对我的关怀、老师们对我的指导与鼓励、同学们和朋友们对我的支持。
 \end{document}

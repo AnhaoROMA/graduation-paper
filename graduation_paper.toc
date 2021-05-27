@@ -25,6 +25,6 @@
 \contentsline {subsection}{\numberline {6.2}混合噪声的降噪问题}{16}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}使用张量的降噪方法}{16}{subsection.6.3}
 \contentsline {subsection}{\numberline {6.4}低秩特性的其他应用}{16}{subsection.6.4}
-\contentsline {section}{\numberline {7}总结}{17}{section.7}
-\contentsline {section}{参考文献}{18}{section.7}
+\contentsline {section}{\numberline {7}总结}{18}{section.7}
+\contentsline {section}{参考文献}{19}{section.7}
 \contentsfinish 
