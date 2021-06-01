@@ -234,6 +234,8 @@ rank(X) \approx \sum\limits_{i=1}^{n}f(\sigma_i(X))
 %\par$\left\|*\right\|_F$表示$Frobenius$范数；
 %\par$\lambda$是正则化参数。
 %\par 同理，式\ref{NN-equation}、\ref{TNN-equation}、\ref{WNN-equation}、\ref{log-equation} 也需要更新为形如式\ref{F-rank}的最优化方程。
+\par 已有的高光谱图像降噪算法主要归纳为两类：一类是基于空间维的降噪算法。此类算法从人类的视觉角度出发，将高光谱图像的每个波段视为灰度图像，直接应用数字图像处理领域中的、已经发展得较为成熟的图像降噪算法对高光谱图像进行逐波段降噪。这类算法的典型代表有：非局部均值算法（Non-Local Mean, NLM）\cite{NLM}、总变分模型（Total Variation, TV）\cite{TV}、高斯混合模型（Gaussian Mixture Model, GMM）\cite{GMM}、基于小波变换的三维块匹配快速降噪算法（Block-Matching and 3D filtering, BM3D）\cite{BM3D}，以及本文第\ref{research-route} 章提到的几种核范数最小化模型。此类算法应用方式简单，但是，大多算法也仅限于对传统二维图像降噪算法的简单应用和推广，侧重于从空间维对高光谱图像的单个波段进行去噪。然而，空间维的信息不能充分地反映高光谱图像的全部信息，基于空间维的降噪算法忽略了高光谱图像波段间的高度相关性。对高光谱图像所有波段进行逐降噪不仅计算复杂度高，而且由于没有考虑到光谱维的相关性。本章所述的几种降噪方法可以被归类到这一类方法中去。另一类是基于联合空间-光谱维的降噪算法。为了充分利用空间维和光谱维的高度相关性，除空间维外，这一类算法考虑到了光谱维的相关性。例如，光谱-空间自适应总变分模型（Spectral–Spatial Adaptive Hyperspectral Total Variation, SSAHTV）\cite{SSAHTV}提出：在空间维中，算法对每一个像素的降噪强度应根据不同地物类型进行自适应调节，同样在光谱维中，算法对每一个波段的降噪强度也应根据不同波段的噪声强度进行自适应调节。\cite{BM4D}和\cite{VBM4D}是基于BM3D算法提出的对图像序列或者视频降噪的BM4D和VBM4D算法，在高光谱图像降噪中，这两个算法将高光谱图像立方体视为图像序列或视频进行降噪。MSPCA-BM3D\cite{MSPCA-BM3D}提出通过非局部（non-local）空间自适应和光谱维去相关对多光谱或高光谱图像进行降噪。PCA+BM4D\cite{PCAplusBM4D}首先对有噪声的高光谱数据进行主成分变换，保持前几个信号能量高的主成分不变，使用BM4D算法对剩余信号低能量的主成分进行降噪\cite{yaodan}。
+
 \par 在第\ref{research-route}章，本文给出了多种基于低秩假设的一维图像降噪方法。对高光谱图像的降噪可以采用“分治”的策略：高光谱图像的每一个通道都可以视为一张一维图像，对这些一维图像分别进行降噪处理，最后再将那些去噪后的一维图像按原本的顺序拼成一张高维图像，那么这张高维图像即是降噪后的高光谱图像。本章的剩余部分将具体分析第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些核范数的替代函数对一维图像进行降噪。
 \newline
 \subsection{使用核范数替代秩函数的降噪方法}
@@ -296,6 +298,10 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \sum\limits_{i=1
 \begin{itemize}
 \item 本文的全部代码：{\url{https://github.com/AnhaoROMA/Graduation_Design.git}}
 \item 实验环境：MATLAB R2018b
+\item 实验配置：
+\par 设备名称：Lenovo LAPTOP-06D3M7TP
+\par 处理器：Intel(R) Core(TM) i7-7700HQ CPU @2.80GHz 2.81GHz
+\par 操作系统：Microsoft Windows 10 家庭中文版
 \end{itemize}
 \subsection{评价降噪效果的指标——峰值信噪比}
 \par 给定一个大小为$m \times n$的干净图像$I$和它的含噪图像$K$，它们的均方误差（Mean Square Error, MSE）为：
@@ -708,6 +714,22 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 
 \bibitem{CNN-2}Nie, F. et al. “Joint Capped Norms Minimization for Robust Matrix Recovery.” IJCAI (2017).
 % \bibitem{merge-1}Joint capped norms minimization for robust matrix recovery.
+
+\bibitem{NLM}A. Buades, B. Coll and J. -. Morel, "A non-local algorithm for image denoising," 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'05), 2005, pp. 60-65 vol. 2. %, doi: 10.1109/CVPR.2005.38.
+
+\bibitem{TV}Leonid I. Rudin, Stanley Osher, Emad Fatemi.Nonlinear total variation based noise removal algorithms[J].Physica D: Nonlinear Phenomena,1992,60(1):259-268.
+
+\bibitem{GMM}Afonso Teodoro, Mariana Almeida, Mario Figueiredo.Single-frame Image Denoising and Inpainting Using Gaussian Mixtures[J].Proceedings of the International Conference on Pattern Recognition Applications and Methods,2015,2:283-288.
+
+\bibitem{BM3D}K. Dabov, A. Foi, V. Katkovnik and K. Egiazarian, "Image Denoising by Sparse 3-D Transform-Domain Collaborative Filtering," in IEEE Transactions on Image Processing, vol. 16, no. 8, pp. 2080-2095, Aug. 2007. %, doi: 10.1109/TIP.2007.901238.
+    
+\bibitem{SSAHTV}Q. Yuan, L. Zhang and H. Shen, "Hyperspectral Image Denoising Employing a Spectral–Spatial Adaptive Total Variation Model," in IEEE Transactions on Geoscience and Remote Sensing, vol. 50, no. 10, pp. 3660-3677, Oct. 2012. %, doi: 10.1109/TGRS.2012.2185054.
+\bibitem{BM4D}M. Maggioni, V. Katkovnik, K. Egiazarian and A. Foi, "Nonlocal Transform-Domain Filter for Volumetric Data Denoising and Reconstruction," in IEEE Transactions on Image Processing, vol. 22, no. 1, pp. 119-133, Jan. 2013. %, doi: 10.1109/TIP.2012.2210725.
+\bibitem{VBM4D}M. Maggioni, G. Boracchi, A. Foi and K. Egiazarian, "Video Denoising, Deblocking, and Enhancement Through Separable 4-D Nonlocal Spatiotemporal Transforms," in IEEE Transactions on Image Processing, vol. 21, no. 9, pp. 3952-3966, Sept. 2012. %, doi: 10.1109/TIP.2012.2199324.
+\bibitem{MSPCA-BM3D}Danielyan A, Foi A, Katkovnik V, et al. Denoising of multispectral images via nonlocal groupwise spectrum-PCA[C]//Conference on Colour in Graphics, Imaging, and Vision. Society for Imaging Science and Technology, 2010, 2010(1): 261-266.
+\bibitem{PCAplusBM4D}CHEN G, BUI T D, QUACH K G, et al. Denoising Hyperspectral Imagery Using Principal Component Analysis and Block-Matching 4D Filtering[J]. Canadian Journal of Remote Sensing, 2014, 40(1):60–66.
+
+\bibitem{yaodan}姚丹. 基于低秩表示的高光谱图像降噪和修复算法研究[D].中国科学院大学(中国科学院遥感与数字地球研究所),2018.
 
 \bibitem{merge-2}Y. Xie, S. Gu, Y. Liu, W. Zuo, W. Zhang and L. Zhang, "Weighted Schatten  $p$ -Norm Minimization for Image Denoising and Background Subtraction," in IEEE Transactions on Image Processing, vol. 25, no. 10, pp. 4842-4857, Oct. 2016.%, doi: 10.1109/TIP.2016.2599290.
 
