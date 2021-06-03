@@ -105,11 +105,11 @@ $\bullet$地学
 \end{block}
 \end{frame}
 
-\section[相关工作]{相关工作}
-\begin{frame}
-\frametitle{\textbf{相关工作}}
-	
-\end{frame}
+%\section[相关工作]{相关工作}
+%\begin{frame}
+%\frametitle{\textbf{相关工作}}
+%
+%\end{frame}
 
 \section[研究路线]{研究路线}
 \begin{frame}
@@ -196,13 +196,13 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{\le
 \column{.55\textwidth}
 \par 式\ref{F-rank}
 \begin{displaymath}
-	arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{rank(X)}}
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{rank(X)}}
 \end{displaymath}
 \par 更新为
 \begin{equation}
-	\centering
-	arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{\left\|X\right\|_{tr,*}}}
-	\label{F-TNN}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{\left\|X\right\|_{tr,*}}}
+\label{F-TNN}
 \end{equation}
 式中，
 \par $\left\|*\right\|_{tr,*}$表示截断式核范数。
@@ -233,274 +233,260 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{\le
 式中，
 \par $\left\|*\right\|_{w,*}$表示权重式核范数。
 \par $\left\|X\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i(X)$
-	
 \end{frame}
 
 \begin{frame}
 \frametitle{\textbf{用$log$-核范数替代秩函数}}
 \begin{columns}
-	\column{.55\textwidth}
-	\par 式\ref{F-rank}
-	\begin{displaymath}
-		arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{rank(X)}}
-	\end{displaymath}
-	\par 更新为
-	\begin{equation}
-		\centering
-		arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{\left\|X\right\|_{log,*}}}
-		\label{F-LNN}
-	\end{equation}
-	式中，
-	\par $\left\|*\right\|_{log,*}$表示$log$-核范数。
-	\par $\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$
-	
-	\column{.45\textwidth}
-	\begin{figure}[!t]
-		\centering
-		\includegraphics[scale=0.3]{surrogate-to-rank-1.png}
-		\caption{$log$-核范数的几何意义}
-		\label{surrogate-to-rank-1}
-	\end{figure}
+\column{.55\textwidth}
+\par 式\ref{F-rank}
+\begin{displaymath}
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{rank(X)}}
+\end{displaymath}
+\par 更新为
+\begin{equation}
+\centering
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{\left\|X\right\|_{log,*}}}
+\label{F-LNN}
+\end{equation}
+式中，
+\par $\left\|*\right\|_{log,*}$表示$log$-核范数。
+\par $\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$
+
+\column{.45\textwidth}
+\begin{figure}[!t]
+\centering
+\includegraphics[scale=0.3]{surrogate-to-rank-1.png}
+\caption{$log$-核范数的几何意义}
+\label{surrogate-to-rank-1}
+\end{figure}
 \end{columns}
 \end{frame}
 
-%\section[方法]{研究方法与数据集特征}
-%
-%
-%		\begin{frame}
-%		  \frametitle{\textbf{爬取公共短消息网关}}
-%            % ----------------分栏的结构开始---------------- %
-%            % 该结构中使用block分开两个内容区
-%            % 可根据需要进行图文混排？我还没试过，我想应该可以
-%            \begin{columns}
-%                \column{.5\textwidth}
-%                \footnotesize
-%                \begin{itemize}
-%                  \item 使用Scrapy框架爬取公共网关
-%                  \item 收集8个公共短信网关在14个月的数据
-%                  \item 共抓取386,327条数据
-%                \end{itemize}
-%
-%                \column{.5\textwidth}
-%                \begin{table}
-%                \caption{公共网关及抓取的信息数}
-%                \label{table1:gateways}
-%                \centering
-%                \footnotesize
-%                \begin{tabular}{|c|c|}
-%                \hline
-%                \textbf{Site}           & \textbf{Messages}\\
-%                \hline
-%                receivesmsonline.net    &81313\\
-%                \hline
-%                receive-sms-online.info &69389\\
-%                \hline
-%                receive-sms-now.com     &63797\\
-%                \hline
-%                 hs3x.com               &55499\\
-%                \hline
-%                receivesmsonline.com    &44640\\
-%                \hline
-%                receivefreesms.com      &37485\\
-%                \hline
-%                receive-sms-online.com  &27094\\
-%                \hline
-%                 e-receivesms.com       &7107\\
-%                \hline
-%                \end{tabular}
-%                \end{table}
-%            \end{columns}
-%
-%		\end{frame}
-%
-%        \begin{frame}
-%		  \frametitle{\textbf{消息聚类分析}}
-%            \begin{block}{\textbf{基本思路}}
-%                \begin{itemize}
-%                    \item 使用编辑距离矩阵将类似的消息归于一张连通图中。
-%                    \item 使用固定值替换感兴趣的消息，如代码、email地址。
-%                    \item 查找归一化距离小于阈值的消息，并确定聚类边界。
-%                \end{itemize}
-%            \end{block}
-%
-%            \begin{block}{\textbf{实现步骤}}
-%                \begin{enumerate}
-%                  \item 加载所有消息。
-%                  \item 用固定的字符串替换数字、电子邮件和URL以预处理消息。
-%                  \item 将预处理后的信息按字母排序。
-%                  \item 通过使用编辑距离阈值(0.9)来确定聚类边界。
-%                  \item 手动标记各个聚类，以确定服务提供者、消息类别等。
-%                \end{enumerate}
-%            \end{block}
-%		\end{frame}
-%
-%        \begin{frame}
-%		  \frametitle{\textbf{消息分类结果}}
-%            \begin{itemize}
-%                \item \textbf{账户创建确认信息}：向来自服务提供者的用户提供了一个代码，该服务提供者需要在新帐户创建期间进行SMS验证。
-%                \item \textbf{活动确认信息}：向来自服务提供者的用户提供了请求授权进行活动的代码(例如，付款确认)。
-%                \item \textbf{一次性密码}：包含用户登录的代码的短信息。
-%                \item \textbf{用于绑定不同设备的一次性口令}：将消息发送给用户，以绑定一个新的电话号码或启用相应的移动应用程序。
-%                \item \textbf{重置密码口令}：包含密码重置密码的短信息。
-%                \item \textbf{其他}：其他未被指定为某种特定功能的消息。
-%            \end{itemize}
-%		\end{frame}
-%
-%        \begin{frame}
-%		  \frametitle{\textbf{消息分类结果}}
-%            \begin{columns}
-%                \column{.5\textwidth}
-%                \footnotesize
-%                \begin{itemize}
-%                  \item 账户创建和移动设备绑定占比最大，占51.6\%
-%                  \item 一次性密码信息占7.6\%
-%                  \item 密码重置消息占1.3\%
-%                  \item 包含“测试”关键词的消息占0.8\%
-%                \end{itemize}
-%
-%                \column{.5\textwidth}
-%                \begin{figure}[!t]
-%                    \centering
-%                    \includegraphics[width=1.1\textwidth]{figures/figure4.png}
-%                    \caption{消息的聚类}
-%                    \label{figure3_OTT}
-%                \end{figure}
-%            \end{columns}
-%		\end{frame}
-%
-%
-%
-%\section[分析]{SMS使用情况分析}
-%
-%
-%		\begin{frame}
-%		  \frametitle{\textbf{使用SMS作为安全信道}}
-%		  \begin{block}{\textbf{PII和其他敏感信息}}
-%                \begin{itemize}
-%                    \item 财务信息
-%                    \item 用户名和密码
-%                    \item 重置密码口令
-%                    \item 其他个人识别信息(PII)
-%                    \item 敏感程序的SMS活动
-%                \end{itemize}
-%            \end{block}
-%		\end{frame}
-%
-%        \begin{frame}
-%		  \frametitle{\textbf{使用SMS作为安全信道}}
-%            \begin{block}{\textbf{SMS编码熵}}
-%                使用 $\chi$方检验测试每组编码的熵。$\chi$方检验是一个零假设的显著性检验，用于测试SMS服务的编码是否是从低位到高位均匀分布的。若p值小于0.01，则表明观测值和理想均匀分布之间存在统计学上的显著差异。
-%                检验结果表明，65\%的SMS服务的编码熵较低，容易被预测和攻击。
-%            \end{block}
-%            \begin{columns}
-%
-%                \column{.26\textwidth}
-%                \begin{figure}
-%                    \centering
-%                    \includegraphics[width=1.1\textwidth]{figures/figure6.png}
-%                    \caption{WeChat}
-%                    \label{figure6_WeChat}
-%                \end{figure}
-%
-%                \column{.26\textwidth}
-%                \begin{figure}
-%                    \centering
-%                    \includegraphics[width=1.1\textwidth]{figures/figure7.png}
-%                    \caption{Talk2}
-%                    \label{figure3_Talk2}
-%                \end{figure}
-%
-%                \column{.26\textwidth}
-%                \begin{figure}
-%                    \centering
-%                    \includegraphics[width=1.1\textwidth]{figures/figure8.png}
-%                    \caption{Google}
-%                    \label{figure3_Google}
-%                \end{figure}
-%
-%            \end{columns}
-%
-%		\end{frame}
-%
-%		\begin{frame}
-%		  \frametitle{\textbf{SMS的恶意应用}}
-%            \begin{block}{\textbf{公共网关检测到的恶意信息}}
-%    		  \begin{itemize}
-%    		    \item \textbf{泄露用户位置信息}：短URL可以用于确定消息的源和目的地，即会泄漏用户的位置信息。
-%    		    \item \textbf{垃圾邮件宣传广告}：在公共网关服务中比例较低，约为1.0\%。
-%                \item \textbf{网络钓鱼活动}：试图欺骗用户，使其相信自己正与合法网站通信。
-%    		  \end{itemize}
-%            \end{block}
-%
-%            \begin{columns}
-%
-%                \column{.26\textwidth}
-%                \begin{figure}
-%                    \centering
-%                    \includegraphics[width=1.1\textwidth]{figures/figure9.png}
-%                    \caption{SMS地址分布}
-%                    \label{figure9_WeChat}
-%                \end{figure}
-%
-%                \column{.26\textwidth}
-%                \begin{figure}
-%                    \centering
-%                    \includegraphics[width=1.1\textwidth]{figures/figure10.png}
-%                    \caption{钓鱼短信实例}
-%                    \label{figure10_Talk2}
-%                \end{figure}
-%
-%                \column{.26\textwidth}
-%                \begin{figure}
-%                    \centering
-%                    \includegraphics[width=1.1\textwidth]{figures/figure11.png}
-%                    \caption{钓鱼网站}
-%                    \label{figure11_Talk2}
-%                \end{figure}
-%
-%            \end{columns}
-%
-%		\end{frame}
-%
-%\section[结论]{结论}
-%
-%
-%		\begin{frame}
-%		  \frametitle{\textbf{结论}}
-%		
-%		  \begin{itemize}
-%		    \item SMS生态系统在智能手机时代出现了新的发展，加入了更多新的设备和参与者。
-%		    \item 公共网关为用户提供了基于SMS的各种安全解决方案。
-%            \item 根据该研究，将SMS作为安全信道传递敏感信息存在一定的危险性。一些一次性的消息传递机制亟待改进。
-%            \item 至于短信滥用，公共网关可以用于规避一些安全性较差的认证机制，或进行PVA欺诈行为。
-%		  \end{itemize}
-%		\end{frame}
-%
-%
-%\section*{}
-%            \begin{frame}
-%
-%                \begin{center}
-%                    \begin{minipage}{1\textwidth}
-%                        \setbeamercolor{mybox}{fg=white, bg=black!60!green}
-%                        \begin{beamercolorbox}[wd=0.70\textwidth, rounded=true, shadow=true]{mybox}
-%                        \LARGE \centering Thanks for Listening.
-%                        \end{beamercolorbox}
-%                    \end{minipage}
-%                \end{center}
-%
-%                \begin{figure}[!t]
-%                    \centering
-%                    \includegraphics[width=.8\textwidth]{figures/figure5.png}
-%                    \label{figure4_ad}
-%                \end{figure}
-%            \end{frame}
+\begin{frame}
+\frametitle{\textbf{秩函数的其他放缩}}
+\begin{columns}
+\column{.6\textwidth}
+\begin{table}[H]
+\centering
+\caption{秩函数的不同放缩（部分）}
+\label{relaxation}
+	
+\begin{tabular}{c c}
+\toprule
+{\small{名称}}&{\small{表达式}}\\
+\toprule
+{\small{核范数}}&{\small{$\sum\limits_{i=1}^{n}\sigma_i$}}\\
+\hline
+{\small{截断式核范数}}&{\small{$\sum\limits_{i=r+1}^{n}\sigma_i$}}\\
+\hline
+{\small{权重式核范数}}&{\small{$\sum\limits_{i=1}^{n}w_i\sigma_i$}}\\
+\hline
+{\small{阀值式核范数}}&{\small{$\sum\limits_{i=r+1}^{n}min(\sigma_i, \theta)$}}\\
+\hline
+{\small{$log$-核范数}}&{\small{$\sum\limits_{i=1}^{n}log(\sigma_i+1)$}}\\
+\hline
+{\small{$\gamma$-核范数}}&{\small{$\sum\limits_{i=1}^{n}\cfrac{(1+\gamma)\sigma_i}{\gamma+\sigma_i}$}}\\
+\hline
+{\small{格曼}}&{\small{$\sum\limits_{i=1}^{n}\cfrac{\sigma_i}{\sigma_i + \gamma}$}}\\
+%\hline
+%{\small{拉普拉斯}}&{\small{$\sum\limits_{i=1}^{n}\left(1-exp(-\cfrac{\sigma_i}{\gamma})\right)$}}\\
+\bottomrule
+\end{tabular}
+\end{table}
+\column{.4\textwidth}
+\par 表\ref{relaxation}列举了秩函数的几种替代（surrogate），或称放缩（relaxation）。它们可以被统一成：
+\begin{displaymath}
+rank(X) \approx \sum\limits_{i=1}^{n}f(\sigma_i(X))
+\end{displaymath}
+\end{columns}
+\end{frame}
+
+\section[实验]{实验}
+\begin{frame}
+\frametitle{\textbf{实验数据}}
+\begin{columns}
+	
+\column{.25\textwidth}
+\includegraphics[scale=0.2]{exp-0.jpg}
+\includegraphics[scale=0.2]{exp-4.jpg}
+\includegraphics[scale=0.2]{exp-8.jpg}
+
+\column{.25\textwidth}
+\includegraphics[scale=0.2]{exp-1.jpg}
+\includegraphics[scale=0.2]{exp-5.jpg}
+\includegraphics[scale=0.2]{exp-9.jpg}
+
+\column{.25\textwidth}
+\includegraphics[scale=0.2]{exp-2.jpg}
+\includegraphics[scale=0.2]{exp-6.jpg}
+\includegraphics[scale=0.2]{exp-10.jpg}
+
+\column{.25\textwidth}
+\includegraphics[scale=0.2]{exp-3.jpg}
+\includegraphics[scale=0.2]{exp-7.jpg}
+\includegraphics[scale=0.2]{exp-11.jpg}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{降噪效果展示（以权重式范数为例）}}
+\begin{columns}
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_1.png}
+\caption{方差为0.1的零均值高斯噪声}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_3.png}
+\caption{方差为1的零均值高斯噪声}
+\end{figure}
+
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_2.png}
+\caption{方差为0.5的零均值高斯噪声}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_4.png}
+\caption{方差为5的零均值高斯噪声}
+\end{figure}
+
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{降噪效果展示（以权重式范数为例）}}
+\begin{columns}
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_5.png}
+\caption{5\%椒盐噪声}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_7.png}
+\caption{20\%椒盐噪声}
+\end{figure}
+
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_6.png}
+\caption{10\%椒盐噪声}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_8.png}
+\caption{40\%椒盐噪声}
+\end{figure}
+	
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{降噪效果展示（以权重式范数为例）}}
+\begin{columns}
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_9.png}
+\caption{10\%椒盐+方差为0.1的零均值高斯噪声}
+\end{figure}
+
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_10.png}
+\caption{10\%椒盐+方差为1的零均值高斯噪声}
+\end{figure}
+\end{columns}
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Screenshot_11.png}
+\caption{20\%椒盐+方差为1的零均值高斯噪声}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{不同降噪方法的降噪效果}}
+\begin{columns}
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{exp-type-gaussian.png}
+\caption{不同方差的零均值高斯噪声}
+\end{figure}
+\column{.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{exp-type-pepperandsalt.png}
+\caption{不同程度的椒盐噪声}
+\end{figure}
+\end{columns}
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{exp-type-mixed.png}
+\caption{不同的混合噪声}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textbf{不同降噪方法的降噪效果}}
+\begin{columns}
+\column{.55\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.45]{band-103.jpg}
+\caption{Urban数据集中一幅高光谱图像的第103个通道}
+\label{band-103}
+{\scriptsize{（数据来源：{\url{http://www.tec.army.mil/hypercube}}）}}
+\end{figure}
+
+\column{.22\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{band-103-NN.jpg}
+\caption{对图\ref{band-103}运用核范数降噪}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{band-103-WNN.jpg}
+\caption{对图\ref{band-103}运用权重式核范数降噪}
+\end{figure}
+
+\column{.22\textwidth}
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{band-103-TNN.jpg}
+\caption{对图\ref{band-103}运用截断式核范数降噪}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{band-103-LNN.jpg}
+\caption{对图\ref{band-103}运用$log$-核范数降噪}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
 \section[总结]{总结}
 %\begin{frame}
 %\frametitle{\textbf{总结}}
 %	
 %\end{frame}
-\section[QA]{Q\&A}
+\section[Q\&A]{Q\&A}
 %\begin{frame}
 %\frametitle{\textbf{Q\&A}}
 %	
@@ -511,7 +497,7 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot {\color{red}{\le
 \begin{minipage}{1\textwidth}
 \setbeamercolor{mybox}{fg=white, bg=black!60!green}
 \begin{beamercolorbox}[wd=0.70\textwidth, rounded=true, shadow=true]{mybox}
-\LARGE \centering 感谢各位评委老师们的聆听！
+\LARGE \centering 感谢评委老师们的聆听！
 \end{beamercolorbox}
 \end{minipage}
 \end{center}
