@@ -29,6 +29,10 @@
 \renewcommand\abstractname{{\large{摘要}}}
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
+\usepackage{titlesec} %自定义多级标题格式的宏包
+\usepackage{zhnumber}
+\titleformat{\section}{\centering\Large\bfseries}{第{\chinese{section}}章}{1em}{}
+
 \begin{document}
 \includepdf[pages={1,2}]{cover.pdf}
 	
@@ -40,7 +44,8 @@
 \par 对高光谱图像的降噪主要是利用了图像本身的低秩特性。由于基于秩最小化的降噪方法是一个NP-hard问题，最初，研究人员使用秩函数的凸近似，也就是核范数，去替代秩函数。尽管基于核范数最小化的降噪方法已经被应用于很多方面，它还是存在忽略奇异值的实际含义等方面的缺点。近年来，研究人员提出了一些对秩函数的非凸的放缩方式，并将其应用在图像降噪、矩阵补全等实际问题上。对这方面的研究路线可被概括成：提出对秩函数的放缩方式、建立最优化模型、求解模型。
 \par 本文首先回顾了一些其他研究人员提出的、秩函数的非凸放缩方法，包括截断式核范数、权重式核范数等。在回顾了对高光谱图像降噪的研究路线之后，本文通过对人造数据与真实数据进行实验，对比了不同放缩方法的降噪效果。此外，本文还对高光谱图像降噪的未来研究方向，以及低秩特性在其他领域的应用进行了讨论。
 \\
-{\bf{关键字}}\quad 高光谱图像 \quad 非凸 \quad 低秩 \quad 核范数 \quad 降噪
+\newline
+关键字：高光谱图像，非凸，低秩，核范数，降噪
 \newpage
 \begin{center}
 {\Large{\bf{Abstract}}}
@@ -48,6 +53,9 @@
 \par Hyper-spectral remote sensing technology takes use of imaging spectrometers to image ground objects in tens to hundreds of bands. As a result, Hyper-spectral image contains abundant spatial spectral information, making it be wildly used in environment, military, agriculture, and so on. Nevertheless, as hyper-spectral image is taken in such a natural environment where electromagnetic interference exists in, hyper-spectral image humans can obtain contains several kinds of noise, including Gaussian noise, salt and pepper noise, deadlines, and so on. Not to mention that the imaging equipments are not as precise as they should be. Hyper-spectral images with noise can not only degrade the visual effect, but also do harm to their further use. Therefore, it is necessary to denoise these noised hyper-spectral images before their use.
 \par When it comes to denoising hyper-spectral image, the low-rank character of natural image is mainly used by researchers. However, the denoising method which is based on Rank Minimization is a NP-hard problem. In this case, researchers tried to use nuclear norm, the convex relaxation to rank function, as the surrogate to rank function. Although this method which is based on Nuclear Norm Minimization has been wildly applied in many fields, it has some shortcomings, such as ignoring the physical meaning of different singular values. Several kinds of non-convex relaxation to rank function have been proposed in these years, and have been applied to some fields like Matrix Completion. The ideas of these paper can be concluded as: propose a new relaxation first, construct the corresponding optimization model later, and solve the model at last.
 \par At the commence of this paper, several kinds of relaxation to rank function are reviewed. Later, this paper presents the experiment result on synthetic data and real visual data, in order to make comparison of denoising effect between different kinds of relaxation. In addition, this paper makes discussion of the future research direction, as well as the application of low-rank character in other fields.
+\\
+\newline
+\par KEY WORDS: Hyper-Spectral Image, non-convex, low rank, nuclear norm, denoising
 \newpage
 {{\tableofcontents}}
 \newpage
@@ -593,7 +601,16 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \label{bands-189}
 \end{figure}
 \subsection{结果分析}
-\par 由表\ref{exp-res}及图\ref{bands-2}$\sim$图\ref{bands-189}，不难发现，基于权重式核范数与基于$log$-核范数的降噪方法比另外两种方法更加有效，这与本文第\ref{research-route}章的表述一致，即权重式核范数是针对截断式核范数的缺点所进行的改进。$log$-核范数比起权重式范数的优点在于，使用者无需事先决定权值$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_n\}$这个额外的参数。
+\par 由表\ref{exp-res}及图\ref{exp-types}，不难发现，基于权重式核范数与基于$log$-核范数的降噪方法比另外两种方法更加有效，这与本文第\ref{research-route}章的表述一致，即权重式核范数是针对截断式核范数的缺点所进行的改进。$log$-核范数比起权重式范数的优点在于，使用者无需事先决定权值$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_n\}$这个额外的参数。
+\begin{figure}[h]
+\centering
+\subfigure[不同方差的零均值高斯噪声]{\includegraphics[scale=0.3]{exp-type-gaussian.png}}
+\subfigure[不同程度的椒盐噪声]{\includegraphics[scale=0.3]{exp-type-pepperandsalt.png}}
+\subfigure[不同类型的混合噪声]{\includegraphics[scale=0.3]{exp-type-mixed.png}}
+\caption{表\ref{exp-res}的图示}
+\label{exp-types}
+\end{figure}
+	
 \par 图\ref{bands-2}$\sim$图\ref{bands-189}是本文在自然获取的高光谱图像上做的实验。由于需要将16位图像映射成8位图像，导致显示出的8位图像的每一位都对应着$2^8=256$个可能的、真实的数值。这也是导致不同的降噪结果在目视下非常相似的原因。
 \newpage
 \section{未来工作展望}
@@ -714,9 +731,11 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \end{thebibliography}
 	
 \newpage
-\begin{center}
-{\Large{\bf{致 \quad 谢}}}
-\end{center}
+%\begin{center}
+%{\Large{\bf{致 \quad 谢}}}
+%\end{center}
+\section*{致 \quad 谢}
+\addcontentsline{toc}{section}{致 \quad 谢}
 \par 本论文是在贾育衡老师的悉心指导下完成的。在毕设初期，我对“高光谱图像的非凸低秩表示”这方面不甚了解，面对这方面浩如烟海的研究文献不知所措。贾老师在获悉这一情况后，帮助我概括出这类文章的写作思路。就好像醍醐灌顶一样，我逐渐理清了这方面的研究路线。接下来，我按照贾老师的建议，对收集到的论文进行了分类与总结。当我对如何撰写一篇逻辑严谨、行文流畅的论文感到困惑的时候，贾老师提纲挈领地指出文章的结构：综述、实验与分析，而这也是本论文的最终结构。除了对我在学业上的帮助，贾老师对我的不断鼓励给我提供了做好毕设的动力。在人生下一阶段的方向选择的问题上，贾老师也给出了一些建议与帮助。“夫蚊虻终日经营，不能越阶序，然附骥尾则涉千里，攀鸿鹄则翔四海。”可以想象，如果没有贾老师的帮助、仅仅依靠我自己的努力，我很难顺利地完成毕业设计。
 \par 在东南大学的四年时光，将是我人生篇章里充实的一页。在这四年里，在老师、同学和朋友的陪伴下，我有着很多难忘的经历。在大一、大二，作为班长，我协助学院管理班级；在大二的寒假，我与袁华和宋晨辉两位同学组队参加2019美国大学生数学建模竞赛；在伍家松老师的指导下，我与袁华和张逸帆两位同学合作完成了一个省创SRTP项目；在SAP实习期间，我与Nanjing Branch的同事们、SAP Labs 的Francesco Di Cerbo一起工作$\cdots\cdots$ 正是这些经历，让我比起四年前更加成熟。如果没有作为班长管理班级的经历，我不会如此深刻地感受到为集体奉献的意义、作为领导者的责任与担当。虽然我在高中就背诵过《荀子$\cdot$天论》中的“君子敬其在己者，不慕其在天者”，但我从来没有真正理解过这句话，那时候我偏执地认为付出就是为了“有形的收获”。但大学四年里大大小小、或成功或失利的竞赛经历，却让我逐渐认可了在付出之后，那“无形收获”的“无用之用”，我也慢慢地学会了去坦然接受尽完全力之后的任何结果。在SRTP 项目开展期间，我与队友们通力合作，并借机提高自己的团队合作能力。在SAP实习期间，除了专业水平，我的表达能力也有了进一步的提高，而与Francesco的Sync Meeting则为我提供了宝贵的提高英文交流水平的机会。除此之外，实习期间的收入也帮助我树立了正确的金钱观与消费观。
 \par 最后，我真诚地感谢母校为我提供了一个良好的成长环境、学院对我的关怀、老师们对我的指导与鼓励、同学们和朋友们对我的支持。

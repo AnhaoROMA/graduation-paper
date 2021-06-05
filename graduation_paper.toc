@@ -27,4 +27,5 @@
 \contentsline {subsection}{\numberline {6.4}低秩特性的其他应用}{16}{subsection.6.4}%
 \contentsline {section}{\numberline {7}总结}{18}{section.7}%
 \contentsline {section}{参考文献}{19}{section.7}%
+\contentsline {section}{致 \hskip 1em\relax 谢}{22}{section.7}%
 \contentsfinish 
