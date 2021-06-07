@@ -47,12 +47,12 @@
 \subtitle{\fontsize{13pt}{14pt}\selectfont {在图像降噪方面的使用}}			
 %%%%----机构信息
 \institute[SEU]{
-	\fontsize{11pt}{12pt}\selectfont {东南大学{\quad}吴健雄学院}
+	\fontsize{10pt}{11pt}\selectfont {东南大学{\quad}吴健雄学院}
 }
 %%%%----个人信息设置
 \author[陈安皓]{
-	学生姓名：陈安皓\\
-	指导教师：贾育衡
+	\fontsize{13pt}{14pt}\selectfont {学生姓名：陈安皓}\\
+	\fontsize{13pt}{14pt}\selectfont {指导教师：贾育衡}
 }
 %%%%----日期信息
 \date[2021年6月8日]{
@@ -67,10 +67,10 @@
 
 \section*{目录}
 
-\begin{frame}
-\frametitle{\textbf{目录}}
-\textbf{\tableofcontents}
-\end{frame}
+%\begin{frame}
+%\frametitle{\textbf{目录}}
+%\textbf{\tableofcontents}
+%\end{frame}
 
 \section[引言]{引言}
 
@@ -119,9 +119,9 @@ $\bullet$地学
 Y = X + N
 \end{displaymath}
 式中，
-\par$X$代表未受到污染的、干净的图像，大小为$m \times n$；
-\par$N$代表噪声，大小为$m \times n$；
-\par$Y$代表成像设备获取到的图像，即受到污染的图像，大小为$m \times n$。
+\par$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；
+\par$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；
+\par$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$。
 \newline
 \par 那么，图像降噪的工作就是将$Y$复原为$X$。
 \end{frame}
@@ -133,7 +133,7 @@ Y = X + N
 \column{.5\textwidth}
 \begin{figure}[!t]
 \centering
-\includegraphics[scale=0.3]{example-figure.png}
+\includegraphics[scale=0.12]{x.png}
 \caption{一张自然图像}
 \label{example-figure}
 \end{figure}
@@ -141,7 +141,7 @@ Y = X + N
 \column{.5\textwidth}
 \begin{figure}[!t]
 \centering
-\includegraphics[scale=0.2]{example-figure-svd.png}
+\includegraphics[scale=0.21]{y.png}
 \caption{图\ref{example-figure}的奇异值分布图}
 \label{example-figure-svd}
 \end{figure}
@@ -162,9 +162,9 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot rank(X)
 \label{F-rank}
 \end{equation}
 式中，
-\par$X$代表未受到污染的、干净的图像，大小为$m \times n$；
-\par$N$代表噪声，大小为$m \times n$；
-\par$Y$代表成像设备获取到的图像，即受到污染的图像，大小为$m \times n$；
+\par$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；
+\par$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；
+\par$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；
 \par$\left\|*\right\|_F$表示$Frobenius$范数；
 \par$\lambda$是正则化参数。
 
