@@ -16,6 +16,8 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand*\HyPL@Entry[1]{}
 \HyPL@Entry{0<</S/D>>}
+\providecommand {\FN@pp@footnotehinttrue }{}
+\providecommand {\FN@pp@footnote@aux }[2]{}
 \HyPL@Entry{2<</S/R>>}
 \citation{whatishsi}
 \citation{howtogenanhsi}
@@ -46,13 +48,18 @@
 \citation{TNN-1}
 \citation{TNN-1}
 \citation{TNN-1}
-\@writefile{toc}{\contentsline {section}{\numberline {2}高光谱图像降噪的研究路线}{3}{section.2}\protected@file@percent }
-\newlabel{research-route}{{2}{3}{高光谱图像降噪的研究路线}{section.2}{}}
-\newlabel{ori-equation}{{1}{3}{高光谱图像降噪的研究路线}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}图像降噪的相关工作}{3}{section.2}\protected@file@percent }
+\newlabel{research-route}{{2}{3}{图像降噪的相关工作}{section.2}{}}
+\newlabel{ori-equation}{{1}{3}{图像降噪的相关工作}{equation.2.1}{}}
+\newlabel{svd-example-a}{{3(a)}{3}{Subfigure 3(a)}{subfigure.3.1}{}}
+\newlabel{sub@svd-example-a}{{(a)}{3}{Subfigure 3(a)\relax }{subfigure.3.1}{}}
+\newlabel{svd-example-b}{{3(b)}{3}{Subfigure 3(b)}{subfigure.3.2}{}}
+\newlabel{sub@svd-example-b}{{(b)}{3}{Subfigure 3(b)\relax }{subfigure.3.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 自然图像的低秩特性\relax }}{3}{figure.caption.4}\protected@file@percent }
 \newlabel{svd-example}{{3}{3}{自然图像的低秩特性\relax }{figure.caption.4}{}}
-\newlabel{Rank-equation}{{2}{3}{高光谱图像降噪的研究路线}{equation.2.2}{}}
-\newlabel{F-rank}{{3}{3}{高光谱图像降噪的研究路线}{equation.2.3}{}}
+\FN@pp@footnote@aux{1}{3}
+\newlabel{Rank-equation}{{2}{3}{图像降噪的相关工作}{equation.2.2}{}}
+\newlabel{F-rank}{{3}{3}{图像降噪的相关工作}{equation.2.3}{}}
 \citation{Review}
 \citation{WNN-1}
 \citation{TNN-1}
@@ -60,14 +67,14 @@
 \citation{CNN-1}
 \citation{CNN-2}
 \citation{log-norm}
-\newlabel{NN-equation}{{4}{4}{高光谱图像降噪的研究路线}{equation.2.4}{}}
-\newlabel{TNN-equation}{{5}{4}{高光谱图像降噪的研究路线}{equation.2.5}{}}
-\newlabel{WNN-equation}{{6}{4}{高光谱图像降噪的研究路线}{equation.2.6}{}}
-\newlabel{log-equation}{{7}{4}{高光谱图像降噪的研究路线}{equation.2.7}{}}
+\newlabel{NN-equation}{{4}{4}{图像降噪的相关工作}{equation.2.4}{}}
+\newlabel{TNN-equation}{{5}{4}{图像降噪的相关工作}{equation.2.5}{}}
+\newlabel{WNN-equation}{{6}{4}{图像降噪的相关工作}{equation.2.6}{}}
+\newlabel{log-equation}{{7}{4}{图像降噪的相关工作}{equation.2.7}{}}
 \citation{Review}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 不同放缩的几何意义\relax }}{5}{figure.caption.5}\protected@file@percent }
 \newlabel{surrogate-to-rank}{{4}{5}{不同放缩的几何意义\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {自然图像}}}{5}{figure.caption.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {自然图像——贝加尔湖图}}}{5}{figure.caption.5}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {(a)图的奇异值分布图}}}{5}{figure.caption.5}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {对秩函数的近似}}}{5}{figure.caption.5}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {被处理的奇异值}}}{5}{figure.caption.5}\protected@file@percent }
@@ -83,120 +90,122 @@
 \citation{MSPCA-BM3D}
 \citation{PCAplusBM4D}
 \citation{yaodan}
-\@writefile{toc}{\contentsline {section}{\numberline {3}相关工作}{6}{section.3}\protected@file@percent }
-\newlabel{related-work}{{3}{6}{相关工作}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}使用核范数替代秩函数的降噪方法}{6}{subsection.3.1}\protected@file@percent }
-\newlabel{F-nn}{{8}{6}{使用核范数替代秩函数的降噪方法}{equation.3.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}使用截断式核范数替代秩函数的降噪方法}{7}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}研究路线}{6}{section.3}\protected@file@percent }
+\newlabel{related-work}{{3}{6}{研究路线}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}高光谱图像降噪的相关研究}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}本章安排}{6}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}使用核范数替代秩函数的降噪方法}{7}{subsection.3.3}\protected@file@percent }
+\newlabel{F-nn}{{8}{7}{使用核范数替代秩函数的降噪方法}{equation.3.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}使用截断式核范数替代秩函数的降噪方法}{7}{subsection.3.4}\protected@file@percent }
 \newlabel{F-tnn}{{9}{7}{使用截断式核范数替代秩函数的降噪方法}{equation.3.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}使用权重式核范数替代秩函数的降噪方法}{7}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}使用权重式核范数替代秩函数的降噪方法}{7}{subsection.3.5}\protected@file@percent }
 \newlabel{F-wnn}{{10}{7}{使用权重式核范数替代秩函数的降噪方法}{equation.3.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}使用$log$-核范数替代秩函数的降噪方法}{7}{subsection.3.4}\protected@file@percent }
+\FN@pp@footnote@aux{2}{7}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}使用$log$-核范数替代秩函数的降噪方法}{7}{subsection.3.6}\protected@file@percent }
 \newlabel{F-lnn}{{11}{7}{使用$log$-核范数替代秩函数的降噪方法}{equation.3.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}实验部分}{8}{section.4}\protected@file@percent }
-\newlabel{experiment}{{4}{8}{实验部分}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}评价降噪效果的指标——峰值信噪比}{8}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}实验设计}{8}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}人造数据部分}{8}{subsubsection.4.2.1}\protected@file@percent }
-\newlabel{synthetic}{{4.2.1}{8}{人造数据部分}{subsubsection.4.2.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}真实视觉数据部分}{9}{subsubsection.4.2.2}\protected@file@percent }
-\newlabel{real}{{4.2.2}{9}{真实视觉数据部分}{subsubsection.4.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}实验数据}{9}{subsection.4.3}\protected@file@percent }
-\newlabel{syn-data-0}{{5(a)}{10}{Subfigure 5(a)}{subfigure.5.1}{}}
-\newlabel{sub@syn-data-0}{{(a)}{10}{Subfigure 5(a)\relax }{subfigure.5.1}{}}
-\newlabel{syn-data-1}{{5(b)}{10}{Subfigure 5(b)}{subfigure.5.2}{}}
-\newlabel{sub@syn-data-1}{{(b)}{10}{Subfigure 5(b)\relax }{subfigure.5.2}{}}
-\newlabel{syn-data-2}{{5(c)}{10}{Subfigure 5(c)}{subfigure.5.3}{}}
-\newlabel{sub@syn-data-2}{{(c)}{10}{Subfigure 5(c)\relax }{subfigure.5.3}{}}
-\newlabel{syn-data-3}{{5(d)}{10}{Subfigure 5(d)}{subfigure.5.4}{}}
-\newlabel{sub@syn-data-3}{{(d)}{10}{Subfigure 5(d)\relax }{subfigure.5.4}{}}
-\newlabel{syn-data-4}{{5(e)}{10}{Subfigure 5(e)}{subfigure.5.5}{}}
-\newlabel{sub@syn-data-4}{{(e)}{10}{Subfigure 5(e)\relax }{subfigure.5.5}{}}
-\newlabel{syn-data-5}{{5(f)}{10}{Subfigure 5(f)}{subfigure.5.6}{}}
-\newlabel{sub@syn-data-5}{{(f)}{10}{Subfigure 5(f)\relax }{subfigure.5.6}{}}
-\newlabel{syn-data-6}{{5(g)}{10}{Subfigure 5(g)}{subfigure.5.7}{}}
-\newlabel{sub@syn-data-6}{{(g)}{10}{Subfigure 5(g)\relax }{subfigure.5.7}{}}
-\newlabel{syn-data-7}{{5(h)}{10}{Subfigure 5(h)}{subfigure.5.8}{}}
-\newlabel{sub@syn-data-7}{{(h)}{10}{Subfigure 5(h)\relax }{subfigure.5.8}{}}
-\newlabel{syn-data-8}{{5(i)}{10}{Subfigure 5(i)}{subfigure.5.9}{}}
-\newlabel{sub@syn-data-8}{{(i)}{10}{Subfigure 5(i)\relax }{subfigure.5.9}{}}
-\newlabel{syn-data-9}{{5(j)}{10}{Subfigure 5(j)}{subfigure.5.10}{}}
-\newlabel{sub@syn-data-9}{{(j)}{10}{Subfigure 5(j)\relax }{subfigure.5.10}{}}
-\newlabel{syn-data-10}{{5(k)}{10}{Subfigure 5(k)}{subfigure.5.11}{}}
-\newlabel{sub@syn-data-10}{{(k)}{10}{Subfigure 5(k)\relax }{subfigure.5.11}{}}
-\newlabel{syn-data-11}{{5(l)}{10}{Subfigure 5(l)}{subfigure.5.12}{}}
-\newlabel{sub@syn-data-11}{{(l)}{10}{Subfigure 5(l)\relax }{subfigure.5.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 人造数据\relax }}{10}{figure.caption.7}\protected@file@percent }
-\newlabel{syn-data}{{5}{10}{人造数据\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {无噪声的原图}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {含方差为0.1的零均值高斯噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {含方差为0.5的零均值高斯噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {含方差为1的零均值高斯噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {含方差为5的零均值高斯噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {含5\%椒盐噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(g)}{\ignorespaces {含10\%椒盐噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(h)}{\ignorespaces {含20\%椒盐噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(i)}{\ignorespaces {含40\%椒盐噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(j)}{\ignorespaces {含10\%椒盐噪声与方差为0.1的零均值高斯噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(k)}{\ignorespaces {含10\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(l)}{\ignorespaces {含20\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{10}{figure.caption.7}\protected@file@percent }
-\newlabel{band-2}{{6(a)}{11}{Subfigure 6(a)}{subfigure.6.1}{}}
-\newlabel{sub@band-2}{{(a)}{11}{Subfigure 6(a)\relax }{subfigure.6.1}{}}
-\newlabel{band-103}{{6(b)}{11}{Subfigure 6(b)}{subfigure.6.2}{}}
-\newlabel{sub@band-103}{{(b)}{11}{Subfigure 6(b)\relax }{subfigure.6.2}{}}
-\newlabel{band-187}{{6(c)}{11}{Subfigure 6(c)}{subfigure.6.3}{}}
-\newlabel{sub@band-187}{{(c)}{11}{Subfigure 6(c)\relax }{subfigure.6.3}{}}
-\newlabel{band-189}{{6(d)}{11}{Subfigure 6(d)}{subfigure.6.4}{}}
-\newlabel{sub@band-189}{{(d)}{11}{Subfigure 6(d)\relax }{subfigure.6.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 真实视觉数据\relax }}{11}{figure.caption.8}\protected@file@percent }
-\newlabel{real-data}{{6}{11}{真实视觉数据\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {高光谱图像的第2通道}}}{11}{figure.caption.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {高光谱图像的第103通道}}}{11}{figure.caption.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {高光谱图像的第187通道}}}{11}{figure.caption.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {高光谱图像的第189通道}}}{11}{figure.caption.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}实验结果与分析}{11}{section.5}\protected@file@percent }
-\newlabel{analysis}{{5}{11}{实验结果与分析}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}实验结果}{11}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}人造数据部分}{11}{subsubsection.5.1.1}\protected@file@percent }
-\newlabel{Screenshot_1}{{7(a)}{12}{Subfigure 7(a)}{subfigure.7.1}{}}
-\newlabel{sub@Screenshot_1}{{(a)}{12}{Subfigure 7(a)\relax }{subfigure.7.1}{}}
-\newlabel{Screenshot_2}{{7(b)}{12}{Subfigure 7(b)}{subfigure.7.2}{}}
-\newlabel{sub@Screenshot_2}{{(b)}{12}{Subfigure 7(b)\relax }{subfigure.7.2}{}}
-\newlabel{Screenshot_3}{{7(c)}{12}{Subfigure 7(c)}{subfigure.7.3}{}}
-\newlabel{sub@Screenshot_3}{{(c)}{12}{Subfigure 7(c)\relax }{subfigure.7.3}{}}
-\newlabel{Screenshot_4}{{7(d)}{12}{Subfigure 7(d)}{subfigure.7.4}{}}
-\newlabel{sub@Screenshot_4}{{(d)}{12}{Subfigure 7(d)\relax }{subfigure.7.4}{}}
-\newlabel{Screenshot_5}{{7(e)}{12}{Subfigure 7(e)}{subfigure.7.5}{}}
-\newlabel{sub@Screenshot_5}{{(e)}{12}{Subfigure 7(e)\relax }{subfigure.7.5}{}}
-\newlabel{Screenshot_6}{{7(f)}{12}{Subfigure 7(f)}{subfigure.7.6}{}}
-\newlabel{sub@Screenshot_6}{{(f)}{12}{Subfigure 7(f)\relax }{subfigure.7.6}{}}
-\newlabel{Screenshot_7}{{7(g)}{12}{Subfigure 7(g)}{subfigure.7.7}{}}
-\newlabel{sub@Screenshot_7}{{(g)}{12}{Subfigure 7(g)\relax }{subfigure.7.7}{}}
-\newlabel{Screenshot_8}{{7(h)}{12}{Subfigure 7(h)}{subfigure.7.8}{}}
-\newlabel{sub@Screenshot_8}{{(h)}{12}{Subfigure 7(h)\relax }{subfigure.7.8}{}}
-\newlabel{Screenshot_9}{{7(i)}{12}{Subfigure 7(i)}{subfigure.7.9}{}}
-\newlabel{sub@Screenshot_9}{{(i)}{12}{Subfigure 7(i)\relax }{subfigure.7.9}{}}
-\newlabel{Screenshot_10}{{7(j)}{12}{Subfigure 7(j)}{subfigure.7.10}{}}
-\newlabel{sub@Screenshot_10}{{(j)}{12}{Subfigure 7(j)\relax }{subfigure.7.10}{}}
-\newlabel{Screenshot_11}{{7(k)}{12}{Subfigure 7(k)}{subfigure.7.11}{}}
-\newlabel{sub@Screenshot_11}{{(k)}{12}{Subfigure 7(k)\relax }{subfigure.7.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 经基于权重式核范数的降噪方法处理后的结果\relax }}{12}{figure.caption.9}\protected@file@percent }
-\newlabel{Screenshot}{{7}{12}{经基于权重式核范数的降噪方法处理后的结果\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {含方差为0.1的零均值高斯噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {含方差为0.5的零均值高斯噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {含方差为1的零均值高斯噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {含方差为5的零均值高斯噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {含5\%椒盐噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {含10\%椒盐噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(g)}{\ignorespaces {含20\%椒盐噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(h)}{\ignorespaces {含40\%椒盐噪声的图像经降噪处理后的结果}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(i)}{\ignorespaces {含10\%椒盐噪声与方差为0.1的零均值高斯噪声的图像}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(j)}{\ignorespaces {含10\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(k)}{\ignorespaces {含20\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{12}{figure.caption.9}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces 用不同的降噪方法对不同的图像进行降噪处理的效果\relax }}{13}{table.caption.10}\protected@file@percent }
-\newlabel{exp-res}{{3}{13}{用不同的降噪方法对不同的图像进行降噪处理的效果\relax }{table.caption.10}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}真实视觉数据部分}{13}{subsubsection.5.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}结果分析}{13}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}本章小结}{8}{subsection.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}实验部分}{9}{section.4}\protected@file@percent }
+\newlabel{experiment}{{4}{9}{实验部分}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}评价降噪效果的指标——峰值信噪比}{9}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}实验设计}{9}{subsection.4.2}\protected@file@percent }
+\FN@pp@footnote@aux{3}{9}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}人造数据部分}{9}{subsubsection.4.2.1}\protected@file@percent }
+\newlabel{synthetic}{{4.2.1}{9}{人造数据部分}{subsubsection.4.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}真实视觉数据部分}{10}{subsubsection.4.2.2}\protected@file@percent }
+\newlabel{real}{{4.2.2}{10}{真实视觉数据部分}{subsubsection.4.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}实验数据}{10}{subsection.4.3}\protected@file@percent }
+\newlabel{syn-data-0}{{5(a)}{11}{Subfigure 5(a)}{subfigure.5.1}{}}
+\newlabel{sub@syn-data-0}{{(a)}{11}{Subfigure 5(a)\relax }{subfigure.5.1}{}}
+\newlabel{syn-data-1}{{5(b)}{11}{Subfigure 5(b)}{subfigure.5.2}{}}
+\newlabel{sub@syn-data-1}{{(b)}{11}{Subfigure 5(b)\relax }{subfigure.5.2}{}}
+\newlabel{syn-data-2}{{5(c)}{11}{Subfigure 5(c)}{subfigure.5.3}{}}
+\newlabel{sub@syn-data-2}{{(c)}{11}{Subfigure 5(c)\relax }{subfigure.5.3}{}}
+\newlabel{syn-data-3}{{5(d)}{11}{Subfigure 5(d)}{subfigure.5.4}{}}
+\newlabel{sub@syn-data-3}{{(d)}{11}{Subfigure 5(d)\relax }{subfigure.5.4}{}}
+\newlabel{syn-data-4}{{5(e)}{11}{Subfigure 5(e)}{subfigure.5.5}{}}
+\newlabel{sub@syn-data-4}{{(e)}{11}{Subfigure 5(e)\relax }{subfigure.5.5}{}}
+\newlabel{syn-data-5}{{5(f)}{11}{Subfigure 5(f)}{subfigure.5.6}{}}
+\newlabel{sub@syn-data-5}{{(f)}{11}{Subfigure 5(f)\relax }{subfigure.5.6}{}}
+\newlabel{syn-data-6}{{5(g)}{11}{Subfigure 5(g)}{subfigure.5.7}{}}
+\newlabel{sub@syn-data-6}{{(g)}{11}{Subfigure 5(g)\relax }{subfigure.5.7}{}}
+\newlabel{syn-data-7}{{5(h)}{11}{Subfigure 5(h)}{subfigure.5.8}{}}
+\newlabel{sub@syn-data-7}{{(h)}{11}{Subfigure 5(h)\relax }{subfigure.5.8}{}}
+\newlabel{syn-data-8}{{5(i)}{11}{Subfigure 5(i)}{subfigure.5.9}{}}
+\newlabel{sub@syn-data-8}{{(i)}{11}{Subfigure 5(i)\relax }{subfigure.5.9}{}}
+\newlabel{syn-data-9}{{5(j)}{11}{Subfigure 5(j)}{subfigure.5.10}{}}
+\newlabel{sub@syn-data-9}{{(j)}{11}{Subfigure 5(j)\relax }{subfigure.5.10}{}}
+\newlabel{syn-data-10}{{5(k)}{11}{Subfigure 5(k)}{subfigure.5.11}{}}
+\newlabel{sub@syn-data-10}{{(k)}{11}{Subfigure 5(k)\relax }{subfigure.5.11}{}}
+\newlabel{syn-data-11}{{5(l)}{11}{Subfigure 5(l)}{subfigure.5.12}{}}
+\newlabel{sub@syn-data-11}{{(l)}{11}{Subfigure 5(l)\relax }{subfigure.5.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 人造数据\relax }}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{syn-data}{{5}{11}{人造数据\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {无噪声的原图}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {含方差为0.1的零均值高斯噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {含方差为0.5的零均值高斯噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {含方差为1的零均值高斯噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {含方差为5的零均值高斯噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {含5\%椒盐噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(g)}{\ignorespaces {含10\%椒盐噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(h)}{\ignorespaces {含20\%椒盐噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(i)}{\ignorespaces {含40\%椒盐噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(j)}{\ignorespaces {含10\%椒盐噪声与方差为0.1的零均值高斯噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(k)}{\ignorespaces {含10\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(l)}{\ignorespaces {含20\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{11}{figure.caption.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}实验结果与分析}{11}{subsection.4.4}\protected@file@percent }
+\newlabel{analysis}{{4.4}{11}{实验结果与分析}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}人造数据部分的实验结果}{11}{subsubsection.4.4.1}\protected@file@percent }
+\newlabel{band-2}{{6(a)}{12}{Subfigure 6(a)}{subfigure.6.1}{}}
+\newlabel{sub@band-2}{{(a)}{12}{Subfigure 6(a)\relax }{subfigure.6.1}{}}
+\newlabel{band-103}{{6(b)}{12}{Subfigure 6(b)}{subfigure.6.2}{}}
+\newlabel{sub@band-103}{{(b)}{12}{Subfigure 6(b)\relax }{subfigure.6.2}{}}
+\newlabel{band-187}{{6(c)}{12}{Subfigure 6(c)}{subfigure.6.3}{}}
+\newlabel{sub@band-187}{{(c)}{12}{Subfigure 6(c)\relax }{subfigure.6.3}{}}
+\newlabel{band-189}{{6(d)}{12}{Subfigure 6(d)}{subfigure.6.4}{}}
+\newlabel{sub@band-189}{{(d)}{12}{Subfigure 6(d)\relax }{subfigure.6.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 真实视觉数据\relax }}{12}{figure.caption.8}\protected@file@percent }
+\newlabel{real-data}{{6}{12}{真实视觉数据\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {高光谱图像的第2通道}}}{12}{figure.caption.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {高光谱图像的第103通道}}}{12}{figure.caption.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {高光谱图像的第187通道}}}{12}{figure.caption.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {高光谱图像的第189通道}}}{12}{figure.caption.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}真实视觉数据部分的实验结果}{12}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}结果分析}{12}{subsubsection.4.4.3}\protected@file@percent }
+\newlabel{Screenshot_1}{{7(a)}{13}{Subfigure 7(a)}{subfigure.7.1}{}}
+\newlabel{sub@Screenshot_1}{{(a)}{13}{Subfigure 7(a)\relax }{subfigure.7.1}{}}
+\newlabel{Screenshot_2}{{7(b)}{13}{Subfigure 7(b)}{subfigure.7.2}{}}
+\newlabel{sub@Screenshot_2}{{(b)}{13}{Subfigure 7(b)\relax }{subfigure.7.2}{}}
+\newlabel{Screenshot_3}{{7(c)}{13}{Subfigure 7(c)}{subfigure.7.3}{}}
+\newlabel{sub@Screenshot_3}{{(c)}{13}{Subfigure 7(c)\relax }{subfigure.7.3}{}}
+\newlabel{Screenshot_4}{{7(d)}{13}{Subfigure 7(d)}{subfigure.7.4}{}}
+\newlabel{sub@Screenshot_4}{{(d)}{13}{Subfigure 7(d)\relax }{subfigure.7.4}{}}
+\newlabel{Screenshot_5}{{7(e)}{13}{Subfigure 7(e)}{subfigure.7.5}{}}
+\newlabel{sub@Screenshot_5}{{(e)}{13}{Subfigure 7(e)\relax }{subfigure.7.5}{}}
+\newlabel{Screenshot_6}{{7(f)}{13}{Subfigure 7(f)}{subfigure.7.6}{}}
+\newlabel{sub@Screenshot_6}{{(f)}{13}{Subfigure 7(f)\relax }{subfigure.7.6}{}}
+\newlabel{Screenshot_7}{{7(g)}{13}{Subfigure 7(g)}{subfigure.7.7}{}}
+\newlabel{sub@Screenshot_7}{{(g)}{13}{Subfigure 7(g)\relax }{subfigure.7.7}{}}
+\newlabel{Screenshot_8}{{7(h)}{13}{Subfigure 7(h)}{subfigure.7.8}{}}
+\newlabel{sub@Screenshot_8}{{(h)}{13}{Subfigure 7(h)\relax }{subfigure.7.8}{}}
+\newlabel{Screenshot_9}{{7(i)}{13}{Subfigure 7(i)}{subfigure.7.9}{}}
+\newlabel{sub@Screenshot_9}{{(i)}{13}{Subfigure 7(i)\relax }{subfigure.7.9}{}}
+\newlabel{Screenshot_10}{{7(j)}{13}{Subfigure 7(j)}{subfigure.7.10}{}}
+\newlabel{sub@Screenshot_10}{{(j)}{13}{Subfigure 7(j)\relax }{subfigure.7.10}{}}
+\newlabel{Screenshot_11}{{7(k)}{13}{Subfigure 7(k)}{subfigure.7.11}{}}
+\newlabel{sub@Screenshot_11}{{(k)}{13}{Subfigure 7(k)\relax }{subfigure.7.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 经基于权重式核范数的降噪方法处理后的结果\relax }}{13}{figure.caption.9}\protected@file@percent }
+\newlabel{Screenshot}{{7}{13}{经基于权重式核范数的降噪方法处理后的结果\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {含方差为0.1的零均值高斯噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {含方差为0.5的零均值高斯噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {含方差为1的零均值高斯噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {含方差为5的零均值高斯噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {含5\%椒盐噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {含10\%椒盐噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(g)}{\ignorespaces {含20\%椒盐噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(h)}{\ignorespaces {含40\%椒盐噪声的图像经降噪处理后的结果}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(i)}{\ignorespaces {含10\%椒盐噪声与方差为0.1的零均值高斯噪声的图像}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(j)}{\ignorespaces {含10\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{13}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(k)}{\ignorespaces {含20\%椒盐噪声与方差为1的零均值高斯噪声的图像}}}{13}{figure.caption.9}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 高光谱图像的第2个通道（图\ref  {band-2}）经不同降噪方法进行处理的结果\relax }}{14}{figure.caption.11}\protected@file@percent }
 \newlabel{bands-2}{{8}{14}{高光谱图像的第2个通道（图\ref {band-2}）经不同降噪方法进行处理的结果\relax }{figure.caption.11}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {经基于核范数的降噪方法}}}{14}{figure.caption.11}\protected@file@percent }
@@ -221,11 +230,10 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {经基于截断式核范数的降噪方法}}}{14}{figure.caption.14}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {经基于$log$-核范数的降噪方法}}}{14}{figure.caption.14}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {经基于权重式核范数的降噪方法}}}{14}{figure.caption.14}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces 用不同的降噪方法对不同的图像进行降噪处理的效果\relax }}{15}{table.caption.10}\protected@file@percent }
+\newlabel{exp-res}{{3}{15}{用不同的降噪方法对不同的图像进行降噪处理的效果\relax }{table.caption.10}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces 表\ref  {exp-res}的图示\relax }}{15}{figure.caption.15}\protected@file@percent }
 \newlabel{exp-types}{{12}{15}{表\ref {exp-res}的图示\relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {不同方差的零均值高斯噪声}}}{15}{figure.caption.15}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {不同程度的椒盐噪声}}}{15}{figure.caption.15}\protected@file@percent }
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {不同类型的混合噪声}}}{15}{figure.caption.15}\protected@file@percent }
 \citation{CNN-2}
 \citation{merge-2}
 \citation{Mixture}
@@ -238,14 +246,14 @@
 \citation{Tensor-2}
 \citation{Tensor-3}
 \citation{Review}
-\@writefile{toc}{\contentsline {section}{\numberline {6}未来工作展望}{16}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}秩函数的不同放缩方法之间的相互融合}{16}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}混合噪声的降噪问题}{16}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}使用张量的降噪方法}{16}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}低秩特性的其他应用}{16}{subsection.6.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces 用户对电影的评分表\relax }}{17}{figure.caption.16}\protected@file@percent }
-\newlabel{recommender-system}{{13}{17}{用户对电影的评分表\relax }{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}总结}{18}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}未来工作展望}{17}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}秩函数的不同放缩方法之间的相互融合}{17}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}混合噪声的降噪问题}{17}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}使用张量的降噪方法}{17}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}低秩特性的其他应用}{17}{subsection.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces 用户对电影的评分表\relax }}{18}{figure.caption.16}\protected@file@percent }
+\newlabel{recommender-system}{{13}{18}{用户对电影的评分表\relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}总结}{19}{section.6}\protected@file@percent }
 \bibcite{whatishsi}{1}
 \bibcite{howtogenanhsi}{2}
 \bibcite{usageofhsi-1}{3}
@@ -259,7 +267,7 @@
 \bibcite{Review}{11}
 \bibcite{WNN-1}{12}
 \bibcite{CNN-1}{13}
-\@writefile{toc}{\contentsline {section}{参考文献}{19}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{参考文献}{20}{section.6}\protected@file@percent }
 \bibcite{CNN-2}{14}
 \bibcite{NLM}{15}
 \bibcite{TV}{16}
@@ -279,6 +287,7 @@
 \bibcite{Tensor-3}{30}
 \bibcite{gamma}{31}
 \bibcite{others-1}{32}
-\@writefile{toc}{\contentsline {section}{致 \hskip 1em\relax 谢}{22}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{致 \hskip 1em\relax 谢}{23}{section.6}\protected@file@percent }
+\FN@pp@footnotehinttrue 
 \ttl@finishall
-\gdef \@abspage@last{27}
+\gdef \@abspage@last{28}

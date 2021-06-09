@@ -30,6 +30,12 @@
 \renewcommand\abstractname{{\large{摘要}}}
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
+\usepackage{pifont}  
+\usepackage[perpage,symbol*]{footmisc}  
+\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}  
+	{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}  
+\setfnsymbol{circled}  
+
 \usepackage{titlesec} %自定义多级标题格式的宏包
 \usepackage{zhnumber}
 \titleformat{\section}{\centering\Large\bfseries}{第{\chinese{section}}章}{1em}{}
@@ -71,7 +77,7 @@
 \centering
 \includegraphics[scale=0.4]{img-principleofphotograph.png}
 \caption{高光谱图像的成像原理}
-{\scriptsize{图片来源：https://d3i71xaburhd42.cloudfront.net/26ffa240d824f1503f3afafdc14e4a1711449138/2-Figure1-1.png）}}
+{\scriptsize{（图片来源：{\url{https://d3i71xaburhd42.cloudfront.net/26ffa240d824f1503f3afafdc14e4a1711449138/2-Figure1-1.png}}）}}
 \label{img-pricipleofphotograph}
 \end{figure}
 \subsection{高光谱图像的特征}\label{introduction-feature}
@@ -105,56 +111,50 @@
 \subsection{对高光谱图像进行降噪的意义}
 \par 然而，由于外界的自然环境存在着复杂的电磁干扰、自身的成像设备存在着测量误差，实际采集到的高光谱图像常含有较复杂的混合噪声，包括但不限于高斯噪声、椒盐噪声以及死线噪声。这不仅会影响目视效果，而且对后续应用也会产生很大的影响，比如高光谱图像的分类\cite{further-use-1}、 解混\cite{further-use-2}，以及目标检测\cite{further-use-3} 等。因此，对高光谱图像进行降噪是预处理阶段必不可少的步骤。
 \newpage
-\section{高光谱图像降噪的研究路线}\label{research-route}
+\section{图像降噪的相关工作}\label{research-route}
 \par 假设一幅一维图像$Y$受到噪声的污染，即：
 \begin{equation}
 \centering
 Y = X + N
 \label{ori-equation}
 \end{equation}
-式中，
-\par$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；
-\par$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；
-\par$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$。
+式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$。
 \par 那么，图像降噪的工作就是将$Y$复原为$X$。
 \begin{figure}[H]
 \centering
-\subfigure[自然图像]{
-	\includegraphics[scale=0.6]{example-figure.png}
+\subfigure[自然图像——贝加尔湖图]{
+	\includegraphics[scale=0.19]{x.png}
+	\label{svd-example-a}
 }
 \subfigure[(a)图的奇异值分布图]{
-	\includegraphics[scale=0.4]{example-figure-svd.png}
+	\includegraphics[scale=0.39]{y.png}
+	\label{svd-example-b}
 }
 
 \caption{自然图像的低秩特性}
 \label{svd-example}
 \end{figure}
-\par 如图\ref{svd-example}所示，由于自然图像通常被认为是低秩的数据\footnote{低秩结构意味着蕴含有组合性信息。}\cite{TNN-1}，基于低秩（Low Rank, LR）假设的图像降噪方法可以被形式化为：
+\par 自然图像中含有大量相似的部分。以图\ref{svd-example-a}为例，水体与水体之间、植被与植被之间、雪原与雪原之间都是相似的。因此自然图像具有低秩的特性，这一点可以被如图\ref{svd-example-b}所示的奇异值分布图证明。由于自然图像通常被认为是低秩的数据\footnote{低秩结构意味着蕴含有组合性信息。}\cite{TNN-1}，基于低秩（Low Rank, LR）假设的图像降噪方法可以被形式化为：
 \begin{equation}
 \centering
 arg\min\limits_{X} \quad rank(X)
 \label{Rank-equation}
 \end{equation}
+式中，$rank()$代表秩函数，$rank(X)$在数值上等于矩阵$X$的秩，下同。
 \par 但是，在对高光谱图像进行降噪时，既需要去除图像里的噪声，同时也需要尽可能地保留原来的信息\cite{log-norm}，故拥有最小秩的矩阵并非是实际应用中所需要的\cite{log-norm}。因此，实际上，需要求解的最优化问题并非是式\ref{Rank-equation}，而是：
 \begin{equation}
 \centering
 arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot rank(X)
 \label{F-rank}
 \end{equation}
-式中，
-\par$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；
-\par$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；
-\par$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；
-\par$\left\|*\right\|_F$表示$Frobenius$范数；
-\par$\lambda$是正则化参数。
+式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数。
 \par 式\ref{Rank-equation}（或式\ref{F-rank}）是基于秩最小化（Rank Minimization, RM）的降噪方法，然而，这是一个NP-hard问题\cite{TNN-1}。况且，秩函数（$rank()$）是不连续的\cite{TNN-1}。所以，通常使用秩函数的凸近似，也就是核范数，作为式\ref{Rank-equation} 中秩函数的替代\cite{TNN-1}，即：
 \begin{equation}
 \centering
 rank(X) \approx \left\|X\right\|_*
 \label{NN-equation}
 \end{equation}
-式中，
-\par $\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
+式中，$\left\|*\right\|_*$代表核范数，$\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \par 尽管式\ref{NN-equation}所示的核范数最小化（Nuclear Norm Minimization, NNM）方法已经在很多领域被成功地应用了，它还是存在缺点的。主要在于它平等地对待了所有的奇异值，即所有的奇异值都被同等程度地缩小了\cite{Review}。但是，作为先验知识，所有的奇异值都具有实际的物理含义。以降噪问题为例，有效信息通常体现在较大的奇异值中，而噪声往往隐藏在较小的奇异值中。因此，不同大小的奇异值不应该被同等地对待\cite{WNN-1}。不同于式\ref{NN-equation}的凸放缩，近些年，有研究者提出了一些非凸的放缩。
 \par 考虑到如前文所述的核范数的缺点，Zhang、Hu等研究者认为，可以考虑仅仅缩小较小的奇异值\cite{TNN-1}。因此，他们提出了截断式核范数（Truncated Nuclear Norm, TNN）。截断式核范数仅仅处理较小的$n-r$个奇异值，也就是：
 \begin{equation}
@@ -162,13 +162,13 @@ rank(X) \approx \left\|X\right\|_*
 rank(X) \approx \left\|X\right\|_{tr,*}
 \label{TNN-equation}
 \end{equation}
-式中，
-\par $\left\|X\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i(X)$
+式中，$\left\|*\right\|_{tr,*}$代表截断式核范数，$\left\|X\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i(X)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \par Gu等学者认为，截断式核范数因为只能做二值化选择而显得不够灵活\cite{WNN-1}。为了增加灵活性，Gu等人提出了权重式核范数（Weighted Nuclear Norm, WNN）。权重式核范数为每一个奇异值赋予了一个权重，即：
 \begin{displaymath}
 \centering
 \left\|X\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i(X)
 \end{displaymath}
+式中，$\left\|*\right\|_{w,*}$代表权重式核范数，$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_{n}\}$是赋予不同奇异值的权重，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \par 因此，秩函数被放缩为：
 \begin{equation}
 \centering
@@ -181,8 +181,7 @@ rank(X) \approx \left\|X\right\|_{w,*}
 rank(X) \approx \left\|X\right\|_{log,*}
 \label{log-equation}
 \end{equation}
-式中，
-\par $\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$
+式中，$\left\|*\right\|_{log,*}$代表$log$-核范数，$\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \par 综上所述，无论是（普通）核范数，还是截断式核范数、权重式核范数，又或者是$log$-核范数，它们都是对秩函数的替代（surrogate），或称放缩（relaxation）。它们的几何意义如图\ref{surrogate-to-rank}所示。
 \begin{figure}[h]
 \centering
@@ -229,8 +228,9 @@ $\gamma$-核范数&$\sum\limits_{i=1}^{n}\cfrac{(1+\gamma)\sigma_i}{\gamma+\sigm
 \centering
 rank(X) \approx \sum\limits_{i=1}^{n}f(\sigma_i(X))
 \end{displaymath}
+式中，$f$代表着某种运算；$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \newpage
-\section{相关工作}\label{related-work}
+\section{研究路线}\label{related-work}
 %\par 本章将具体分析第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用。
 %\par 在对高光谱图像进行降噪时，既需要去除图像里的噪声，同时也需要尽可能地保留原图信息\cite{log-norm}。因此，实际上，需要求解的最优化问题并非是式\ref{Rank-equation}，而是：
 %\begin{equation}
@@ -245,10 +245,12 @@ rank(X) \approx \sum\limits_{i=1}^{n}f(\sigma_i(X))
 %\par$\left\|*\right\|_F$表示$Frobenius$范数；
 %\par$\lambda$是正则化参数。
 %\par 同理，式\ref{NN-equation}、\ref{TNN-equation}、\ref{WNN-equation}、\ref{log-equation} 也需要更新为形如式\ref{F-rank}的最优化方程。
-\par 已有的高光谱图像降噪算法主要归纳为两类：一类是基于空间维的降噪算法。此类算法从人类的视觉角度出发，将高光谱图像的每个波段视为灰度图像，直接应用数字图像处理领域中的、已经发展得较为成熟的图像降噪算法对高光谱图像进行逐波段降噪。这类算法的典型代表有：非局部均值算法（Non-Local Mean, NLM）\cite{NLM}、总变分模型（Total Variation, TV）\cite{TV}、高斯混合模型（Gaussian Mixture Model, GMM）\cite{GMM}、基于小波变换的三维块匹配快速降噪算法（Block-Matching and 3D filtering, BM3D）\cite{BM3D}，以及本文第\ref{research-route} 章提到的几种核范数最小化模型。此类算法应用方式简单，但是，大多算法也仅限于对传统二维图像降噪算法的简单应用和推广，侧重于从空间维对高光谱图像的单个波段进行去噪。然而，空间维的信息不能充分地反映高光谱图像的全部信息，基于空间维的降噪算法忽略了高光谱图像波段间的高度相关性。对高光谱图像所有波段进行逐降噪不仅计算复杂度高，而且由于没有考虑到光谱维的相关性。本章所述的几种降噪方法可以被归类到这一类方法中去。另一类是基于联合空间-光谱维的降噪算法。为了充分利用空间维和光谱维的高度相关性，除空间维外，这一类算法考虑到了光谱维的相关性。例如，光谱-空间自适应总变分模型（Spectral–Spatial Adaptive Hyperspectral Total Variation, SSAHTV）\cite{SSAHTV}提出：在空间维中，算法对每一个像素的降噪强度应根据不同地物类型进行自适应调节，同样在光谱维中，算法对每一个波段的降噪强度也应根据不同波段的噪声强度进行自适应调节。\cite{BM4D}和\cite{VBM4D}是基于BM3D算法提出的对图像序列或者视频降噪的BM4D和VBM4D算法，在高光谱图像降噪中，这两个算法将高光谱图像立方体视为图像序列或视频进行降噪。MSPCA-BM3D\cite{MSPCA-BM3D}提出通过非局部（non-local）空间自适应和光谱维去相关对多光谱或高光谱图像进行降噪。PCA+BM4D\cite{PCAplusBM4D}首先对有噪声的高光谱数据进行主成分变换，保持前几个信号能量高的主成分不变，使用BM4D算法对剩余信号低能量的主成分进行降噪\cite{yaodan}。
-	
-\par 在第\ref{research-route}章，本文给出了多种基于低秩假设的一维图像降噪方法。对高光谱图像的降噪可以采用“分治”的策略：高光谱图像的每一个通道都可以视为一张一维图像，对这些一维图像分别进行降噪处理，最后再将那些去噪后的一维图像按原本的顺序拼成一张高维图像，那么这张高维图像即是降噪后的高光谱图像。本章的剩余部分将具体分析第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些核范数的替代函数对一维图像进行降噪。
-\newline
+\subsection{高光谱图像降噪的相关研究}
+\par 已有的高光谱图像降噪算法主要归纳为两类。
+\par 一类是基于空间维的降噪算法。此类算法从人类的视觉角度出发，将高光谱图像的每个波段视为灰度图像，直接应用数字图像处理领域中的、已经发展得较为成熟的图像降噪算法对高光谱图像进行逐波段降噪。这类算法的典型代表有：非局部均值算法（Non-Local Mean, NLM）\cite{NLM}、总变分模型（Total Variation, TV）\cite{TV}、高斯混合模型（Gaussian Mixture Model, GMM）\cite{GMM}、基于小波变换的三维块匹配快速降噪算法（Block-Matching and 3D filtering, BM3D）\cite{BM3D}，以及本文第\ref{research-route} 章提到的几种核范数最小化模型。此类算法应用方式简单，但是，大多算法也仅限于对传统二维图像降噪算法的简单应用和推广，侧重于从空间维对高光谱图像的单个波段进行去噪。然而，空间维的信息不能充分地反映高光谱图像的全部信息，基于空间维的降噪算法忽略了高光谱图像波段间的高度相关性。对高光谱图像所有波段进行逐降噪不仅计算复杂度高，而且由于没有考虑到光谱维的相关性。本章所述的几种降噪方法可以被归类到这一类方法中去。
+\par 另一类是基于联合空间-光谱维的降噪算法。为了充分利用空间维和光谱维的高度相关性，除空间维外，这一类算法考虑到了光谱维的相关性。例如，光谱-空间自适应总变分模型（Spectral–Spatial Adaptive Hyperspectral Total Variation, SSAHTV）\cite{SSAHTV}提出：在空间维中，算法对每一个像素的降噪强度应根据不同地物类型进行自适应调节，同样在光谱维中，算法对每一个波段的降噪强度也应根据不同波段的噪声强度进行自适应调节。\cite{BM4D}和\cite{VBM4D}是基于BM3D算法提出的对图像序列或者视频降噪的BM4D和VBM4D算法，在高光谱图像降噪中，这两个算法将高光谱图像立方体视为图像序列或视频进行降噪。MSPCA-BM3D\cite{MSPCA-BM3D}提出通过非局部（non-local）空间自适应和光谱维去相关对多光谱或高光谱图像进行降噪。PCA+BM4D\cite{PCAplusBM4D}首先对有噪声的高光谱数据进行主成分变换，保持前几个信号能量高的主成分不变，使用BM4D算法对剩余信号低能量的主成分进行降噪\cite{yaodan}。
+\subsection{本章安排}
+\par 在第\ref{research-route}章，本文给出了多种基于低秩假设的一维图像降噪方法。对高光谱图像的降噪可以采用“分治”的策略：高光谱图像的每一个通道都可以视为一张一维图像，对这些一维图像分别进行降噪处理，最后再将那些去噪后的一维图像按原本的顺序拼成一张高维图像，那么这张高维图像即是降噪后的高光谱图像。本章的剩余部分将具体分析第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些核范数的替代函数对一幅二维图像进行降噪。
 \subsection{使用核范数替代秩函数的降噪方法}
 \par 由于式\ref{F-rank}是一个NP-hard问题，加之秩函数是不连续的。因此，通常使用秩函数的凸近似，即核范数，替代式\ref{F-rank}中秩函数的部分。所以，式\ref{F-rank}更新为：
 \begin{equation}
@@ -256,11 +258,7 @@ rank(X) \approx \sum\limits_{i=1}^{n}f(\sigma_i(X))
 arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_*
 \label{F-nn}
 \end{equation}
-式中，
-\par$\left\|*\right\|_*$代表（标准）核范数，
-$
-\left\|*\right\|_* = \sum\limits_{i=1}^{n}\sigma_i
-$。
+式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_*$代表（标准）核范数，$\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \subsection{使用截断式核范数替代秩函数的降噪方法}
 \par 若使用截断式核范数替代式\ref{F-rank}中秩函数的部分，则式\ref{F-rank}被更新为：
 \begin{equation}
@@ -268,11 +266,7 @@ $。
 arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_{tr,*}
 \label{F-tnn}
 \end{equation}
-式中，
-\par$\left\|*\right\|_{tr,*}$代表截断式核范数，
-$
-\left\|*\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i
-$，$r$是TNN中的参数。
+式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_{tr,*}$代表截断式核范数，$\left\|X\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i(X)$，$r$是其中的参数，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \subsection{使用权重式核范数替代秩函数的降噪方法}
 \par 由于截断式核范数对所有奇异值做的是两极化选择，因此会显得不够灵活。而权重式核范数则是针对这一点所做的改进。如果使用权重式核范数替代式\ref{F-rank}中秩函数的部分，则式\ref{F-rank} 被更新为：
 \begin{equation}
@@ -280,11 +274,7 @@ $，$r$是TNN中的参数。
 arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_{w,*}
 \label{F-wnn}
 \end{equation}
-式中，
-\par$\left\|*\right\|_{w,*}$代表权重式核范数，
-$
-\left\|*\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i
-$，$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_{n}\}$是赋予不同奇异值的权重。并且可以证明，$W$是非降的。
+式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_{w,*}$代表权重式核范数，$\left\|X\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i(X)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值，$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_{n}\}$是赋予不同奇异值的权重\footnote{并且可以证明，$W$是非降的。}。
 \subsection{使用$log$-核范数替代秩函数的降噪方法}
 \par 考虑到无论是截断式核范数，还是权重式核范数，都包含额外的参数，而这些额外的参数需要在事先被确定。这就给很多实际应用带来了麻烦。$log$-核范数则不包含额外的参数。基于$log$-核范数，式\ref{F-rank}被更新为：
 \begin{equation}
@@ -292,18 +282,16 @@ $，$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_{n}\}$是赋予不同奇异值的权�
 arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|_{log,*}
 \label{F-lnn}
 \end{equation}
-式中，
-\par$\left\|*\right\|_{log,*}$代表$log$-核范数，
-$
-\left\|*\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i+1)
-$。
-\newline
-\newline
+式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_{log,*}$代表$log$-核范数，$\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
+
+\subsection{本章小结}
+\par 本章主要分析了第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些核范数的替代函数对一幅二维图像进行降噪。
 \par 综合式\ref{F-nn}、\ref{F-tnn}、\ref{F-wnn}、\ref{F-lnn}，实际应用中求解的最优化方程可抽象成：
 \begin{displaymath}
 \centering
-arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \sum\limits_{i=1}^{n}f(\sigma_i)
+arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \sum\limits_{i=1}^{n}f(\sigma_i(X))
 \end{displaymath}
+式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$f$代表着某种运算；$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
 \newpage
 \section{实验部分}\label{experiment}
 \begin{itemize}
@@ -455,11 +443,9 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \caption{真实视觉数据}
 \label{real-data}
 \end{figure}
-	
-\newpage
-\section{实验结果与分析}\label{analysis}
-\subsection{实验结果}
-\subsubsection{人造数据部分}
+
+\subsection{实验结果与分析}\label{analysis}
+\subsubsection{人造数据部分的实验结果}
 \par 为了体现降噪的直观效果，本文以基于权重式核范数的降噪方法为例，图\ref{syn-data-1}$\sim$图\ref{syn-data-11}经降噪处理后的结果分别见图\ref{Screenshot_1}$\sim$图\ref{Screenshot_11}。
 \begin{figure}[htbp]
 \centering
@@ -554,7 +540,7 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \end{tabular}
 \end{table}
 	
-\subsubsection{真实视觉数据部分}
+\subsubsection{真实视觉数据部分的实验结果}
 \par 高光谱图像第2、103、187、189个通道，经不同降噪方法进行降噪处理后的结果见图\ref{bands-2}$\sim$图\ref{bands-189}。
 % 2nd
 \begin{figure}[htbp]
@@ -600,9 +586,9 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \caption{高光谱图像的第189个通道（图\ref{band-189}）经不同降噪方法进行处理的结果}
 \label{bands-189}
 \end{figure}
-\subsection{结果分析}
+\subsubsection{结果分析}
 \par 由表\ref{exp-res}及图\ref{exp-types}，不难发现，基于权重式核范数与基于$log$-核范数的降噪方法比另外两种方法更加有效，这与本文第\ref{research-route}章的表述一致，即权重式核范数是针对截断式核范数的缺点所进行的改进。$log$-核范数比起权重式范数的优点在于，使用者无需事先决定权值$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_n\}$这个额外的参数。
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \subfigure[不同方差的零均值高斯噪声]{\includegraphics[scale=0.3]{exp-type-gaussian.png}}
 \subfigure[不同程度的椒盐噪声]{\includegraphics[scale=0.3]{exp-type-pepperandsalt.png}}
@@ -612,6 +598,7 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \end{figure}
 	
 \par 图\ref{bands-2}$\sim$图\ref{bands-189}是本文在自然获取的高光谱图像上做的实验。由于需要将16位图像映射成8位图像，导致显示出的8位图像的每一位都对应着$2^8=256$个可能的、真实的数值。这也是导致不同的降噪结果在目视下非常相似的原因。
+
 \newpage
 \section{未来工作展望}
 \subsection{秩函数的不同放缩方法之间的相互融合}
