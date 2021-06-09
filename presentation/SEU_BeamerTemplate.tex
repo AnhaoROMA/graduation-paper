@@ -72,7 +72,7 @@
 %\textbf{\tableofcontents}
 %\end{frame}
 
-\section[引言]{引言}
+\section[背景知识]{背景知识}
 
 \begin{frame}
 \frametitle{\textbf{背景知识}}
@@ -105,6 +105,27 @@ $\bullet$地学
 \end{block}
 \end{frame}
 
+\begin{frame}
+\frametitle{\textbf{背景知识}}
+\begin{block}{\textbf{噪声产生的原因}}
+\begin{itemize}
+\item 成像设备本身的精度问题；
+\item 环境中的各种干扰。
+\end{itemize}
+\end{block}
+
+\begin{block}{\textbf{高光谱图像中的噪声}}
+\begin{itemize}
+\item 高斯噪声；
+\item 椒盐噪声；
+\item 死线噪声；
+\item 死点噪声；
+\item 条纹噪声；
+\item 其他。
+\end{itemize}
+\end{block}
+\end{frame}
+
 %\section[相关工作]{相关工作}
 %\begin{frame}
 %\frametitle{\textbf{相关工作}}
@@ -114,7 +135,7 @@ $\bullet$地学
 \section[研究路线]{研究路线}
 \begin{frame}
 \frametitle{\textbf{问题建模}}
-\par 假设一幅一维图像$Y$受到噪声的污染，即：
+\par 假设一幅二维图像$Y$受到噪声的污染，即：
 \begin{displaymath}
 Y = X + N
 \end{displaymath}
@@ -481,11 +502,25 @@ rank(X) \approx \sum\limits_{i=1}^{n}f(\sigma_i(X))
 \end{columns}
 \end{frame}
 
-\section[总结]{总结}
-%\begin{frame}
-%\frametitle{\textbf{总结}}
-%	
-%\end{frame}
+\section[总结与展望]{总结与展望}
+\begin{frame}
+\frametitle{\textbf{总结与展望}}
+\begin{block}{\textbf{总结}}
+\begin{itemize}
+\item 相关背景；
+\item 理论研究；
+\item 实验证明。
+\end{itemize}
+\end{block}
+\begin{block}{\textbf{展望}}
+\begin{itemize}
+\item 不同放缩方法之间的融合；
+\item 使用张量的降噪方法；
+\item 混合噪声的降噪问题；
+\item 低秩特性的其他应用。
+\end{itemize}
+\end{block}
+\end{frame}
 \section[Q\&A]{Q\&A}
 %\begin{frame}
 %\frametitle{\textbf{Q\&A}}
