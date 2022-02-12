@@ -57,7 +57,7 @@
 \begin{center}
 {\Large{\bf{Abstract}}}
 \end{center}
-\par Hyper-spectral remote sensing technology takes use of imaging spectrometers to image ground objects in tens to hundreds of bands. As a result, Hyper-spectral image contains abundant spatial spectral information, making it be wildly used in environment, military, agriculture, and so on. Nevertheless, as hyper-spectral image is taken in such a natural environment where electromagnetic interference exists in, hyper-spectral image humans can obtain contains several kinds of noise, including Gaussian noise, salt and pepper noise, deadlines, and so on. Not to mention that the imaging equipments are not as precise as they should be. Hyper-spectral images with noise can not only degrade the visual effect, but also do harm to their further use. Therefore, it is necessary to denoise these noised hyper-spectral images before their use.
+\par Hyper-spectral remote sensing technology takes use of imaging spectrometers to image ground objects in tens to hundreds of bands. As a result, Hyper-spectral image contains abundant spatial spectral information, making it be wildly used in environment, military, agriculture, and so on. Nevertheless, as hyper-spectral image is taken in such a natural environment where electromagnetic interference exists, hyper-spectral image humans can obtain contains several kinds of noise, including Gaussian noise, salt and pepper noise, deadlines, and so on. Not to mention that the imaging equipments are not as precise as they should be. Hyper-spectral images with noise can not only degrade the visual effect, but also do harm to their further use. Therefore, it is necessary to denoise these noised hyper-spectral images before their use.
 \par When it comes to denoising hyper-spectral image, the low-rank character of natural image is mainly used by researchers. However, the denoising method which is based on Rank Minimization is a NP-hard problem. In this case, researchers tried to use nuclear norm, the convex relaxation to rank function, as the surrogate to rank function. Although this method which is based on Nuclear Norm Minimization has been wildly applied in many fields, it has some shortcomings, such as ignoring the physical meaning of different singular values. Several kinds of non-convex relaxation to rank function have been proposed in these years, and have been applied to some fields like Matrix Completion. The ideas of these paper can be concluded as: propose a new relaxation first, construct the corresponding optimization model later, and solve the model at last.
 \par At the commence of this paper, several kinds of relaxation to rank function are reviewed. Later, this paper presents the experiment result on synthetic data and real visual data, in order to make comparison of denoising effect between different kinds of relaxation. In addition, this paper makes discussion of the future research direction, as well as the application of low-rank character in other fields.
 \newline
@@ -295,8 +295,8 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \sum\limits_{i=1
 \newpage
 \section{实验部分}\label{experiment}
 \begin{itemize}
-\item 本文的全部代码：{\url{https://github.com/AnhaoROMA/Graduation_Design.git}}
-\item 实验环境：MATLAB R2018b
+\item 本文的全部代码：{\url{https://github.com/AnhaoROMA/matrix-denoising-by-lowrank.git}}
+\item 实验环境：MATLAB R2021b
 \item 实验配置：
 \par 设备名称：Lenovo LAPTOP-06D3M7TP
 \par 处理器：Intel(R) Core(TM) i7-7700HQ CPU @2.80GHz 2.81GHz
