@@ -21,6 +21,7 @@
 \usepackage{pdfpages}
 \usepackage{type1cm}
 \usepackage{amsfonts}
+\usepackage{mathrsfs}
 \usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=blue,CJKbookmarks=True]{hyperref}
 \geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
 \renewcommand{\contentsname}{\centering{\heiti\zihao{3}{目 \qquad 录}}}
@@ -199,12 +200,11 @@ rank(X) \approx \left\|X\right\|_{log,*}
 \begin{table}[H]
 \centering
 \caption{秩函数的不同放缩（部分）}
-\label{relaxation}
-		
+\label{relaxation}	
 \begin{tabular}{c c}
-\toprule
+\toprule[2pt]
 名称&表达式\\
-\toprule
+\toprule[2pt]
 核范数&$\sum\limits_{i=1}^{n}\sigma_i$\\
 \hline
 截断式核范数&$\sum\limits_{i=r+1}^{n}\sigma_i$\\
@@ -220,7 +220,7 @@ $\gamma$-核范数&$\sum\limits_{i=1}^{n}\cfrac{(1+\gamma)\sigma_i}{\gamma+\sigm
 格曼&$\sum\limits_{i=1}^{n}\cfrac{\sigma_i}{\sigma_i + \gamma}$\\
 \hline
 拉普拉斯&$\sum\limits_{i=1}^{n}\left(1-exp(-\cfrac{\sigma_i}{\gamma})\right)$\\
-\bottomrule
+\bottomrule[2pt]
 \end{tabular}
 \end{table}
 \par 由表\ref{relaxation}，可发现这些放缩都可以被抽象成如下的形式：
@@ -250,8 +250,9 @@ rank(X) \approx \sum\limits_{i=1}^{n}f(\sigma_i(X))
 \par 一类是基于空间维的降噪算法。此类算法从人类的视觉角度出发，将高光谱图像的每个波段视为灰度图像，直接应用数字图像处理领域中的、已经发展得较为成熟的图像降噪算法对高光谱图像进行逐波段降噪。这类算法的典型代表有：非局部均值算法（Non-Local Mean, NLM）\cite{NLM}、总变分模型（Total Variation, TV）\cite{TV}、高斯混合模型（Gaussian Mixture Model, GMM）\cite{GMM}、基于小波变换的三维块匹配快速降噪算法（Block-Matching and 3D filtering, BM3D）\cite{BM3D}，以及本文第\ref{research-route} 章提到的几种核范数最小化模型。此类算法应用方式简单，但是，大多算法也仅限于对传统二维图像降噪算法的简单应用和推广，侧重于从空间维对高光谱图像的单个波段进行去噪。然而，空间维的信息不能充分地反映高光谱图像的全部信息，基于空间维的降噪算法忽略了高光谱图像波段间的高度相关性。对高光谱图像所有波段进行逐降噪不仅计算复杂度高，而且由于没有考虑到光谱维的相关性。本章所述的几种降噪方法可以被归类到这一类方法中去。
 \par 另一类是基于联合空间-光谱维的降噪算法。为了充分利用空间维和光谱维的高度相关性，除空间维外，这一类算法考虑到了光谱维的相关性。例如，光谱-空间自适应总变分模型（Spectral–Spatial Adaptive Hyperspectral Total Variation, SSAHTV）\cite{SSAHTV}提出：在空间维中，算法对每一个像素的降噪强度应根据不同地物类型进行自适应调节，同样在光谱维中，算法对每一个波段的降噪强度也应根据不同波段的噪声强度进行自适应调节。\cite{BM4D}和\cite{VBM4D}是基于BM3D算法提出的对图像序列或者视频降噪的BM4D和VBM4D算法，在高光谱图像降噪中，这两个算法将高光谱图像立方体视为图像序列或视频进行降噪。MSPCA-BM3D\cite{MSPCA-BM3D}提出通过非局部（non-local）空间自适应和光谱维去相关对多光谱或高光谱图像进行降噪。PCA+BM4D\cite{PCAplusBM4D}首先对有噪声的高光谱数据进行主成分变换，保持前几个信号能量高的主成分不变，使用BM4D算法对剩余信号低能量的主成分进行降噪\cite{yaodan}。
 \subsection{本章安排}
-\par 在第\ref{research-route}章，本文给出了多种基于低秩假设的一维图像降噪方法。对高光谱图像的降噪可以采用“分治”的策略：高光谱图像的每一个通道都可以视为一张一维图像，对这些一维图像分别进行降噪处理，最后再将那些去噪后的一维图像按原本的顺序拼成一张高维图像，那么这张高维图像即是降噪后的高光谱图像。本章的剩余部分将具体分析第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些核范数的替代函数对一幅二维图像进行降噪。
-\subsection{使用核范数替代秩函数的降噪方法}
+\par 在第\ref{research-route}章，本文给出了多种基于低秩假设的一维图像降噪方法。对高光谱图像的降噪可以采用“分治”的策略：高光谱图像的每一个通道都可以视为一张一维图像，对这些一维图像分别进行降噪处理，最后再将那些去噪后的一维图像按原本的顺序拼成一张高维图像，那么这张高维图像即是降噪后的高光谱图像。本章的剩余部分将具体分析第\ref{research-route}章中提到的几种秩范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些秩范数的替代函数对一幅二维图像进行降噪。
+\subsection{使用秩函数的替代函数进行图像降噪的方法}
+\subsubsection{使用核范数替代秩函数的降噪方法}
 \par 由于式\ref{F-rank}是一个NP-hard问题，加之秩函数是不连续的。因此，通常使用秩函数的凸近似，即核范数，替代式\ref{F-rank}中秩函数的部分。所以，式\ref{F-rank}更新为：
 \begin{equation}
 \centering
@@ -259,7 +260,7 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|
 \label{F-nn}
 \end{equation}
 式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_*$代表（标准）核范数，$\left\|X\right\|_* = \sum\limits_{i=1}^{n}\sigma_i(X)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
-\subsection{使用截断式核范数替代秩函数的降噪方法}
+\subsubsection{使用截断式核范数替代秩函数的降噪方法}
 \par 若使用截断式核范数替代式\ref{F-rank}中秩函数的部分，则式\ref{F-rank}被更新为：
 \begin{equation}
 \centering
@@ -267,7 +268,7 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|
 \label{F-tnn}
 \end{equation}
 式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_{tr,*}$代表截断式核范数，$\left\|X\right\|_{tr,*} = \sum\limits_{i=r+1}^{n}\sigma_i(X)$，$r$是其中的参数，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
-\subsection{使用权重式核范数替代秩函数的降噪方法}
+\subsubsection{使用权重式核范数替代秩函数的降噪方法}
 \par 由于截断式核范数对所有奇异值做的是两极化选择，因此会显得不够灵活。而权重式核范数则是针对这一点所做的改进。如果使用权重式核范数替代式\ref{F-rank}中秩函数的部分，则式\ref{F-rank} 被更新为：
 \begin{equation}
 \centering
@@ -275,7 +276,7 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|
 \label{F-wnn}
 \end{equation}
 式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_{w,*}$代表权重式核范数，$\left\|X\right\|_{w,*} = \sum\limits_{i=1}^{n}w_i\sigma_i(X)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值，$W=\{w_1, w_2, w_3, \cdots, w_{n-1}, w_{n}\}$是赋予不同奇异值的权重\footnote{并且可以证明，$W$是非降的。}。
-\subsection{使用$log$-核范数替代秩函数的降噪方法}
+\subsubsection{使用$log$-核范数替代秩函数的降噪方法}
 \par 考虑到无论是截断式核范数，还是权重式核范数，都包含额外的参数，而这些额外的参数需要在事先被确定。这就给很多实际应用带来了麻烦。$log$-核范数则不包含额外的参数。基于$log$-核范数，式\ref{F-rank}被更新为：
 \begin{equation}
 \centering
@@ -283,9 +284,45 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \left\|X\right\|
 \label{F-lnn}
 \end{equation}
 式中，$X$代表未受到污染的、干净的图像，$X \in \mathbb{R}^{m \times n}$；$N$代表噪声，$N \in \mathbb{R}^{m \times n}$；$Y$代表成像设备获取到的图像，即受到污染的图像，$Y \in \mathbb{R}^{m \times n}$；$\left\|*\right\|_F$表示$Frobenius$范数；$\lambda$是正则化参数；$\left\|*\right\|_{log,*}$代表$log$-核范数，$\left\|X\right\|_{log,*} = \sum\limits_{i=1}^{n}log(\sigma_i(X)+1)$，$\sigma_i(X)$表示矩阵$X$的第$i$个奇异值。
+\subsection{本文使用的降噪算法}
+\par 本文使用的降噪算法（详见\ref{main-function}节）的思路，是在BM3D算法（详见\ref{bm3d-function}节）的框架下、再使用ADMM算法（详见\ref{admm-function}节）求解相应的最优化问题。
+\subsubsection{BM3D算法}\label{bm3d-function}
+\par 三维块匹配算法（Block Matching 3D, BM3D）是一个效果比较好的图像去噪算法。通过与相邻图像块进行匹配，将若干相似的块整合为一个三维矩阵，在三维空间进行滤波处理，再将结果反变换融合到二维，形成去噪后的图像。
+\subsubsection{ADMM算法}\label{admm-function}
+\par 交替方向乘子法（Alternating Direction Method of Multipliers, ADMM）是一种解决可分解凸优化问题的简单方法，尤其在解决大规模问题上卓有成效，利用ADMM算法可以将原问题的目标函数等价地分解成若干个可求解的子问题，然后并行求解每一个子问题，最后协调子问题的解得到原问题的全局解。
+\par ADMM解决的问题的一般形式为：
+\begin{displaymath}
+	% \centering
+	\min \quad f(x) + g(z) \qquad s.t. \quad Ax + Bz = c
+	% \label{admm-normal}
+\end{displaymath}
+其拉格朗日形式为：
+\begin{equation}
+	\centering
+	L_{\rho}(x, y, z) = f(x) + g(z) + y^{T}(Ax + Bz -c) + \cfrac{\rho}{2}\|Ax+Bz-c\|_{2}^{2}
+	\label{admm-al}
+\end{equation}
+对式\ref{admm-al}的ADMM迭代优化过程如下（$\mathcal{D}_{\tau}$为singular value shrinkage operator；当x收敛时停止迭代）：
+\begin{displaymath}
+	x_{k+1} = \mathcal{D}_{\frac{1}{\rho}}(z_k-\frac{1}{\rho}y_k)
+\end{displaymath}
+\begin{displaymath}
+	z_{k+1} = x_{k+1} + \frac{1}{\rho}(AB + y_{k})
+\end{displaymath}
+\begin{displaymath}
+	y_{k+1} = y_{k} + \rho(x_{k+1} - z_{k+1})
+\end{displaymath}
+\subsubsection{降噪算法}\label{main-function}
+\par 如前文所述，本文使用的降噪算法的思路，是在BM3D算法的框架下、再使用ADMM算法求解相应的最优化问题。算法的具体流程见图\ref{img-admm}。
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{admm.png}
+	\caption{本文所用的降噪算法}
+	\label{img-admm}
+\end{figure}
 
 \subsection{本章小结}
-\par 本章主要分析了第\ref{research-route}章中提到的几种核范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些核范数的替代函数对一幅二维图像进行降噪。
+\par 本章主要分析了第\ref{research-route}章中提到的几种秩范数的替代函数在高光谱图像降噪问题中的作用，也就是如何使用这些秩范数的替代函数对一幅二维图像进行降噪，以及如何求解出结果。
 \par 综合式\ref{F-nn}、\ref{F-tnn}、\ref{F-wnn}、\ref{F-lnn}，实际应用中求解的最优化方程可抽象成：
 \begin{displaymath}
 \centering
@@ -296,7 +333,7 @@ arg\min\limits_{X} \quad \left\|Y-X\right\|_F^2 + \lambda \cdot \sum\limits_{i=1
 \section{实验部分}\label{experiment}
 \begin{itemize}
 \item 本文的全部代码：{\url{https://github.com/AnhaoROMA/matrix-denoising-by-lowrank.git}}
-\item 实验环境：MATLAB R2021b
+\item 实验环境：MATLAB R2021a
 \item 实验配置：
 \par 设备名称：Lenovo LAPTOP-06D3M7TP
 \par 处理器：Intel(R) Core(TM) i7-7700HQ CPU @2.80GHz 2.81GHz
@@ -597,7 +634,14 @@ PSNR = 10 \times log_{10}\left(\cfrac{MAX^2}{MSE}\right)
 \label{exp-types}
 \end{figure}
 	
-\par 图\ref{bands-2}$\sim$图\ref{bands-189}是本文在自然获取的高光谱图像上做的实验。由于需要将16位图像映射成8位图像，导致显示出的8位图像的每一位都对应着$2^8=256$个可能的、真实的数值。这也是导致不同的降噪结果在目视下非常相似的原因。
+\par 图\ref{bands-2}$\sim$图\ref{bands-189}是本文在自然获取的高光谱图像上做的实验。由于需要将16位图像映射成8位图像，导致显示出的8位图像的每一位都对应着$2^8=256$个可能的、真实的数值（如图\ref{trans-16-to-8}）。这也是导致不同的降噪结果在目视下非常相似的原因。
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{16-to-8.png}
+	\caption{16bit图像转8bit图像}
+	\label{trans-16-to-8}
+\end{figure}
 
 \newpage
 \section{未来工作展望}

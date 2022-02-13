@@ -7,27 +7,32 @@
 \contentsline {section}{\numberline {3}研究路线}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}高光谱图像降噪的相关研究}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}本章安排}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}使用核范数替代秩函数的降噪方法}{7}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}使用截断式核范数替代秩函数的降噪方法}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}使用权重式核范数替代秩函数的降噪方法}{7}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}使用$log$-核范数替代秩函数的降噪方法}{7}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}本章小结}{8}{subsection.3.7}%
-\contentsline {section}{\numberline {4}实验部分}{9}{section.4}%
-\contentsline {subsection}{\numberline {4.1}评价降噪效果的指标——峰值信噪比}{9}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}实验设计}{9}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}人造数据部分}{9}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}真实视觉数据部分}{10}{subsubsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.3}实验数据}{10}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}实验结果与分析}{11}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}人造数据部分的实验结果}{11}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}真实视觉数据部分的实验结果}{12}{subsubsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.3}结果分析}{12}{subsubsection.4.4.3}%
-\contentsline {section}{\numberline {5}未来工作展望}{17}{section.5}%
-\contentsline {subsection}{\numberline {5.1}秩函数的不同放缩方法之间的相互融合}{17}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}混合噪声的降噪问题}{17}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}使用张量的降噪方法}{17}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}低秩特性的其他应用}{17}{subsection.5.4}%
-\contentsline {section}{\numberline {6}总结}{19}{section.6}%
-\contentsline {section}{参考文献}{20}{section.6}%
-\contentsline {section}{致 \hskip 1em\relax 谢}{23}{section.6}%
+\contentsline {subsection}{\numberline {3.3}使用秩函数的替代函数进行图像降噪的方法}{7}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}使用核范数替代秩函数的降噪方法}{7}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}使用截断式核范数替代秩函数的降噪方法}{7}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}使用权重式核范数替代秩函数的降噪方法}{7}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}使用$log$-核范数替代秩函数的降噪方法}{7}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}本文使用的降噪算法}{8}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}BM3D算法}{8}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}ADMM算法}{8}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}降噪算法}{8}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}本章小结}{9}{subsection.3.5}%
+\contentsline {section}{\numberline {4}实验部分}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}评价降噪效果的指标——峰值信噪比}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}实验设计}{10}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}人造数据部分}{10}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}真实视觉数据部分}{11}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}实验数据}{11}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}实验结果与分析}{12}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}人造数据部分的实验结果}{12}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}真实视觉数据部分的实验结果}{13}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}结果分析}{13}{subsubsection.4.4.3}%
+\contentsline {section}{\numberline {5}未来工作展望}{18}{section.5}%
+\contentsline {subsection}{\numberline {5.1}秩函数的不同放缩方法之间的相互融合}{18}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}混合噪声的降噪问题}{18}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}使用张量的降噪方法}{18}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}低秩特性的其他应用}{18}{subsection.5.4}%
+\contentsline {section}{\numberline {6}总结}{20}{section.6}%
+\contentsline {section}{参考文献}{21}{section.6}%
+\contentsline {section}{致 \hskip 1em\relax 谢}{24}{section.6}%
 \contentsfinish 
